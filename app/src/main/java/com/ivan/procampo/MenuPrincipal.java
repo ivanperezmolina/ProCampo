@@ -1,9 +1,15 @@
 package com.ivan.procampo;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +21,11 @@ import androidx.fragment.app.Fragment;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.ivan.procampo.fragmentsMenu.CultivosFragment;
 
 
@@ -33,6 +43,7 @@ public class MenuPrincipal extends AppCompatActivity {
     //FireBase
     private FirebaseAuth mAuth;
     private FirebaseDatabase fbdatabase;
+    private DatabaseReference databaseReference;
 
     //Google
     private GoogleSignInClient mGoogleSignInClient;
@@ -40,12 +51,23 @@ public class MenuPrincipal extends AppCompatActivity {
     //Facebook
     private Button cerrarSesionFB;
 
-    private TextView texto;
+    private TextView textonombre;
+    private TextView textoCorreo;
+
+    LayoutInflater layoutInflater;
+    ViewGroup container;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
+
+
+
+
+        mAuth = FirebaseAuth.getInstance();
+        databaseReference=FirebaseDatabase.getInstance().getReference();
 
         setToolbar();
 
@@ -55,11 +77,20 @@ public class MenuPrincipal extends AppCompatActivity {
 
         navigationView = findViewById(R.id.nvNavView);
 
+        textonombre = navigationView.getHeaderView(0).findViewById(R.id.textViewNombre);
+        textoCorreo = navigationView.getHeaderView(0).findViewById(R.id.textViewCorreo);
+
+
+        traerInfoUserCorreoFirebase();
+
+
 
         setDefaultFragment();
 
         //Para que al principio aparezca marcada la opcion de "INICIO"
         navigationView.getMenu().getItem(0).setChecked(true);
+
+
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -87,6 +118,16 @@ public class MenuPrincipal extends AppCompatActivity {
                     case R.id.itPerfil:
                         break;
                     case R.id.itSalir:
+                        //Cierro sesión en Firebase
+                        mAuth.signOut();
+                        //Muestro un mensaje
+                        Context context = getApplicationContext();
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(context, "Sesión cerrada de Firebase", duration);
+                        toast.show();
+                        //Mando de vuelta a la pantalla de inicio
+                        Intent volverAInicio = new Intent(MenuPrincipal.this,MainActivity.class);
+                        startActivity(volverAInicio);
                         break;
                 }
                 if(doChange){
@@ -97,7 +138,7 @@ public class MenuPrincipal extends AppCompatActivity {
                 return true;
             }
         });
-        
+
 
     }
 
@@ -148,5 +189,41 @@ public class MenuPrincipal extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void traerInfoUserCorreoFirebase(){
+        String id = mAuth.getCurrentUser().getUid();
+        databaseReference.child("usuarios").child(id).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    //Si el nodo existe; traerme nombre y correo
+                    String nombre = "";
+                    String correo = "";
+
+
+                     nombre = dataSnapshot.child("nombre").getValue().toString();
+                     correo = dataSnapshot.child("email").getValue().toString();
+
+                    //Asigno valor
+                    if (textonombre!= null){
+                        textonombre.setText(nombre);
+                    }
+                    if (textoCorreo!=null){
+                        textoCorreo.setText(correo);
+
+                    }
+
+
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }

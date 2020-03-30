@@ -11,7 +11,7 @@
         app:srcCompat="@drawable/header" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Iván Pérez Molina"
@@ -24,7 +24,7 @@
         />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewCorreo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ivan.perez.8500@gmail.com"
