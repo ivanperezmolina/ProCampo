@@ -193,37 +193,16 @@ public class MenuPrincipal extends AppCompatActivity {
 
     private void traerInfoUserCorreoFirebase(){
         String id = mAuth.getCurrentUser().getUid();
-        databaseReference.child("usuarios").child(id).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()){
-                    //Si el nodo existe; traerme nombre y correo
-                    String nombre = "";
-                    String correo = "";
+        String nombreUsuario = mAuth.getCurrentUser().getDisplayName();
+        String correoUsuario = mAuth.getCurrentUser().getEmail();
 
+        //Asigno valor
+        if (textonombre!= null){
+            textonombre.setText(nombreUsuario);
+        }
+        if (textoCorreo!=null){
+            textoCorreo.setText(correoUsuario);
+        }
 
-                     nombre = dataSnapshot.child("nombre").getValue().toString();
-                     correo = dataSnapshot.child("email").getValue().toString();
-
-                    //Asigno valor
-                    if (textonombre!= null){
-                        textonombre.setText(nombre);
-                    }
-                    if (textoCorreo!=null){
-                        textoCorreo.setText(correo);
-
-                    }
-
-
-
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
     }
 }
