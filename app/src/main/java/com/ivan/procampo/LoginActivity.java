@@ -153,7 +153,7 @@ public class LoginActivity extends AppCompatActivity  {
                 //Emitir un error
                 Context context = getApplicationContext();
                 int duration = Toast.LENGTH_SHORT;
-                Toast toast = Toast.makeText(context, "ERORORORMNÑDJKBS LKZ", duration);
+                Toast toast = Toast.makeText(context, "ERROR", duration);
                 toast.show();
             }
         });
@@ -329,7 +329,7 @@ public class LoginActivity extends AppCompatActivity  {
             if(personName!=null || personEmail!=null) {
                 Context context = getApplicationContext();
                 int duration = Toast.LENGTH_SHORT;
-                Toast toast = Toast.makeText(context, "Bienvenido a Procampo" + personName, duration);
+                Toast toast = Toast.makeText(context, "Bienvenido a Procampo " + personName, duration);
                 toast.show();
 
                 Intent menuppal = new Intent(LoginActivity.this, MenuPrincipal.class);
@@ -337,7 +337,7 @@ public class LoginActivity extends AppCompatActivity  {
             }else{
                 Context context = getApplicationContext();
                 int duration = Toast.LENGTH_SHORT;
-                Toast toast = Toast.makeText(context, "No pasas mamon", duration);
+                Toast toast = Toast.makeText(context, R.string.login_nook, duration);
                 toast.show();
             }
         }

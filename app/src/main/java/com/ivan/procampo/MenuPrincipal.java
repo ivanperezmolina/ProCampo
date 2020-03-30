@@ -2,24 +2,41 @@ package com.ivan.procampo;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.graphics.drawable.RoundedBitmapDrawable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.facebook.login.LoginManager;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -48,11 +65,17 @@ public class MenuPrincipal extends AppCompatActivity {
     //Google
     private GoogleSignInClient mGoogleSignInClient;
 
+
     //Facebook
     private Button cerrarSesionFB;
 
     private TextView textonombre;
     private TextView textoCorreo;
+
+    //Foto de perfil
+    private ImageView photoImageView;
+
+
 
     LayoutInflater layoutInflater;
     ViewGroup container;
@@ -66,8 +89,16 @@ public class MenuPrincipal extends AppCompatActivity {
 
 
 
+
         mAuth = FirebaseAuth.getInstance();
         databaseReference=FirebaseDatabase.getInstance().getReference();
+
+        //Identificar usuario google
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this,gso);
 
         setToolbar();
 
@@ -79,6 +110,7 @@ public class MenuPrincipal extends AppCompatActivity {
 
         textonombre = navigationView.getHeaderView(0).findViewById(R.id.textViewNombre);
         textoCorreo = navigationView.getHeaderView(0).findViewById(R.id.textViewCorreo);
+        photoImageView = navigationView.getHeaderView(0).findViewById(R.id.photoImageView);
 
 
         traerInfoUserCorreoFirebase();
@@ -120,10 +152,22 @@ public class MenuPrincipal extends AppCompatActivity {
                     case R.id.itSalir:
                         //Cierro sesión en Firebase
                         mAuth.signOut();
+                        //Si detecto una instancia de facebook es que estoy en facebook
+                        if(LoginManager.getInstance()!=null){
+                            LoginManager.getInstance().logOut();
+
+                        }
+
+                        //Si no estoy con facebook, pues cierro revocando la sesión
+                            mGoogleSignInClient.signOut();
+                            mGoogleSignInClient.revokeAccess();
+
+                        //
+
                         //Muestro un mensaje
                         Context context = getApplicationContext();
                         int duration = Toast.LENGTH_SHORT;
-                        Toast toast = Toast.makeText(context, "Sesión cerrada de Firebase", duration);
+                        Toast toast = Toast.makeText(context, "Sesión cerrada ", duration);
                         toast.show();
                         //Mando de vuelta a la pantalla de inicio
                         Intent volverAInicio = new Intent(MenuPrincipal.this,MainActivity.class);
@@ -191,18 +235,56 @@ public class MenuPrincipal extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void traerInfoUserCorreoFirebase(){
+    private void traerInfoUserCorreoFirebase() {
         String id = mAuth.getCurrentUser().getUid();
-        String nombreUsuario = mAuth.getCurrentUser().getDisplayName();
-        String correoUsuario = mAuth.getCurrentUser().getEmail();
 
-        //Asigno valor
-        if (textonombre!= null){
-            textonombre.setText(nombreUsuario);
-        }
-        if (textoCorreo!=null){
-            textoCorreo.setText(correoUsuario);
-        }
+        if (LoginManager.getInstance()!=null) {
+            String nombreUsuario = mAuth.getCurrentUser().getDisplayName();
+            String correoUsuario = mAuth.getCurrentUser().getEmail();
 
+            //Asigno valor
+            if (textonombre != null) {
+                textonombre.setText(nombreUsuario);
+            }
+            if (textoCorreo != null) {
+                textoCorreo.setText(correoUsuario);
+            }
+
+            //FOTO GOOGLE
+            GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
+            if (account != null) {
+                Glide.with(this).load(account.getPhotoUrl()).apply(RequestOptions.circleCropTransform()).into(photoImageView);
+            }
+
+
+            //PROBLEMA CON NOMBRE EN FIREBASE
+
+
+        }else {
+
+            databaseReference.child("usuarios").child(id).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    LoginManager.getInstance().logOut();
+                    String nombreUsuarioFirebase = dataSnapshot.child("nombre").getValue().toString();
+                    String correoUsuarioFirebase = dataSnapshot.child("email").getValue().toString();
+
+                    if (textonombre != null) {
+                        textonombre.setText(nombreUsuarioFirebase);
+                    }
+                    if (textoCorreo != null) {
+                        textoCorreo.setText(correoUsuarioFirebase);
+                    }
+                }
+
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
     }
+
+
 }
