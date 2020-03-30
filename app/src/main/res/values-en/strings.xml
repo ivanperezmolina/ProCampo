@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="texto_bienvenida">Welcome to ProCampo</string>
+    <string name="descripcion_bienvenida">Logion or register to enjoy the application</string>
+    <string name="nombre">Name</string>
+    <string name="apellidos">Surnames</string>
+    <string name="telefono">Phone</string>
+    <string name="correo">E-Mail</string>
+    <string name="contraseña">PassWord</string>
+    <string name="texto_boton_registro">Registration in ProCampo</string>
+    <string name="cancelar">Cancel</string>
+    <string name="campo_vacio">Review the form fields</string>
+    <string name="registro_ok">The registration was successful</string>
+    <string name="registro_nook">Registration failed, please try again</string>
+    <string name="doble_usuario_error">This user already exists</string>
+    <string name="login_email_pass">Sign In</string>
+    <string name="acceso">Access ProCampo</string>
+    <string name="login_other">Or log in with ...</string>
+    <string name="login_ok">Login Ok</string>
+    <string name="login_nook">Could not login successfully</string>
+    <string name="reset_pass">Reset Password</string>
+    <string name="des_reset_pass">Enter the email with which you are registered with ProCampo, then you will receive an email to your e-mail where you will be guided to reset your password</string>
+    <string name="ok_reset_pass">Mail sent correctly, check your email</string>
+    <string name="nook_reset_pass">We could not send the mail</string>
+    <string name="login_cancelado">Login cancel</string>
+    <string name="cultivos">My Crops</string>
+    <string name="recolectas">My Collections</string>
+    <string name="podas">My Prunings</string>
+    <string name="sulfatos">My Sulfates</string>
+    <string name="perfil">My profile</string>
+    <string name="cerrar_sesion">Log Out</string>
+    <string name="fertilizantes">Popular fertilizers</string>
+    <string name="opciones">Options</string>
+    <string name="home">Home</string>
+</resources>

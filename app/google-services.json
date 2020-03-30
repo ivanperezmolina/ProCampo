@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "769872464737",
+    "firebase_url": "https://procampo-ce4e3.firebaseio.com",
+    "project_id": "procampo-ce4e3",
+    "storage_bucket": "procampo-ce4e3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:769872464737:android:a5a3d115e4eb77513d5320",
+        "android_client_info": {
+          "package_name": "com.ivan.procampo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "769872464737-hf9ovo5raj2k39tkpp72mr9hegrckp7o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ivan.procampo",
+            "certificate_hash": "4517cb91dd33011697b0bb7b15d28968ed829da9"
+          }
+        },
+        {
+          "client_id": "769872464737-r0pvkac9ipfiv2dhc69fvvgnccmql32j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEfGM49RJ57QL9DDp3Y8SxefdRVgF8Kwk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "769872464737-r0pvkac9ipfiv2dhc69fvvgnccmql32j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

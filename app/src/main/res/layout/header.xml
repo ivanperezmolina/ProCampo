@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/header" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Iván Pérez Molina"
+        android:textStyle="bold"
+        android:textColor="#FFF"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_marginTop="110dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ivan.perez.8500@gmail.com"
+        android:textStyle="italic"
+        android:textColor="#FFF"
+        android:layout_marginTop="137dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        />
+</FrameLayout>

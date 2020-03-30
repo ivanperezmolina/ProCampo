@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="251dp"
+        android:layout_height="128dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.056"
+        app:srcCompat="@drawable/logotipo_procampo_2" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Registro en ProCampo"
+        android:textSize="25dp"
+        android:typeface="serif"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <!--Nombre-->
+    <EditText
+        android:id="@+id/nombreRegistro"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/nombre"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.071" />
+
+
+    <!--Apellidos-->
+    <EditText
+        android:id="@+id/apellidosRegistro"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/apellidos"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombreRegistro"
+        app:layout_constraintVertical_bias="0.039" />
+
+
+    <!--Telefono-->
+    <EditText
+        android:id="@+id/telefonoRegistro"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/telefono"
+        android:inputType="phone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/apellidosRegistro"
+        app:layout_constraintVertical_bias="0.046" />
+
+
+    <!--Correo-->
+    <EditText
+        android:id="@+id/correoRegistro"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/correo"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/telefonoRegistro"
+        app:layout_constraintVertical_bias="0.066" />
+
+
+    <!--Contraseña-->
+    <EditText
+        android:id="@+id/contraseñaRegistro"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/contraseña"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/correoRegistro"
+        app:layout_constraintVertical_bias="0.067" />
+
+    <!--Boton registrar-->
+    <Button
+        android:id="@+id/botonRegistro"
+        android:layout_width="214dp"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:hint="@string/texto_boton_registro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contraseñaRegistro"
+        app:layout_constraintVertical_bias="0.261" />
+
+    <!--Boton cancelar-->
+    <Button
+        android:id="@+id/botonCancelar"
+        android:layout_width="214dp"
+        android:layout_height="50dp"
+        android:background="#DBA46B"
+        android:hint="@string/cancelar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botonRegistro"
+        app:layout_constraintVertical_bias="0.261" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

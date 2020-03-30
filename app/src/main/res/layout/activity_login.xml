@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
+
+    <!--Email-->
+    <!--Contraseña-->
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="251dp"
+        android:layout_height="128dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.026"
+        app:srcCompat="@drawable/logotipo_procampo_2" />
+
+    <TextView
+        android:id="@+id/texto_bienvenida_login"
+        android:layout_width="156dp"
+        android:layout_height="28dp"
+        android:text="@string/login_email_pass"
+        android:textSize="20dp"
+        android:typeface="serif"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.556"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.214" />
+
+    <EditText
+        android:id="@+id/correoLogin"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/correo"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/texto_bienvenida_login"
+        app:layout_constraintVertical_bias="0.03" />
+
+    <EditText
+        android:id="@+id/contraseñaLogin"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/contraseña"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/correoLogin"
+        app:layout_constraintVertical_bias="0.028" />
+
+
+    <Button
+        android:id="@+id/botonAccederLogin"
+        android:layout_width="130dp"
+        android:layout_height="38dp"
+        android:layout_margin="30dp"
+        android:background="@color/colorPrimary"
+        android:hint="@string/acceso"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contraseñaLogin"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/botonCancelarLogin"
+        android:layout_width="130dp"
+        android:layout_height="38dp"
+        android:layout_margin="30dp"
+        android:background="#DBA46B"
+        android:hint="@string/cancelar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contraseñaLogin"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/botonReset"
+        android:layout_width="214dp"
+        android:layout_height="33dp"
+        android:layout_margin="50dp"
+        android:background="#96A722"
+        android:hint="¿Has olvidado la contraseña?"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contraseñaLogin"
+        app:layout_constraintVertical_bias="0.122" />
+
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="339dp"
+        android:layout_height="47dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.583"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.653"
+        app:srcCompat="@drawable/barra" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.752">
+
+    </com.google.android.gms.common.SignInButton>
+
+    <ImageButton
+        android:id="@+id/boton_telefono"
+        android:layout_width="83dp"
+        android:layout_height="83dp"
+        app:backgroundTint="@color/common_google_signin_btn_text_dark_pressed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_phonelink_ring_black_24dp" />
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button_fb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.83" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

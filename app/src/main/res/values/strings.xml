@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name" translatable="false">ProCampo</string>
+    <string name="texto_bienvenida">Bienvenido a ProCampo</string>
+    <string name="descripcion_bienvenida">Inicie sesión o registrese para poder disfrutar de la aplicación en su movil o tablet</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellidos">Apellidos</string>
+    <string name="telefono">Teléfono</string>
+    <string name="correo">Correo electrónico</string>
+    <string name="contraseña">Contraseña</string>
+    <string name="texto_boton_registro">Registrar en ProCampo</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="campo_vacio">Revise los campos del formulario</string>
+    <string name="registro_ok">El registro se ha realizado correctamente</string>
+    <string name="registro_nook">El registro ha fallado, intentelo de nuevo.</string>
+    <string name="doble_usuario_error">El usuario ya existe en ProCampo</string>
+    <string name="login_email_pass">Inicio de sesión</string>
+    <string name="acceso">"Acceder "</string>
+    <string name="login_other">O bien inicie sesión con...</string>
+    <string name="login_ok">Logueado correctamente</string>
+    <string name="login_nook">No se ha podido loguear correctamente</string>
+    <string name="reset_pass">Restablecer contraseña</string>
+    <string name="des_reset_pass">Introduzca el correo con el que este registrado en ProCampo, a continuación recibirá un correo a su e-mail donde se le guiara para restablecer su contraseña.</string>
+    <string name="ok_reset_pass">Correo enviado correctamente, revise su e-mail</string>
+    <string name="nook_reset_pass">No hemos podido mandar el correo</string>
+    <string name="ivan" translatable="false">SA PODIO</string>
+
+    <string name="facebook_app_id" translatable="false">510815139593835</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb510815139593835</string>
+    <string name="login_cancelado">Se ha cancelado el login</string>
+    <string name="cultivos">Mis Cultivos</string>
+    <string name="recolectas">Mis Recolectas</string>
+    <string name="podas">Mis Podas</string>
+    <string name="sulfatos">Mis Sulfatos</string>
+    <string name="perfil">Mi Perfil</string>
+    <string name="cerrar_sesion">Cerrar Sesión</string>
+    <string name="fertilizantes">Fertilizantes populares</string>
+    <string name="opciones">Opciones</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Inicio</string>
+
+
+</resources>

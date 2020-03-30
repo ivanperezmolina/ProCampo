@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+
+     android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <group >
+        <item
+            android:id="@+id/itHome"
+            android:icon="@drawable/ic_home"
+            android:title="@string/home"
+            />
+        <item
+            android:id="@+id/itCultivos"
+            android:icon="@drawable/arbol"
+            android:title="@string/cultivos" />
+        <item
+            android:id="@+id/itRecolectas"
+            android:icon="@drawable/olivas"
+            android:title="@string/recolectas" />
+        <item
+            android:id="@+id/itPodas"
+            android:icon="@drawable/moto"
+            android:title="@string/podas" />
+        <item
+            android:id="@+id/itSulfatos"
+            android:icon="@drawable/fertilizantes"
+            android:title="@string/sulfatos" />
+        <item
+            android:id="@+id/itFertilizantes"
+            android:icon="@drawable/ferti"
+            android:title="@string/fertilizantes" />
+    </group>
+    <item android:title="@string/opciones">
+        <menu>
+            <item
+                android:id="@+id/itPerfil"
+                android:icon="@drawable/ic_profile"
+                android:title="@string/perfil" />
+            <item
+                android:id="@+id/itSalir"
+                android:icon="@drawable/ic_exit"
+                android:title="@string/cerrar_sesion" />
+        </menu>
+    </item>
+
+
+
+
+</menu>
