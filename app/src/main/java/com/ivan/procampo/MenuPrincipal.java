@@ -44,6 +44,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ivan.procampo.fragmentsMenu.CultivosFragment;
+import com.ivan.procampo.fragmentsMenu.
 
 
 
@@ -148,6 +149,8 @@ public class MenuPrincipal extends AppCompatActivity {
                         break;
                     //
                     case R.id.itPerfil:
+                        doChange = true;
+                        fragment = new PerfilFragment();
                         break;
                     case R.id.itSalir:
                         //Cierro sesión en Firebase

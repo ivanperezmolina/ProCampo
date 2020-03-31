@@ -104,7 +104,7 @@ public class LoginActivity extends AppCompatActivity  {
         //Referenciar los campos y botones
         //Se puede hacer con la herramienta @BindView
         emailLogin = findViewById(R.id.correoLogin);
-        contraseñaLogin = findViewById(R.id.contraseñaLogin);
+        contraseñaLogin = findViewById(R.id.passwordLogin);
 
         btnAcceder = findViewById(R.id.botonAccederLogin);
         btnCancelar = findViewById(R.id.botonCancelarLogin);
