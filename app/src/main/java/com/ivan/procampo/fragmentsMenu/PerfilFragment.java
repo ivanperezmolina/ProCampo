@@ -1,4 +1,4 @@
-<<package com.ivan.procampo.fragmentsMenu;
+package com.ivan.procampo.fragmentsMenu;
 
 import android.os.Bundle;
 
