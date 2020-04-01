@@ -30,19 +30,23 @@
             android:id="@+id/itFertilizantes"
             android:icon="@drawable/ferti"
             android:title="@string/fertilizantes" />
-    </group>
-    <item android:title="@string/opciones">
-        <menu>
-            <item
-                android:id="@+id/itPerfil"
-                android:icon="@drawable/ic_profile"
-                android:title="@string/perfil" />
-            <item
-                android:id="@+id/itSalir"
-                android:icon="@drawable/ic_exit"
-                android:title="@string/cerrar_sesion" />
-        </menu>
-    </item>
+        <item android:title="@string/opciones">
+            <menu>
+
+                    <item
+                        android:id="@+id/itPerfil"
+                        android:icon="@drawable/ic_profile"
+                        android:title="@string/perfil" />
+                    <item
+                        android:id="@+id/itSalir"
+                        android:icon="@drawable/ic_exit"
+                        android:title="@string/cerrar_sesion" />
+
+            </menu>
+        </item>
+     </group>
+
+
 
 
 

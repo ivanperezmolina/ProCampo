@@ -8,8 +8,43 @@
 
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imageView5"
+        android:layout_width="match_parent"
+        android:layout_height="365dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/fondoperfiltrans" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:src="@drawable/fotopordefectoperfil"
+        android:layout_marginTop="105dp"
+        android:layout_marginLeft="110dp"/>
+
+    //Nombre y correo electronico
+
+    <TextView
+        android:id="@+id/textViewNombrePefil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/FONDP " />
+        android:text="Iván Pérez Molina"
+        android:textStyle="bold"
+        android:textColor="#FFF"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_marginTop="320dp"
+        android:layout_marginLeft="77dp"
+        />
+
+    <TextView
+        android:id="@+id/textViewCorreoPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="77dp"
+        android:layout_marginTop="350dp"
+        android:text="ivan.perez.8500@gmail.com"
+        android:textColor="#FFF"
+        android:textStyle="italic" />
+
+
 </FrameLayout>

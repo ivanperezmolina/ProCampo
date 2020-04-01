@@ -132,6 +132,7 @@ public class MenuPrincipal extends AppCompatActivity {
                 Fragment fragment = null;
                 switch (menuItem.getItemId()){
                     case R.id.itHome:
+                        doChange=false;
                         doChange = true;
                         fragment = new DefaultFragment();
                         break;
@@ -149,6 +150,7 @@ public class MenuPrincipal extends AppCompatActivity {
                         break;
                     //
                     case R.id.itPerfil:
+                        doChange=false;
                         doChange = true;
                         fragment = new PerfilFragment();
                         break;
