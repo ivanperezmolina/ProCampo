@@ -3,23 +3,19 @@ package com.ivan.procampo.fragmentsMenu;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.ivan.procampo.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link CultivosFragment#newInstance} factory method to
+ * Use the {@link AnnadirCultivoFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CultivosFragment extends Fragment {
+public class AnnadirCultivoFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,10 +25,7 @@ public class CultivosFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    // MIS VARIABLES
-    private Button botonNuevoCultivo;
-
-    public CultivosFragment() {
+    public AnnadirCultivoFragment() {
         // Required empty public constructor
     }
 
@@ -42,11 +35,11 @@ public class CultivosFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment CultivosFragment.
+     * @return A new instance of fragment AnnadirCultivoFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CultivosFragment newInstance(String param1, String param2) {
-        CultivosFragment fragment = new CultivosFragment();
+    public static AnnadirCultivoFragment newInstance(String param1, String param2) {
+        AnnadirCultivoFragment fragment = new AnnadirCultivoFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -67,34 +60,6 @@ public class CultivosFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
-
-        View vista = inflater.inflate(R.layout.fragment_cultivos, container, false);
-
-        //Referencia a las variables
-        botonNuevoCultivo = vista.findViewById(R.id.botonAnnadirCultivo);
-
-        //Remplazar el fragment
-
-        botonNuevoCultivo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                        AnnadirCultivoFragment fragmentNuevoCultivo = new AnnadirCultivoFragment();
-                        //Hago la actualización
-                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                        transaction.replace(R.id.fragment_container_cultivos, fragmentNuevoCultivo);
-                        transaction.addToBackStack(null);
-
-                        // Commit a la transacción
-                        transaction.commit();
-
-            }
-        });
-
-
-
-        return vista ;
-
+        return inflater.inflate(R.layout.fragment_annadir_cultivo, container, false);
     }
 }

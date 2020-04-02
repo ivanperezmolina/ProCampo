@@ -3,15 +3,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragmentsMenu.CultivosFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragmentsMenu.CultivosFragment"
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    >
+
+    <FrameLayout
+        android:id="@+id/fragment_container_cultivos"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical"
-        android:text="MIS CULTIVOS"
-        android:layout_gravity="center"
-        android:textSize="52dp" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55dp"
+            android:gravity="center_vertical"
+            android:text="MIS CULTIVOS"
+            android:textAlignment="center"
+            android:textSize="52dp"
+            tools:ignore="RtlCompat" />
+
+
+        <Button
+            android:id="@+id/botonAnnadirCultivo"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="130dp"
+            android:text="Añadir Cultivo"
+
+            android:textSize="20dp"
+            app:icon="@drawable/ic_add_black_24dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewRecolectas"
+            android:layout_width="335dp"
+            android:layout_height="519dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="200dp"
+            android:orientation="vertical"
+
+            >
+
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </FrameLayout>
+
+
 
 </FrameLayout>

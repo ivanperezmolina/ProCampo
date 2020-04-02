@@ -246,21 +246,27 @@ public class MenuPrincipal extends AppCompatActivity {
         if (LoginManager.getInstance()!=null) {
             String nombreUsuario = mAuth.getCurrentUser().getDisplayName();
             String correoUsuario = mAuth.getCurrentUser().getEmail();
+            Uri fotoCorreo = mAuth.getCurrentUser().getPhotoUrl();
+            String fotoDefecto = "https://firebasestorage.googleapis.com/v0/b/procampo-ce4e3.appspot.com/o/fotopordefectoperfil.jpg?alt=media&token=ea18769d-ede9-44cc-a0ec-f86db595cd36";
 
             //Asigno valor
             if (textonombre != null) {
                 textonombre.setText(nombreUsuario);
+            }else {
+                textonombre.setText("Nombre no encontrado");
             }
             if (textoCorreo != null) {
                 textoCorreo.setText(correoUsuario);
+            }else{
+                textoCorreo.setText("Correo no encontrado");
             }
 
-            //FOTO GOOGLE
-            GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-            if (account != null) {
-                Glide.with(this).load(account.getPhotoUrl()).apply(RequestOptions.circleCropTransform()).into(photoImageView);
+            //FOTO DE PERFIL
+            if (fotoCorreo != null) {
+                Glide.with(this).load(fotoCorreo).apply(RequestOptions.circleCropTransform()).into(photoImageView);
+            }else {
+                Glide.with(this).load(fotoDefecto).apply(RequestOptions.circleCropTransform()).into(photoImageView);
             }
-
 
             //PROBLEMA CON NOMBRE EN FIREBASE
 

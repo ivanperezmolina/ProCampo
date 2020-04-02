@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
@@ -82,6 +81,7 @@ public class RegisterActivity extends AppCompatActivity {
                     return ;
                 }
 
+
                 //Procedemos con el sistema de autenticación
                 mAuth.createUserWithEmailAndPassword(correo,contraseña).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -89,6 +89,10 @@ public class RegisterActivity extends AppCompatActivity {
                         if(task.isSuccessful()){//Registrado correctamente
                             //Guarda la info y obtenemos su UID
                             String UID = mAuth.getUid();
+
+                            String id = mAuth.getCurrentUser().getUid();
+
+
 
                             //Creamos al usuario
                             Usuario agricultor = new Usuario(nombre,apellidos,telefono,correo,contraseña);
