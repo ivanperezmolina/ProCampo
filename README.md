@@ -41,3 +41,6 @@ Me he basado para el inicio de sesión por Facebook en el vídeo "Login con Face
 ## VIERNES 3 DE ABRIL DEL 2020
 Menú principal de la aplicación con un menú lateral implementado. También he elaborado la parte de perfil; aunque ahora solo coja la información del usuario (tendría que ver desde donde inicia sesión; por ejemplo si es desde Facebook no va a poder cambiar sus datos)
 Una de las partes de la APP ; es decir "Cultivos" ya tiene creada su Adaptador y su Recycler View; solo quedan unos fallos que da al conectar a Firebase y esa parte ya estaría 
+
+### Bibliografía de esta semana
+Ya que la herramienta de Android Studio para crear un NavigationDrawer mete código el cual veo que no sirve he seguido un tutorial de como crearlo desde 0. [Página web aquí](http://umhandroid.momrach.es/basicnavigationdrawer/)
