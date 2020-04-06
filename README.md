@@ -37,3 +37,7 @@ Reciban un saludo de Iván Pérez Molina
 En esta primera semana he decidido crear un nuevo archivo de proyecto; para no liarme con el otro y demás. Esta semana ha estado dedicada al diseño y elaboración del login y registro; cogiendo el que ya tenía y servía y añadiendo nuevas funcionalidades tales como la autenticación con una cuenta de Google y con tu cuenta de Facebook; queda retocar algunos fallos que esta dando e implementar otra forma de inicio de sesión; que no se si será Twitter o por SMS. 
 #### Bibliografía de esta semana
 Me he basado para el inicio de sesión por Facebook en el vídeo "Login con Facebook" de Alvarez Tech [Vídeo aquí](https://www.youtube.com/watch?v=1HgM_vc-rSc&t=)
+
+## VIERNES 3 DE ABRIL DEL 2020
+Menú principal de la aplicación con un menú lateral implementado. También he elaborado la parte de perfil; aunque ahora solo coja la información del usuario (tendría que ver desde donde inicia sesión; por ejemplo si es desde Facebook no va a poder cambiar sus datos)
+Una de las partes de la APP ; es decir "Cultivos" ya tiene creada su Adaptador y su Recycler View; solo quedan unos fallos que da al conectar a Firebase y esa parte ya estaría 
