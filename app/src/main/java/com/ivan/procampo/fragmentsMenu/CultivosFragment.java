@@ -3,6 +3,7 @@ package com.ivan.procampo.fragmentsMenu;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 
@@ -47,6 +48,8 @@ public class CultivosFragment extends Fragment {
     // TODO: Rename and change types and number of parameters
     public static CultivosFragment newInstance(String param1, String param2) {
         CultivosFragment fragment = new CultivosFragment();
+
+
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -79,15 +82,17 @@ public class CultivosFragment extends Fragment {
         botonNuevoCultivo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
                         AnnadirCultivoFragment fragmentNuevoCultivo = new AnnadirCultivoFragment();
                         //Hago la actualización
-                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                        transaction.replace(R.id.fragment_container_cultivos, fragmentNuevoCultivo);
-                        transaction.addToBackStack(null);
+
+                        fragmentTransaction.replace(R.id.fragment_container_cultivos, fragmentNuevoCultivo);
+                        fragmentTransaction.addToBackStack(null);
 
                         // Commit a la transacción
-                        transaction.commit();
+                        fragmentTransaction.commit();
 
             }
         });
