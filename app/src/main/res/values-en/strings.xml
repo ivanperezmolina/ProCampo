@@ -32,4 +32,9 @@
     <string name="fertilizantes">Popular fertilizers</string>
     <string name="opciones">Options</string>
     <string name="home">Home</string>
+    <string name="nuevo_cultivo">Add New Crop</string>
+    <string name="des_nuevo_cultivo">Insert data to be able to add a new crop</string>
+    <string name="nombre_cultivo">Crop Name</string>
+    <string name="hectareas_cultivo">Hectares of the crop</string>
+    <string name="localizacion_cultivo">Crop location</string>
 </resources>

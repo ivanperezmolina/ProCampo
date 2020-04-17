@@ -39,6 +39,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="home">Inicio</string>
+    <string name="nuevo_cultivo">Añadir Nuevo Cultivo</string>
+    <string name="des_nuevo_cultivo">Inserte datos para poder agregar un nuevo cultivo</string>
+    <string name="nombre_cultivo">Nombre del Cultivo</string>
+    <string name="hectareas_cultivo">Hectáreas del cultivo</string>
+    <string name="localizacion_cultivo">Localización del cultivo</string>
 
 
 </resources>

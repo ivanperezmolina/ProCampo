@@ -75,5 +75,8 @@ dependencies {
     //Circular image View
     implementation 'de.hdodenhof:circleimageview:2.2.0'
 
+    //Storage
+    implementation 'com.google.firebase:firebase-storage:18.0.0'
+
 
 }

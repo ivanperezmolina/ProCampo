@@ -1,5 +1,6 @@
 package com.ivan.procampo.fragmentsMenu;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,6 +15,7 @@ import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.ivan.procampo.R;
+import com.ivan.procampo.funcionalidades.AnnadirCultivoActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -82,17 +84,9 @@ public class CultivosFragment extends Fragment {
         botonNuevoCultivo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-                        AnnadirCultivoFragment fragmentNuevoCultivo = new AnnadirCultivoFragment();
-                        //Hago la actualización
-
-                        fragmentTransaction.replace(R.id.fragment_container_cultivos, fragmentNuevoCultivo);
-                        fragmentTransaction.addToBackStack(null);
-
-                        // Commit a la transacción
-                        fragmentTransaction.commit();
+               //Vamos a la activity de añadir cultivo
+                Intent nuevoCultivo = new Intent(getActivity(), AnnadirCultivoActivity.class);
+                startActivity(nuevoCultivo);
 
             }
         });
