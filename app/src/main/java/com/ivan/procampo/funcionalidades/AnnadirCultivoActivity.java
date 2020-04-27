@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -20,6 +21,10 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -27,17 +32,14 @@ import com.ivan.procampo.MainActivity;
 import com.ivan.procampo.MenuPrincipal;
 import com.ivan.procampo.R;
 import com.ivan.procampo.fragmentsMenu.CultivosFragment;
+import com.ivan.procampo.modelos.Cultivos;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class AnnadirCultivoActivity extends AppCompatActivity {
 
     //Variables
-
-    private Spinner tipoAceituna;
-
-    String tipoDeAceituna;
-
     private Button subirFoto;
 
     private StorageReference mStorage;
@@ -52,6 +54,25 @@ public class AnnadirCultivoActivity extends AppCompatActivity {
 
     private Button botonCancelar;
 
+    //Variables subida de cultivo
+
+    private EditText nombreCultivo;
+
+    private Spinner tipoAceituna;
+
+    String tipoDeAceituna;
+
+    private EditText hectareasCultivo;
+
+    private EditText localizacionCultivo;
+
+    private Button botonSubirNuevoCultivo;
+
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
+    private FirebaseAuth mAuth;
+    
+
 
 
     @Override
@@ -64,6 +85,7 @@ public class AnnadirCultivoActivity extends AppCompatActivity {
         mImageView = findViewById(R.id.imagenCultivoAnnadir);
         mStorageReference = FirebaseStorage.getInstance().getReference();
 
+        mAuth = FirebaseAuth.getInstance();
         /////////////////////////
 
         //Relacionar
@@ -71,10 +93,17 @@ public class AnnadirCultivoActivity extends AppCompatActivity {
 
         botonCancelar = findViewById(R.id.botonCancelarAnnadirCultivo);
 
+        nombreCultivo = findViewById(R.id.nombreCultivo);
+        hectareasCultivo = findViewById(R.id.hectareasCultivo);
+        localizacionCultivo = findViewById(R.id.localizacionCultivo);
+
+        botonSubirNuevoCultivo = findViewById(R.id.botonSubirNuevoCultivo);
+
         //Opciones del spinner de tipo de aceituna
         ArrayList<String> tiposAceitunas = new ArrayList<>();
 
 
+        tiposAceitunas.add("Seleccione un tipo");
         tiposAceitunas.add("Hojiblanca");
         tiposAceitunas.add("Gordal");
         tiposAceitunas.add("Manzanillas");
@@ -90,7 +119,6 @@ public class AnnadirCultivoActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 tipoDeAceituna = (String) tipoAceituna.getAdapter().getItem(position);
 
-                Toast.makeText(AnnadirCultivoActivity.this,"Seleccionaste:"+tipoDeAceituna,Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -100,6 +128,8 @@ public class AnnadirCultivoActivity extends AppCompatActivity {
         });
 
 
+        //Inicializamos firebase
+        inicializarFirebase();
         //Boton subir
         subirFoto = findViewById(R.id.botonSubirFotoCultivo);
 
@@ -121,7 +151,75 @@ public class AnnadirCultivoActivity extends AppCompatActivity {
             }
         });
 
+        //PULSAR BOTON AÑADIR
+        //Comprobaremos que ningun campo; excepto la foto, esten rellenos
 
+
+
+
+        botonSubirNuevoCultivo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String nombre = nombreCultivo.getText().toString();
+                final String hectareas = hectareasCultivo.getText().toString();
+                final String tipoAceituna = tipoDeAceituna;//???
+                final String localizacion = localizacionCultivo.getText().toString();
+
+                    validacion();
+
+                    //Añadimos a la base de datos
+                    //Crearemos un objetos del modelo Cultivo
+
+
+                    Cultivos cultivo = new Cultivos();
+                    cultivo.setCodigoCultivo(UUID.randomUUID().toString());
+                    cultivo.setNombreCultivo(nombre);
+                    cultivo.setHectareasCultivo(hectareas);
+                if (tipoAceituna.equals("Seleccione un tipo")){
+                    cultivo.setTipoDeAceituna("Sin especificar");
+                }else{
+                    cultivo.setTipoDeAceituna(tipoDeAceituna);
+                }
+
+                    cultivo.setLocalizacionCultivo(localizacion);
+
+                    databaseReference.child("CULTIVOS").child(mAuth.getCurrentUser().getUid()).child(cultivo.getCodigoCultivo()).setValue(cultivo);
+                    Toast.makeText(AnnadirCultivoActivity.this,"AÑADIDO",Toast.LENGTH_SHORT).show();
+
+                    finish();
+
+            }
+
+
+        });
+
+
+    }
+
+    private void inicializarFirebase() {
+        FirebaseApp.initializeApp(this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
+    }
+
+    private void validacion() {
+        final String nombre = nombreCultivo.getText().toString();
+        final String hectareas = hectareasCultivo.getText().toString();
+        final String localizacion = localizacionCultivo.getText().toString();
+
+        if (nombre.equals("")){
+            nombreCultivo.setError("Campo Obligatorio");
+        }
+
+        if (hectareas.equals("")){
+            hectareasCultivo.setError("Campo Obligatorio");
+        }
+
+        if (localizacion.equals("")){
+            localizacionCultivo.setError("Campo Obligatorio");
+        }
+
+        Toast.makeText(AnnadirCultivoActivity.this,R.string.validacionCampos,Toast.LENGTH_SHORT).show();
     }
 
     //Obtener la foto
@@ -168,6 +266,8 @@ public class AnnadirCultivoActivity extends AppCompatActivity {
         }
 
     }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 

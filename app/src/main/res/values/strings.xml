@@ -44,6 +44,7 @@
     <string name="nombre_cultivo">Nombre del Cultivo</string>
     <string name="hectareas_cultivo">Hectáreas del cultivo</string>
     <string name="localizacion_cultivo">Localización del cultivo</string>
+    <string name="validacionCampos">Revise los campos</string>
 
 
 </resources>

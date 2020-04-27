@@ -34,21 +34,25 @@
 
             android:textSize="20dp"
             app:icon="@drawable/ic_add_black_24dp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewRecolectas"
-            android:layout_width="335dp"
-            android:layout_height="519dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="200dp"
-            android:orientation="vertical"
-
-            >
-
-
-        </androidx.recyclerview.widget.RecyclerView>
     </FrameLayout>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewCultivos"
+                android:layout_width="335dp"
+                android:layout_height="519dp"
+                android:orientation="vertical"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.924">
 
 
+            </androidx.recyclerview.widget.RecyclerView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
