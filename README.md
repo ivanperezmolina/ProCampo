@@ -44,3 +44,19 @@ Una de las partes de la APP ; es decir "Cultivos" ya tiene creada su Adaptador y
 
 #### Bibliografía de esta semana
 Ya que la herramienta de Android Studio para crear un NavigationDrawer mete código el cual veo que no sirve he seguido un tutorial de como crearlo desde 0. [Página web aquí](http://umhandroid.momrach.es/basicnavigationdrawer/)
+
+## VIERNES 10 DE ABRIL DEL 2020 (VIERNES SANTO)
+Durante esta semana me tomo un respiro
+
+## VIERNES 17 DE ABRIL DEL 2020
+En esta semana he estado pensando las diferentes partes de la aplicación y hablando con varios agricultores que conozco para que me puedan dar ideas y demás. Saco dos ideas claves; un foro y un diccionario de fitosanitarios. Buenas ideas!
+En cuanto a la aplicación he corregido un error que me daba con el inicio de sesión de Facebook; solucionado
+
+#### Bibliografía de esta semana
+Experiencias de futuros y experimentados agricultores y la página de facebook para "developers". 
+
+## VIERNES 24 DE ABRIL DEL 2020
+El diseño y funcinalidad de añadir y mostrar los cultivos ya esta implementada; he encontrado dificultades para implementar un RecyclerView en un fragmento; al final ha funcionado aunque hay veces que se queda pillado y no me muestra nada; tengo que estudiarlo.
+
+#### Bibliografía de esta semana 
+Varios vídeos de [Youtube](https://www.youtube.com)
