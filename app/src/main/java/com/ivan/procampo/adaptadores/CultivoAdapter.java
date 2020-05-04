@@ -7,29 +7,34 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ivan.procampo.R;
 import com.ivan.procampo.modelos.Cultivos;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CultivoAdapter extends RecyclerView.Adapter<CultivoAdapter.ViewHolder> {
 
     private int resource;
-    private ArrayList<Cultivos> cultivosList;
+    private List<Cultivos> cultivosList;
 
     private int index;
 
-    public CultivoAdapter(ArrayList<Cultivos> cultivosList, int resource){
+    public CultivoAdapter(List<Cultivos> cultivosList, int resource){
         this.cultivosList = cultivosList;
         this.resource = resource;
+    }
+
+    public CultivoAdapter(FragmentActivity activity) {
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) { //Se crea la vista
-        View view = LayoutInflater.from(parent.getContext()).inflate(resource , parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cultivo_view , null, false);
         return new ViewHolder(view);
     }
     @Override

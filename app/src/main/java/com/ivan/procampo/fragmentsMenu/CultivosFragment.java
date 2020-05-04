@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +30,7 @@ import com.ivan.procampo.funcionalidades.AnnadirCultivoActivity;
 import com.ivan.procampo.modelos.Cultivos;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -49,7 +52,7 @@ public class CultivosFragment extends Fragment {
 
     RecyclerView recyclerViewCultivos;
 
-    ArrayList<Cultivos> listaCultivos;
+    List<Cultivos> listaCultivos;
 
     private DatabaseReference mDatabase;
 
@@ -104,14 +107,15 @@ public class CultivosFragment extends Fragment {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         listaCultivos = new ArrayList<>();
+
         recyclerViewCultivos = vista.findViewById(R.id.recyclerViewCultivos);
+
+
         recyclerViewCultivos.setLayoutManager(new LinearLayoutManager(getContext()));
-        
         llenarLista();
 
-
-
-        registerForContextMenu(recyclerViewCultivos);
+        adapter = new CultivoAdapter(getActivity());
+        recyclerViewCultivos.setAdapter(adapter);
 
         //Referencia a las variables
         botonNuevoCultivo = vista.findViewById(R.id.botonAnnadirCultivo);
@@ -133,12 +137,18 @@ public class CultivosFragment extends Fragment {
         return vista ;
 
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
     /**
      * Metodo creado para coger los datos de Firebase
      *
      */
     private void llenarLista() {
-        mDatabase.child("CULTIVOS").child("7mZg7MBw2zMJJ455H2DUpV3V32").addValueEventListener(new ValueEventListener() {
+        mDatabase.child("CULTIVOS").child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
@@ -149,10 +159,12 @@ public class CultivosFragment extends Fragment {
                         String tipoAceituna = ds.child("tipoDeAceituna").getValue().toString();
                         String localizacionCultivo = ds.child("localizacionCultivo").getValue().toString();
 
+
+                        Log.i(String.valueOf(listaCultivos),"CULTIVO:");
+
                         listaCultivos.add(new Cultivos(codigoCultivo,nombreCultivo,hectareasCultivo,tipoAceituna,localizacionCultivo));
                     }
-                    adapter = new CultivoAdapter(listaCultivos,R.layout.cultivo_view);
-                    recyclerViewCultivos.setAdapter(adapter);
+
 
                 }
             }

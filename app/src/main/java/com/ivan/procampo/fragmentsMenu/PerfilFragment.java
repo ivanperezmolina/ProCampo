@@ -1,5 +1,6 @@
 package com.ivan.procampo.fragmentsMenu;
 
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -30,6 +32,8 @@ import com.ivan.procampo.R;
 public class PerfilFragment extends Fragment {
     TextView textoNombre;
     TextView textoCorreo;
+    //Foto de perfil
+    private ImageView photoImageView;
 
     FirebaseAuth mAuth;
     DatabaseReference databaseReference;
@@ -88,6 +92,7 @@ public class PerfilFragment extends Fragment {
         //Referencia a las variables de nombre y correo
         textoNombre = vista.findViewById(R.id.textViewNombrePefil);
         textoCorreo = vista.findViewById(R.id.textViewCorreoPerfil);
+        photoImageView = vista.findViewById(R.id.imagenDelPerfil);
 
         mAuth=FirebaseAuth.getInstance();
 
@@ -96,29 +101,64 @@ public class PerfilFragment extends Fragment {
         return vista ;
     }
 
-
     private void traerInfoDelUsuario() {
         String id = mAuth.getCurrentUser().getUid();
 
+        if (LoginManager.getInstance()!=null) {
             String nombreUsuario = mAuth.getCurrentUser().getDisplayName();
             String correoUsuario = mAuth.getCurrentUser().getEmail();
+            Uri fotoCorreo = mAuth.getCurrentUser().getPhotoUrl();
+            String fotoDefecto = "https://firebasestorage.googleapis.com/v0/b/procampo-ce4e3.appspot.com/o/fotopordefectoperfil.jpg?alt=media&token=ea18769d-ede9-44cc-a0ec-f86db595cd36";
 
             //Asigno valor
             if (textoNombre != null) {
                 textoNombre.setText(nombreUsuario);
+            }else {
+                textoNombre.setText("Nombre no encontrado");
             }
             if (textoCorreo != null) {
                 textoCorreo.setText(correoUsuario);
+            }else{
+                textoCorreo.setText("Correo no encontrado");
             }
 
-
+            //FOTO DE PERFIL
+            if (fotoCorreo != null) {
+                Glide.with(this).load(fotoCorreo).apply(RequestOptions.circleCropTransform()).into(photoImageView);
+            }else {
+                Glide.with(this).load(fotoDefecto).apply(RequestOptions.circleCropTransform()).into(photoImageView);
+            }
 
             //PROBLEMA CON NOMBRE EN FIREBASE
 
 
+        }else {
+
+            databaseReference.child("usuarios").child(id).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    LoginManager.getInstance().logOut();
+                    String nombreUsuarioFirebase = dataSnapshot.child("nombre").getValue().toString();
+                    String correoUsuarioFirebase = dataSnapshot.child("email").getValue().toString();
+
+                    if (textoNombre != null) {
+                        textoNombre.setText(nombreUsuarioFirebase);
+                    }
+                    if (textoCorreo != null) {
+                        textoCorreo.setText(correoUsuarioFirebase);
+                    }
+                }
 
 
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
     }
+
+
 
 
 

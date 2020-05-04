@@ -10,11 +10,12 @@
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="match_parent"
-        android:layout_height="365dp"
+        android:layout_height="366dp"
         android:layout_marginTop="50dp"
         android:src="@drawable/fondoperfiltrans" />
 
     <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imagenDelPerfil"
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:src="@drawable/fotopordefectoperfil"
