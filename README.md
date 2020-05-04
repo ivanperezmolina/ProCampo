@@ -60,3 +60,9 @@ El diseño y funcinalidad de añadir y mostrar los cultivos ya esta implementada
 
 #### Bibliografía de esta semana 
 Varios vídeos de [Youtube](https://www.youtube.com)
+
+## VIERNES 1 DE MAYO DEL 2020
+Despues de estar toda la semana estudiando el adapter y cambiar cosas para intentar si funciona; no funciona. Durante la semana que viene seguire con este error. Esta semana tambien he tocado un poco la parte del perfil, sobre todo diseño
+
+#### Bibliografía de esta semana
+Ninguna en especial, simplemente he buscado algunos vídeos en [Youtube](https://www.youtube.com) para ver en que me podía estar equivocando; pero no he sacado nada revelante.
