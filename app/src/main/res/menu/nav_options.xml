@@ -10,6 +10,9 @@
             android:icon="@drawable/ic_home"
             android:title="@string/home"
             />
+        <item android:title="Control">
+            <menu>
+
         <item
             android:id="@+id/itCultivos"
             android:icon="@drawable/arbol"
@@ -26,10 +29,20 @@
             android:id="@+id/itSulfatos"
             android:icon="@drawable/fertilizantes"
             android:title="@string/sulfatos" />
-        <item
-            android:id="@+id/itFertilizantes"
-            android:icon="@drawable/ferti"
-            android:title="@string/fertilizantes" />
+            </menu>
+        </item>
+        <item android:title="Tratamiento">
+        <menu>
+            <item
+                android:id="@+id/itFertilizantes"
+                android:icon="@drawable/ferti"
+                android:title="@string/fertilizantes" />
+            <item
+                android:id="@+id/itFitosanitarios"
+                android:icon="@drawable/fitosanitarios"
+                android:title="@string/fitosanitarios" />
+        </menu>
+        </item>
         <item android:title="@string/opciones">
             <menu>
 

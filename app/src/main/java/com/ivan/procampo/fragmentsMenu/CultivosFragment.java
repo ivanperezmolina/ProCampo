@@ -98,8 +98,6 @@ public class CultivosFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
 
         View vista = inflater.inflate(R.layout.fragment_cultivos, container, false);
 
@@ -108,24 +106,27 @@ public class CultivosFragment extends Fragment {
 
         listaCultivos = new ArrayList<>();
 
-        recyclerViewCultivos = vista.findViewById(R.id.recyclerViewCultivos);
-
-
-        recyclerViewCultivos.setLayoutManager(new LinearLayoutManager(getContext()));
-        llenarLista();
-
         adapter = new CultivoAdapter(getActivity());
-        recyclerViewCultivos.setAdapter(adapter);
 
         //Referencia a las variables
         botonNuevoCultivo = vista.findViewById(R.id.botonAnnadirCultivo);
+        recyclerViewCultivos = vista.findViewById(R.id.recyclerViewCultivos);
+
+        recyclerViewCultivos.bringToFront();
+
+        llenarLista();
+        recyclerViewCultivos.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerViewCultivos.setAdapter(adapter);
+        registerForContextMenu(recyclerViewCultivos);
+        recyclerViewCultivos.hasFixedSize();
+
 
         //Remplazar el fragment
 
         botonNuevoCultivo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               //Vamos a la activity de añadir cultivo
+                //Vamos a la activity de añadir cultivo
                 Intent nuevoCultivo = new Intent(getActivity(), AnnadirCultivoActivity.class);
                 startActivity(nuevoCultivo);
 
@@ -133,7 +134,7 @@ public class CultivosFragment extends Fragment {
         });
 
 
-
+        // Inflate the layout for this fragment
         return vista ;
 
     }
@@ -158,9 +159,7 @@ public class CultivosFragment extends Fragment {
                         String hectareasCultivo = ds.child("hectareasCultivo").getValue().toString();
                         String tipoAceituna = ds.child("tipoDeAceituna").getValue().toString();
                         String localizacionCultivo = ds.child("localizacionCultivo").getValue().toString();
-
-
-                        Log.i(String.valueOf(listaCultivos),"CULTIVO:");
+                        Log.i("CULTIVO:", String.valueOf(listaCultivos));
 
                         listaCultivos.add(new Cultivos(codigoCultivo,nombreCultivo,hectareasCultivo,tipoAceituna,localizacionCultivo));
                     }

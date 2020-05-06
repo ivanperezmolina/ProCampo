@@ -33,7 +33,7 @@
     <string name="sulfatos">Mis Sulfatos</string>
     <string name="perfil">Mi Perfil</string>
     <string name="cerrar_sesion">Cerrar Sesión</string>
-    <string name="fertilizantes">Fertilizantes populares</string>
+    <string name="fertilizantes">Fertilizantes </string>
     <string name="opciones">Opciones</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -45,6 +45,7 @@
     <string name="hectareas_cultivo">Hectáreas del cultivo</string>
     <string name="localizacion_cultivo">Localización del cultivo</string>
     <string name="validacionCampos">Revise los campos</string>
+    <string name="fitosanitarios">Fitosanitarios</string>
 
 
 </resources>

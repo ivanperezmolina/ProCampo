@@ -38,4 +38,5 @@
     <string name="hectareas_cultivo">Hectares of the crop</string>
     <string name="localizacion_cultivo">Crop location</string>
     <string name="validacionCampos">Check the fields</string>
+    <string name="fitosanitarios">phytosanitary</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.ivan.procampo.adaptadores;
 
+import android.content.Context;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,39 +18,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CultivoAdapter extends RecyclerView.Adapter<CultivoAdapter.ViewHolder> {
-
-    private int resource;
     private List<Cultivos> cultivosList;
-
+    private Context context;
     private int index;
 
-    public CultivoAdapter(List<Cultivos> cultivosList, int resource){
+    public CultivoAdapter(Context ctx){
         this.cultivosList = cultivosList;
-        this.resource = resource;
+        context = ctx;
+        this.cultivosList = new ArrayList<>();
     }
 
-    public CultivoAdapter(FragmentActivity activity) {
+    public void setCultivosList(List<Cultivos> data){
+        this.cultivosList = data;
+        notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) { //Se crea la vista
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cultivo_view , null, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cultivo_view , parent, false);
         return new ViewHolder(view);
     }
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int index) { //Definimos los datos que queremos mostrar
-        Cultivos cultivo = cultivosList.get(index);
+
+
+        /*Cultivos cultivo = cultivosList.get(index);
 
         holder.textViewTextoCultivo.setText(cultivo.getNombreCultivo());
         holder.textViewTextoHectareas.setText(cultivo.getHectareasCultivo());
         holder.textViewTextoTipoAceituna.setText(cultivo.getTipoDeAceituna());
         holder.textViewTextoLocalizacion.setText(cultivo.getLocalizacionCultivo());
-        holder.textViewTextoCodigoCultivo.setText(cultivo.getCodigoCultivo());
-
-
-
-
+        holder.textViewTextoCodigoCultivo.setText(cultivo.getCodigoCultivo());*/
 
         holder.BindHolder(cultivosList.get(index)) ;
     }
@@ -78,13 +78,11 @@ public class CultivoAdapter extends RecyclerView.Adapter<CultivoAdapter.ViewHold
         public ViewHolder(View view){
             super(view);
 
-            this.view = view;
-
-            this.textViewTextoCultivo = view.findViewById(R.id.textoCultivo);
-            this.textViewTextoHectareas = view.findViewById(R.id.textoHectareas);
-            this.textViewTextoTipoAceituna = view.findViewById(R.id.textoTipoAceituna);
-            this.textViewTextoLocalizacion = view.findViewById(R.id.textoLocalizacion);
-            this.textViewTextoCodigoCultivo = view.findViewById(R.id.textoCodigoCultivo);
+            textViewTextoCultivo = view.findViewById(R.id.textoCultivo);
+            textViewTextoHectareas = view.findViewById(R.id.textoHectareas);
+            textViewTextoTipoAceituna = view.findViewById(R.id.textoTipoAceituna);
+            textViewTextoLocalizacion = view.findViewById(R.id.textoLocalizacion);
+            textViewTextoCodigoCultivo = view.findViewById(R.id.textoCodigoCultivo);
 
             view.setOnCreateContextMenuListener(this);
         }
@@ -111,6 +109,13 @@ public class CultivoAdapter extends RecyclerView.Adapter<CultivoAdapter.ViewHold
                     return false;
                 }
             });
+
+            textViewTextoCodigoCultivo.setText(item.getCodigoCultivo());
+            textViewTextoCultivo.setText(item.getNombreCultivo());
+            textViewTextoLocalizacion.setText(item.getLocalizacionCultivo());
+            textViewTextoHectareas.setText(item.getHectareasCultivo());
+            textViewTextoTipoAceituna.setText(item.getTipoDeAceituna());
+
         }
     }
 }

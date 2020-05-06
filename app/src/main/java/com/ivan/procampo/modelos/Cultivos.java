@@ -61,4 +61,16 @@ public class Cultivos {
     public void setCodigoCultivo(String codigoCultivo) {
         this.codigoCultivo = codigoCultivo;
     }
+
+    @Override
+    public String toString() {
+        return "Cultivos{" +
+                "codigoCultivo='" + codigoCultivo + '\'' +
+                ", nombreCultivo='" + nombreCultivo + '\'' +
+                ", localizacionCultivo='" + localizacionCultivo + '\'' +
+                ", hectareasCultivo='" + hectareasCultivo + '\'' +
+                ", tipoDeAceituna='" + tipoDeAceituna + '\'' +
+                '}';
+    }
 }
+
