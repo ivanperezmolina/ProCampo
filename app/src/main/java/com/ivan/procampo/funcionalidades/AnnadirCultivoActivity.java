@@ -40,15 +40,15 @@ import java.util.UUID;
 public class AnnadirCultivoActivity extends AppCompatActivity {
 
     //Variables
-    private Button subirFoto;
+    //private Button subirFoto;
 
-    private StorageReference mStorage;
+    //private StorageReference mStorage;
 
-    private static final int GALLERY_INTENT = 1;
+    //private static final int GALLERY_INTENT = 1;
 
-    private ImageView mImageView;
+    //private ImageView mImageView;
 
-    private ProgressDialog mProgressDialog;
+    //private ProgressDialog mProgressDialog;
 
     private StorageReference mStorageReference;
 
@@ -81,8 +81,8 @@ public class AnnadirCultivoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_annadir_cultivo);
 
         //
-        mStorage = FirebaseStorage.getInstance().getReference();
-        mImageView = findViewById(R.id.imagenCultivoAnnadir);
+        //mStorage = FirebaseStorage.getInstance().getReference();
+        //mImageView = findViewById(R.id.imagenCultivoAnnadir);
         mStorageReference = FirebaseStorage.getInstance().getReference();
 
         mAuth = FirebaseAuth.getInstance();
@@ -108,6 +108,9 @@ public class AnnadirCultivoActivity extends AppCompatActivity {
         tiposAceitunas.add("Gordal");
         tiposAceitunas.add("Manzanillas");
         tiposAceitunas.add("Picual");
+        tiposAceitunas.add("Marteñas");
+        tiposAceitunas.add("Pajareras");
+        tiposAceitunas.add("Mixto");
 
         ArrayAdapter adapter;
         adapter = new ArrayAdapter(this,R.layout.support_simple_spinner_dropdown_item,tiposAceitunas);
@@ -131,9 +134,9 @@ public class AnnadirCultivoActivity extends AppCompatActivity {
         //Inicializamos firebase
         inicializarFirebase();
         //Boton subir
-        subirFoto = findViewById(R.id.botonSubirFotoCultivo);
+        //subirFoto = findViewById(R.id.botonSubirFotoCultivo);
 
-        subirFoto.setOnClickListener(new View.OnClickListener() {
+        /*subirFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Abrir la galeria
@@ -141,7 +144,7 @@ public class AnnadirCultivoActivity extends AppCompatActivity {
                 irAGaleria.setType("image/*");
                 startActivityForResult(irAGaleria,GALLERY_INTENT);
             }
-        });
+        });*/
 
         //PULSAR BOTON CANCELAR
         botonCancelar.setOnClickListener(new View.OnClickListener() {
@@ -228,7 +231,7 @@ public class AnnadirCultivoActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode==GALLERY_INTENT && resultCode==RESULT_OK){
+        /*if (requestCode==GALLERY_INTENT && resultCode==RESULT_OK){
             //Mostrar dialogo
 
             //mProgressDialog.setMessage("Su foto se esta subiendo. Un momento");
@@ -264,7 +267,7 @@ public class AnnadirCultivoActivity extends AppCompatActivity {
             });
 
         }
-
+*/
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
