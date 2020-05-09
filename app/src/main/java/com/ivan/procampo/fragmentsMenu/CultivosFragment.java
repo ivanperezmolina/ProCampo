@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -52,7 +53,9 @@ public class CultivosFragment extends Fragment {
 
     RecyclerView recyclerViewCultivos;
 
-    List<Cultivos> listaCultivos;
+    ArrayList<Cultivos> listaCultivos = new ArrayList<>();
+
+    private BottomNavigationView bottomNavigationView;
 
     private DatabaseReference mDatabase;
 
@@ -101,32 +104,32 @@ public class CultivosFragment extends Fragment {
 
         View vista = inflater.inflate(R.layout.fragment_cultivos, container, false);
 
+        //Declaramos las variables para autenticación y BBDD
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-
-        listaCultivos = new ArrayList<>();
-
-        adapter = new CultivoAdapter(getActivity());
 
         //Referencia a las variables
         botonNuevoCultivo = vista.findViewById(R.id.botonAnnadirCultivo);
         recyclerViewCultivos = vista.findViewById(R.id.recyclerViewCultivos);
 
-        recyclerViewCultivos.bringToFront();
+        //Lanzamos el LayoutManager
+        recyclerViewCultivos.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        //Lanzamos el metodo para llenar la lista
 
         llenarLista();
-        recyclerViewCultivos.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerViewCultivos.setAdapter(adapter);
+
+        //Pasamos el parametro
         registerForContextMenu(recyclerViewCultivos);
-        recyclerViewCultivos.hasFixedSize();
 
 
-        //Remplazar el fragment
+        //Reemplazar el fragment para añadir
 
         botonNuevoCultivo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Vamos a la activity de añadir cultivo
+                listaCultivos.clear();
                 Intent nuevoCultivo = new Intent(getActivity(), AnnadirCultivoActivity.class);
                 startActivity(nuevoCultivo);
 
@@ -159,10 +162,17 @@ public class CultivosFragment extends Fragment {
                         String hectareasCultivo = ds.child("hectareasCultivo").getValue().toString();
                         String tipoAceituna = ds.child("tipoDeAceituna").getValue().toString();
                         String localizacionCultivo = ds.child("localizacionCultivo").getValue().toString();
+
                         Log.i("CULTIVO:", String.valueOf(listaCultivos));
 
-                        listaCultivos.add(new Cultivos(codigoCultivo,nombreCultivo,hectareasCultivo,tipoAceituna,localizacionCultivo));
+
+
+                        listaCultivos.add(new Cultivos(codigoCultivo,nombreCultivo,localizacionCultivo,hectareasCultivo,tipoAceituna));
+
                     }
+
+                    adapter = new CultivoAdapter(listaCultivos,R.layout.cultivo_view);
+                    recyclerViewCultivos.setAdapter(adapter);
 
 
                 }

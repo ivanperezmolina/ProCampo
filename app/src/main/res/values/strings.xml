@@ -24,8 +24,8 @@
     <string name="nook_reset_pass">No hemos podido mandar el correo</string>
     <string name="ivan" translatable="false">SA PODIO</string>
 
-    <string name="facebook_app_id" translatable="false">510815139593835</string>
-    <string name="fb_login_protocol_scheme" translatable="false">fb510815139593835</string>
+    <string name="facebook_app_id" >510815139593835</string>
+    <string name="fb_login_protocol_scheme" >fb510815139593835</string>
     <string name="login_cancelado">Se ha cancelado el login</string>
     <string name="cultivos">Mis Cultivos</string>
     <string name="recolectas">Mis Recolectas</string>

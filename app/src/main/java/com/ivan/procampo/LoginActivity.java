@@ -39,9 +39,9 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.FirebaseDatabase;
-
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+
 
 
 public class LoginActivity extends AppCompatActivity  {
@@ -130,7 +130,7 @@ public class LoginActivity extends AppCompatActivity  {
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         //AUTENTICACIÓN CON FACEBOOK
-        loginButton.setReadPermissions("email", "public_profile");
+        loginButton.setReadPermissions("email");
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
