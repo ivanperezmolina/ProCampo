@@ -74,5 +74,5 @@ Ninguna en especial, simplemente he buscado algunos vídeos en [Youtube](https:/
 En este punto subo todo el código generado hasta ahora, un enlace a un vídeo explicativo donde digo que hay hecho y que falta y la .apk para que se pueda probar:
 
 📹 [Vídeo explicativo](https://youtu.be/oPF7jsJAuIk) <br>
-📳
+📳 [APK](https://github.com/ivanperezmolina/ProCampo/blob/master/app-release.apk)
 
