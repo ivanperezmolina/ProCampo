@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/ctxModCultivo" android:title="@string/actualizar_cultivo"/>
+    <item android:id="@+id/ctxDelCultivo" android:title="@string/eliminar_cultivo"/>
+
+</menu>

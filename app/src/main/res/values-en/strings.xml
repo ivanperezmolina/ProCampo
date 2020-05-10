@@ -39,4 +39,7 @@
     <string name="localizacion_cultivo">Crop location</string>
     <string name="validacionCampos">Check the fields</string>
     <string name="fitosanitarios">phytosanitary</string>
+    <string name="actualizar_cultivo">Update crop</string>
+    <string name="actualizar_cultivo_des">Update your crop data here</string>
+    <string name="eliminar_cultivo">Delete drop</string>
 </resources>

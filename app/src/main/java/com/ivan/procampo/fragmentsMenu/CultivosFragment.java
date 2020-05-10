@@ -13,7 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -27,6 +30,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ivan.procampo.R;
 import com.ivan.procampo.adaptadores.CultivoAdapter;
+import com.ivan.procampo.funcionalidades.ActualizarCultivoActivity;
 import com.ivan.procampo.funcionalidades.AnnadirCultivoActivity;
 import com.ivan.procampo.modelos.Cultivos;
 
@@ -90,6 +94,7 @@ public class CultivosFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -183,5 +188,47 @@ public class CultivosFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+        MenuInflater inflater = getActivity().getMenuInflater();
+        inflater.inflate(R.menu.menu_contextual_cultivos,menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+
+            //Editar cultivo
+            case R.id.ctxModCultivo:
+
+                Cultivos cultivo = listaCultivos.get(adapter.getIndex());
+
+                //Vamos a la actividad, pasando los datos
+                Intent irAEditarCultivo = new Intent(getActivity(), ActualizarCultivoActivity.class);
+
+                irAEditarCultivo.putExtra("codigoCultivo",cultivo.getCodigoCultivo());
+                irAEditarCultivo.putExtra("nombreCultivo",cultivo.getNombreCultivo());
+                irAEditarCultivo.putExtra("hectareasCultivos",cultivo.getHectareasCultivo());
+                irAEditarCultivo.putExtra("tipoDeAceituna",cultivo.getTipoDeAceituna());
+                irAEditarCultivo.putExtra("localizacionCultivo",cultivo.getLocalizacionCultivo());
+
+                startActivity(irAEditarCultivo);
+
+                break;
+
+            case R.id.ctxDelCultivo:
+
+                break;
+
+
+        }
+
+
+        return super.onContextItemSelected(item);
     }
 }

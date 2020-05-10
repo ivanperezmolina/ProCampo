@@ -4,8 +4,8 @@
     package="com.ivan.procampo">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".ProCampoApp"
@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".funcionalidades.AnnadirCultivoActivity"></activity>
+        <activity android:name=".funcionalidades.ActualizarCultivoActivity"></activity>
+        <activity android:name=".funcionalidades.AnnadirCultivoActivity" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -50,8 +51,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.ivan.procampo.funcionalidades;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,8 +24,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -33,8 +37,10 @@ import com.ivan.procampo.MenuPrincipal;
 import com.ivan.procampo.R;
 import com.ivan.procampo.fragmentsMenu.CultivosFragment;
 import com.ivan.procampo.modelos.Cultivos;
+import com.ivan.procampo.modelos.TiposAceitunas;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class AnnadirCultivoActivity extends AppCompatActivity {
@@ -71,6 +77,8 @@ public class AnnadirCultivoActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     private FirebaseAuth mAuth;
+
+    String tipoAceitunaSeleccionado = "Sin especificar";
     
 
 
@@ -84,6 +92,7 @@ public class AnnadirCultivoActivity extends AppCompatActivity {
         //mStorage = FirebaseStorage.getInstance().getReference();
         //mImageView = findViewById(R.id.imagenCultivoAnnadir);
         mStorageReference = FirebaseStorage.getInstance().getReference();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
 
         mAuth = FirebaseAuth.getInstance();
         /////////////////////////
@@ -97,42 +106,16 @@ public class AnnadirCultivoActivity extends AppCompatActivity {
         hectareasCultivo = findViewById(R.id.hectareasCultivo);
         localizacionCultivo = findViewById(R.id.localizacionCultivo);
 
-        botonSubirNuevoCultivo = findViewById(R.id.botonSubirNuevoCultivo);
-
-        //Opciones del spinner de tipo de aceituna
-        ArrayList<String> tiposAceitunas = new ArrayList<>();
-
-
-        tiposAceitunas.add("Seleccione un tipo");
-        tiposAceitunas.add("Hojiblanca");
-        tiposAceitunas.add("Gordal");
-        tiposAceitunas.add("Manzanillas");
-        tiposAceitunas.add("Picual");
-        tiposAceitunas.add("Marteñas");
-        tiposAceitunas.add("Pajareras");
-        tiposAceitunas.add("Mixto");
-
-        ArrayAdapter adapter;
-        adapter = new ArrayAdapter(this,R.layout.support_simple_spinner_dropdown_item,tiposAceitunas);
-
-        tipoAceituna.setAdapter(adapter);
-
-        tipoAceituna.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                tipoDeAceituna = (String) tipoAceituna.getAdapter().getItem(position);
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
 
         //Inicializamos firebase
         inicializarFirebase();
+        botonSubirNuevoCultivo = findViewById(R.id.botonSubirNuevoCultivo);
+
+        //Opciones del spinner de tipo de aceituna
+        obtenerDatosTipoAceitunas();
+
+
+
         //Boton subir
         //subirFoto = findViewById(R.id.botonSubirFotoCultivo);
 
@@ -163,37 +146,49 @@ public class AnnadirCultivoActivity extends AppCompatActivity {
         botonSubirNuevoCultivo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String nombre = nombreCultivo.getText().toString();
-                final String hectareas = hectareasCultivo.getText().toString();
-                final String tipoAceituna = tipoDeAceituna;//???
-                final String localizacion = localizacionCultivo.getText().toString();
 
-                    validacion();
-
-                    //Añadimos a la base de datos
-                    //Crearemos un objetos del modelo Cultivo
-
-
-                    Cultivos cultivo = new Cultivos();
-                    cultivo.setCodigoCultivo(UUID.randomUUID().toString());
-                    cultivo.setNombreCultivo(nombre);
-                    cultivo.setHectareasCultivo(hectareas);
-                if (tipoAceituna.equals("Seleccione un tipo")){
-                    cultivo.setTipoDeAceituna("Sin especificar");
-                }else{
-                    cultivo.setTipoDeAceituna(tipoDeAceituna);
-                }
-
-                    cultivo.setLocalizacionCultivo(localizacion);
-
-                    databaseReference.child("CULTIVOS").child(mAuth.getCurrentUser().getUid()).child(cultivo.getCodigoCultivo()).setValue(cultivo);
-                    Toast.makeText(AnnadirCultivoActivity.this,"AÑADIDO",Toast.LENGTH_SHORT).show();
-
-                    finish();
+                    validacionYSubida();
 
             }
 
 
+        });
+
+
+    }
+
+    public void obtenerDatosTipoAceitunas(){
+        final List<TiposAceitunas> tiposAceitunas = new ArrayList<>();
+        databaseReference.child("tiposAceitunas").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    for(DataSnapshot ds: dataSnapshot.getChildren()){
+                        String id = ds.getKey();
+                        String nombre = ds.child("tipo").getValue().toString();
+                        tiposAceitunas.add(new TiposAceitunas(id,nombre));
+                    }
+
+                    ArrayAdapter<TiposAceitunas> arrayAdapter = new ArrayAdapter<>(AnnadirCultivoActivity.this, R.layout.support_simple_spinner_dropdown_item,tiposAceitunas);
+                    tipoAceituna.setAdapter(arrayAdapter);
+                    tipoAceituna.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            tipoAceitunaSeleccionado = parent.getItemAtPosition(position).toString();
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
         });
 
 
@@ -205,10 +200,14 @@ public class AnnadirCultivoActivity extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference();
     }
 
-    private void validacion() {
+    private void validacionYSubida() {
         final String nombre = nombreCultivo.getText().toString();
         final String hectareas = hectareasCultivo.getText().toString();
+        final String tipoAceituna = tipoAceitunaSeleccionado;//???
         final String localizacion = localizacionCultivo.getText().toString();
+
+        Cultivos cultivo = new Cultivos();
+        cultivo.setCodigoCultivo(UUID.randomUUID().toString());
 
         if (nombre.equals("")){
             nombreCultivo.setError("Campo Obligatorio");
@@ -222,7 +221,25 @@ public class AnnadirCultivoActivity extends AppCompatActivity {
             localizacionCultivo.setError("Campo Obligatorio");
         }
 
-        Toast.makeText(AnnadirCultivoActivity.this,R.string.validacionCampos,Toast.LENGTH_SHORT).show();
+
+
+
+
+        if (nombre.equals("") || hectareas.equals("") || localizacion.equals("") || tipoAceituna.equals("Seleccione un tipo")) {
+            Toast.makeText(AnnadirCultivoActivity.this,R.string.validacionCampos,Toast.LENGTH_SHORT).show();
+        }else{
+            cultivo.setNombreCultivo(nombre);
+            cultivo.setHectareasCultivo(hectareas);
+            cultivo.setLocalizacionCultivo(localizacion);
+            cultivo.setTipoDeAceituna(tipoAceituna);
+            databaseReference.child("CULTIVOS").child(mAuth.getCurrentUser().getUid()).child(cultivo.getCodigoCultivo()).setValue(cultivo);
+            Toast.makeText(AnnadirCultivoActivity.this,"AÑADIDO",Toast.LENGTH_SHORT).show();
+
+            finish();
+        }
+
+
+
     }
 
     //Obtener la foto

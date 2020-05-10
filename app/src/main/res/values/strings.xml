@@ -24,8 +24,8 @@
     <string name="nook_reset_pass">No hemos podido mandar el correo</string>
     <string name="ivan" translatable="false">SA PODIO</string>
 
-    <string name="facebook_app_id" >510815139593835</string>
-    <string name="fb_login_protocol_scheme" >fb510815139593835</string>
+    <string name="facebook_app_id">510815139593835</string>
+    <string name="fb_login_protocol_scheme">fb510815139593835</string>
     <string name="login_cancelado">Se ha cancelado el login</string>
     <string name="cultivos">Mis Cultivos</string>
     <string name="recolectas">Mis Recolectas</string>
@@ -46,6 +46,9 @@
     <string name="localizacion_cultivo">Localización del cultivo</string>
     <string name="validacionCampos">Revise los campos</string>
     <string name="fitosanitarios">Fitosanitarios</string>
+    <string name="actualizar_cultivo">Actualizar cultivo</string>
+    <string name="actualizar_cultivo_des">Actualice aquí los datos de su cultivo</string>
+    <string name="eliminar_cultivo">Eliminar cultivo</string>
 
 
 </resources>
