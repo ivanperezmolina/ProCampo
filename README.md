@@ -66,3 +66,13 @@ Despues de estar toda la semana estudiando el adapter y cambiar cosas para inten
 
 #### Bibliografía de esta semana
 Ninguna en especial, simplemente he buscado algunos vídeos en [Youtube](https://www.youtube.com) para ver en que me podía estar equivocando; pero no he sacado nada revelante.
+
+<hr>
+
+# VERSIÓN PRELIMINAR (CHECK POINT)
+
+En este punto subo todo el código generado hasta ahora, un enlace a un vídeo explicativo donde digo que hay hecho y que falta y la .apk para que se pueda probar:
+
+📹 [Vídeo explicativo](https://youtu.be/oPF7jsJAuIk) <br>
+📳
+
