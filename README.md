@@ -76,3 +76,9 @@ En este punto subo todo el código generado hasta ahora, un enlace a un vídeo e
 📹 [Vídeo explicativo](https://youtu.be/oPF7jsJAuIk) <br>
 📳 [APK](https://github.com/ivanperezmolina/ProCampo/blob/master/app-release.apk)
 
+
+## VIERNES 15 DE MAYO DEL 2020
+Solucionado el problema del Recycler View; he mejorado el diseño de este haciendolo mas sencillo y además estoy implementando el menú contextual de toque largo
+
+#### Bibliografía de esta semana
+Gracias a la ayuda de algunos profesores y de mi proyecto de la entrega anterior
