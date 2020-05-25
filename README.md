@@ -66,3 +66,19 @@ Despues de estar toda la semana estudiando el adapter y cambiar cosas para inten
 
 #### Bibliografía de esta semana
 Ninguna en especial, simplemente he buscado algunos vídeos en [Youtube](https://www.youtube.com) para ver en que me podía estar equivocando; pero no he sacado nada revelante.
+
+<hr>
+
+# VERSIÓN PRELIMINAR (CHECK POINT)
+
+En este punto subo todo el código generado hasta ahora, un enlace a un vídeo explicativo donde digo que hay hecho y que falta y la .apk para que se pueda probar:
+
+📹 [Vídeo explicativo](https://youtu.be/oPF7jsJAuIk) <br>
+📳 [APK](https://github.com/ivanperezmolina/ProCampo/blob/master/app-release.apk)
+
+
+## VIERNES 15 DE MAYO DEL 2020
+Solucionado el problema del Recycler View; he mejorado el diseño de este haciendolo mas sencillo y además estoy implementando el menú contextual de toque largo
+
+#### Bibliografía de esta semana
+Gracias a la ayuda de algunos profesores y de mi proyecto de la entrega anterior
