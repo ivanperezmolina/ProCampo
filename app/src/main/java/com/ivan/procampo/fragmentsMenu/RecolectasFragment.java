@@ -1,14 +1,34 @@
 package com.ivan.procampo.fragmentsMenu;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.ivan.procampo.R;
+import com.ivan.procampo.adaptadores.RecolectaAdapter;
+import com.ivan.procampo.funcionalidades.AnnadirRecolectaActivity;
+import com.ivan.procampo.modelos.Cultivos;
+import com.ivan.procampo.modelos.Recolectas;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +44,23 @@ public class RecolectasFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    //-------------------------------------------//
+    // MIS VARIABLES //
+    private DatabaseReference mDatabase;
+
+    private FirebaseAuth mAuth;
+
+    private Button botonNuevaRecolecta;
+
+    private RecyclerView recyclerViewRecolecta;
+
+    private ArrayList<Recolectas> listaRecolectas = new ArrayList<>();
+
+    private RecolectaAdapter adapter;
+
+
+    //-------------------------------------------//
 
     public RecolectasFragment() {
         // Required empty public constructor
@@ -54,12 +91,96 @@ public class RecolectasFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recolectas, container, false);
+        View vista = inflater.inflate(R.layout.fragment_recolectas, container, false);
+
+        //Declaro las variables para autenticación y BBDD
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        //Referencia a las variables
+        botonNuevaRecolecta = vista.findViewById(R.id.botonAnnadirRecolecta);
+        recyclerViewRecolecta = vista.findViewById(R.id.recyclerViewRecolectas);
+
+        //Lanzamos el Layout Manager
+        recyclerViewRecolecta.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        //Lanzamos metodo para llenar la lista
+        llenarLista();
+
+        //Pasamos el parametro
+        registerForContextMenu(recyclerViewRecolecta);
+
+        //Cuando se pulse en añadir, reemplazamos el fragment
+
+        botonNuevaRecolecta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listaRecolectas.clear();
+                //Vamos a la activity de añadir cultivo
+                Intent nuevaRecolecta = new Intent(getActivity(), AnnadirRecolectaActivity.class);
+                startActivity(nuevaRecolecta);
+            }
+        });
+
+
+        return vista;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    /**
+     * Método creado para coger los datos de Firebase
+     *
+     */
+
+    private void llenarLista(){
+        mDatabase.child("RECOLECTAS").child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    for (DataSnapshot ds : dataSnapshot.getChildren()){
+                        String codigoRecolecta = ds.child("codigoRecolecta").getValue().toString();
+                        String cultivoRecolecta = ds.child("cultivoRecolecta").getValue().toString();
+                        String fechaRecolecta = ds.child("fechaRecolecta").getValue().toString();
+                        String kilosRecolecta = ds.child("kilosRecolecta").getValue().toString();
+
+                        listaRecolectas.add(new Recolectas(codigoRecolecta,fechaRecolecta,kilosRecolecta,cultivoRecolecta));
+
+                    }
+
+                    adapter = new RecolectaAdapter(listaRecolectas,R.layout.recolecta_view);
+                    recyclerViewRecolecta.setAdapter(adapter);
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+        MenuInflater inflater = getActivity().getMenuInflater();
+        inflater.inflate(R.menu.menu_contextual_cultivos,menu);
     }
 }

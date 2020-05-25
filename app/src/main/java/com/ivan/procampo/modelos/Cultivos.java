@@ -14,6 +14,11 @@ public class Cultivos {
     public Cultivos() {
     }
 
+    public Cultivos(String codigoCultivo, String nombreCultivo) {
+        this.codigoCultivo = codigoCultivo;
+        this.nombreCultivo = nombreCultivo;
+    }
+
     public Cultivos(String codigoCultivo, String nombreCultivo, String localizacionCultivo, String hectareasCultivo, String tipoDeAceituna) {
         this.codigoCultivo = codigoCultivo;
         this.nombreCultivo = nombreCultivo;
@@ -64,13 +69,7 @@ public class Cultivos {
 
     @Override
     public String toString() {
-        return "Cultivos{" +
-                "codigoCultivo='" + codigoCultivo + '\'' +
-                ", nombreCultivo='" + nombreCultivo + '\'' +
-                ", localizacionCultivo='" + localizacionCultivo + '\'' +
-                ", hectareasCultivo='" + hectareasCultivo + '\'' +
-                ", tipoDeAceituna='" + tipoDeAceituna + '\'' +
-                '}';
+        return nombreCultivo;
     }
 }
 

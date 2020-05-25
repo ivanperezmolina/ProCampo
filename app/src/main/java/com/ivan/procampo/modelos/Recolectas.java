@@ -6,8 +6,6 @@ public class Recolectas {
         private String CodigoRecolecta;
         private String FechaRecolecta;
         private String KilosRecolecta;
-        private String DATRecolecta;
-        private String MatriculaRecolecta;
         private String CultivoRecolecta;
 
     //Métodos
@@ -18,10 +16,10 @@ public class Recolectas {
 
     }
 
-    public Recolectas(String cultivoRecolecta, String fechaRecolecta, String kilosRecolecta) {
-        CultivoRecolecta = cultivoRecolecta;
+    public Recolectas( String fechaRecolecta, String kilosRecolecta,String cultivoRecolecta) {
         FechaRecolecta = fechaRecolecta;
         KilosRecolecta = kilosRecolecta;
+        CultivoRecolecta = cultivoRecolecta;
 
     }
 
@@ -34,16 +32,7 @@ public class Recolectas {
 
 
 
-    public Recolectas(String cultivoRecolecta,String codigoRecolecta ,String fechaRecolecta, String kilosRecolecta, String datrecolecta, String matriculaRecolecta){
-        CultivoRecolecta = cultivoRecolecta;
-        CodigoRecolecta = codigoRecolecta;
-        FechaRecolecta = fechaRecolecta;
-        KilosRecolecta = kilosRecolecta;
-        DATRecolecta = datrecolecta;
-        MatriculaRecolecta = matriculaRecolecta;
 
-
-    }
 
     public String getCodigoRecolecta() {
         return CodigoRecolecta;
@@ -67,22 +56,6 @@ public class Recolectas {
 
     public void setKilosRecolecta(String kilosRecolecta) {
         KilosRecolecta = kilosRecolecta;
-    }
-
-    public String getDATRecolecta() {
-        return DATRecolecta;
-    }
-
-    public void setDATRecolecta(String DATRecolecta) {
-        this.DATRecolecta = DATRecolecta;
-    }
-
-    public String getMatriculaRecolecta() {
-        return MatriculaRecolecta;
-    }
-
-    public void setMatriculaRecolecta(String matriculaRecolecta) {
-        MatriculaRecolecta = matriculaRecolecta;
     }
 
     public String getCultivoRecolecta() {

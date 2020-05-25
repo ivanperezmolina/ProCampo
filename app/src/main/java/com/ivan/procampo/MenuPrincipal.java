@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -45,7 +47,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ivan.procampo.fragmentsMenu.CultivosFragment;
 import com.ivan.procampo.fragmentsMenu.PerfilFragment;
+import com.ivan.procampo.fragmentsMenu.RecolectasFragment;
+import com.ivan.procampo.funcionalidades.AnnadirRecolectaActivity;
+import com.ivan.procampo.modelos.Cultivos;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MenuPrincipal extends AppCompatActivity {
@@ -141,6 +148,8 @@ public class MenuPrincipal extends AppCompatActivity {
                         fragment = new CultivosFragment();
                         break;
                     case R.id.itRecolectas:
+                        doChange = true;
+                        fragment = new RecolectasFragment();
                         break;
                     case R.id.itPodas:
                         break;
@@ -190,6 +199,8 @@ public class MenuPrincipal extends AppCompatActivity {
 
 
     }
+
+
 
     private void uncheckItems(NavigationView navigationView) {
         int size = navigationView.getMenu().size();

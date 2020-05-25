@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/ctxModRecolecta" android:title="Actualizar recolecta"/>
+    <item android:id="@+id/ctxDelRecolecta" android:title="Eliminar recolecta"/>
+    <item android:id="@+id/annadirFotoDat" android:title="Añadir foto registro del DAT"/>
+    <item android:id="@+id/annadirFotoVale" android:title="Añadir foto del vale"/>
+</menu>
