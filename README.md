@@ -82,3 +82,9 @@ Solucionado el problema del Recycler View; he mejorado el diseño de este hacien
 
 #### Bibliografía de esta semana
 Gracias a la ayuda de algunos profesores y de mi proyecto de la entrega anterior
+
+## VIERNES 22 DE MAYO DEL 2020
+La parte de cultivos está totalmente terminada, queda simplemente ver como puedo actualizar el fragments cuando edito o elimino un cultivo. Paso a implementar la parte de recolectas, que depende de los cultivos
+
+#### Bibliografía
+Varios vídeos de YouTube y poco más
