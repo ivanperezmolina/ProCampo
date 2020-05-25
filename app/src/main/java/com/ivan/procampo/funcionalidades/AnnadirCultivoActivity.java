@@ -60,6 +60,8 @@ public class AnnadirCultivoActivity extends AppCompatActivity {
 
     private Button botonCancelar;
 
+
+
     //Variables subida de cultivo
 
     private EditText nombreCultivo;
@@ -227,20 +229,23 @@ public class AnnadirCultivoActivity extends AppCompatActivity {
 
         if (nombre.equals("") || hectareas.equals("") || localizacion.equals("") || tipoAceituna.equals("Seleccione un tipo")) {
             Toast.makeText(AnnadirCultivoActivity.this,R.string.validacionCampos,Toast.LENGTH_SHORT).show();
-        }else{
+        }else {
             cultivo.setNombreCultivo(nombre);
             cultivo.setHectareasCultivo(hectareas);
             cultivo.setLocalizacionCultivo(localizacion);
             cultivo.setTipoDeAceituna(tipoAceituna);
             databaseReference.child("CULTIVOS").child(mAuth.getCurrentUser().getUid()).child(cultivo.getCodigoCultivo()).setValue(cultivo);
-            Toast.makeText(AnnadirCultivoActivity.this,"AÑADIDO",Toast.LENGTH_SHORT).show();
+            Toast.makeText(AnnadirCultivoActivity.this, "AÑADIDO", Toast.LENGTH_SHORT).show();
 
             finish();
+        }
         }
 
 
 
-    }
+
+
+
 
     //Obtener la foto
 

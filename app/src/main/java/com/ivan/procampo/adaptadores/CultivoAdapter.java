@@ -20,6 +20,7 @@ import java.util.List;
 public class CultivoAdapter extends RecyclerView.Adapter<CultivoAdapter.ViewHolder> {
     private int resource;
     private ArrayList<Cultivos> cultivosList;
+
     private int index;
 
     public CultivoAdapter(ArrayList<Cultivos> cultivosList, int resource){
@@ -32,6 +33,7 @@ public class CultivoAdapter extends RecyclerView.Adapter<CultivoAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) { //Se crea la vista
         View view = LayoutInflater.from(parent.getContext()).inflate(resource , parent, false);
+
         return new ViewHolder(view);
     }
     @Override
@@ -47,6 +49,8 @@ public class CultivoAdapter extends RecyclerView.Adapter<CultivoAdapter.ViewHold
         holder.textViewTextoCodigoCultivo.setText(cultivo.getCodigoCultivo());
 
         holder.BindHolder(cultivosList.get(index)) ;
+
+
     }
 
     @Override
@@ -54,7 +58,9 @@ public class CultivoAdapter extends RecyclerView.Adapter<CultivoAdapter.ViewHold
         return cultivosList.size();
     }
 
-    public int getIndex(){
+
+
+    public int getIndex() {
         return index;
     }
 
@@ -83,6 +89,8 @@ public class CultivoAdapter extends RecyclerView.Adapter<CultivoAdapter.ViewHold
             textViewTextoCodigoCultivo = view.findViewById(R.id.textoCodigoCultivo);
 
             view.setOnCreateContextMenuListener(this);
+
+
         }
 
 
@@ -103,16 +111,13 @@ public class CultivoAdapter extends RecyclerView.Adapter<CultivoAdapter.ViewHold
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                   // index = getAdapterPosition();
+                    index = getAdapterPosition();
+                    notifyDataSetChanged();
                     return false;
                 }
             });
 
-           /* textViewTextoCodigoCultivo.setText(item.getCodigoCultivo());
-            textViewTextoCultivo.setText(item.getNombreCultivo());
-            textViewTextoLocalizacion.setText(item.getLocalizacionCultivo());
-            textViewTextoHectareas.setText(item.getHectareasCultivo());
-            textViewTextoTipoAceituna.setText(item.getTipoDeAceituna());*/
+
 
         }
     }

@@ -1,5 +1,7 @@
 package com.ivan.procampo.fragmentsMenu;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -10,8 +12,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -20,6 +24,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,6 +40,7 @@ import com.ivan.procampo.funcionalidades.AnnadirCultivoActivity;
 import com.ivan.procampo.modelos.Cultivos;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -57,7 +63,7 @@ public class CultivosFragment extends Fragment {
 
     RecyclerView recyclerViewCultivos;
 
-    ArrayList<Cultivos> listaCultivos = new ArrayList<>();
+    private ArrayList<Cultivos> listaCultivos = new ArrayList<>();
 
     private BottomNavigationView bottomNavigationView;
 
@@ -65,7 +71,9 @@ public class CultivosFragment extends Fragment {
 
     private FirebaseAuth mAuth;
 
-    CultivoAdapter adapter;
+    private CultivoAdapter adapter;
+
+    private SwipeRefreshLayout swipeContainer;
 
     public CultivosFragment() {
         // Required empty public constructor
@@ -117,6 +125,8 @@ public class CultivosFragment extends Fragment {
         botonNuevoCultivo = vista.findViewById(R.id.botonAnnadirCultivo);
         recyclerViewCultivos = vista.findViewById(R.id.recyclerViewCultivos);
 
+        swipeContainer = vista.findViewById(R.id.srlContainer);
+
         //Lanzamos el LayoutManager
         recyclerViewCultivos.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -126,6 +136,25 @@ public class CultivosFragment extends Fragment {
 
         //Pasamos el parametro
         registerForContextMenu(recyclerViewCultivos);
+
+
+
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                listaCultivos.clear();
+
+                llenarLista();
+
+                swipeContainer.setRefreshing(false);
+
+                swipeContainer.setEnabled(false);
+            }
+        });
+
+        //swipeContainer.setEnabled(true);
+
+
 
 
         //Reemplazar el fragment para añadir
@@ -146,6 +175,8 @@ public class CultivosFragment extends Fragment {
         return vista ;
 
     }
+
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -179,6 +210,10 @@ public class CultivosFragment extends Fragment {
                     adapter = new CultivoAdapter(listaCultivos,R.layout.cultivo_view);
                     recyclerViewCultivos.setAdapter(adapter);
 
+                    swipeContainer.setRefreshing(true);
+
+                    swipeContainer.setEnabled(true);
+
 
                 }
             }
@@ -208,6 +243,7 @@ public class CultivosFragment extends Fragment {
 
                 Cultivos cultivo = listaCultivos.get(adapter.getIndex());
 
+
                 //Vamos a la actividad, pasando los datos
                 Intent irAEditarCultivo = new Intent(getActivity(), ActualizarCultivoActivity.class);
 
@@ -217,11 +253,55 @@ public class CultivosFragment extends Fragment {
                 irAEditarCultivo.putExtra("tipoDeAceituna",cultivo.getTipoDeAceituna());
                 irAEditarCultivo.putExtra("localizacionCultivo",cultivo.getLocalizacionCultivo());
 
+                Toast.makeText(getActivity(),"Le mando: "+cultivo.getNombreCultivo(),Toast.LENGTH_LONG).show();
                 startActivity(irAEditarCultivo);
+
+                //listaCultivos.clear();
+
+                //llenarLista();
 
                 break;
 
             case R.id.ctxDelCultivo:
+                Cultivos cultivoAdios = listaCultivos.get(adapter.getIndex());
+
+                String cultivoString = cultivoAdios.getNombreCultivo();
+
+                AlertDialog.Builder myBuild = new AlertDialog.Builder(getContext());
+
+                myBuild.setTitle("CONFIRMACIÓN DE BORRADO");
+                myBuild.setMessage("¿Quiere eliminar el cultivo "+cultivoString+" ?");
+                //SI
+                myBuild.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        Cultivos cultivos = listaCultivos.get(adapter.getIndex());
+                        String codigo = cultivos.getCodigoCultivo();
+
+                        mDatabase.child("CULTIVOS").child(mAuth.getCurrentUser().getUid()).child(codigo).removeValue();
+
+                        listaCultivos.notify();
+
+                        //listaCultivos.clear();
+
+                        //llenarLista();
+
+                    }
+                });
+
+                //NO
+                myBuild.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                //Construir el alert
+                AlertDialog dialog = myBuild.create();
+                dialog.show();
+
 
                 break;
 
