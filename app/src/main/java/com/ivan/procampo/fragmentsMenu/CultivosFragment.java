@@ -253,7 +253,7 @@ public class CultivosFragment extends Fragment {
                 irAEditarCultivo.putExtra("tipoDeAceituna",cultivo.getTipoDeAceituna());
                 irAEditarCultivo.putExtra("localizacionCultivo",cultivo.getLocalizacionCultivo());
 
-                Toast.makeText(getActivity(),"Le mando: "+cultivo.getNombreCultivo(),Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(),"Le mando: "+cultivo.getNombreCultivo(),Toast.LENGTH_LONG).show();
                 startActivity(irAEditarCultivo);
 
                 //listaCultivos.clear();

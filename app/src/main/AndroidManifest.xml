@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".funcionalidades.AnnadirRecolectaActivity"></activity>
+        <activity android:name=".funcionalidades.ActualizarRecolectaActivity"></activity>
+        <activity android:name=".funcionalidades.AnnadirRecolectaActivity" />
         <activity android:name=".funcionalidades.ActualizarCultivoActivity" />
         <activity android:name=".funcionalidades.AnnadirCultivoActivity" />
 

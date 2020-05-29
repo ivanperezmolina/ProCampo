@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -24,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ivan.procampo.R;
 import com.ivan.procampo.adaptadores.RecolectaAdapter;
+import com.ivan.procampo.funcionalidades.ActualizarRecolectaActivity;
 import com.ivan.procampo.funcionalidades.AnnadirRecolectaActivity;
 import com.ivan.procampo.modelos.Cultivos;
 import com.ivan.procampo.modelos.Recolectas;
@@ -181,6 +183,28 @@ public class RecolectasFragment extends Fragment {
         super.onCreateContextMenu(menu, v, menuInfo);
 
         MenuInflater inflater = getActivity().getMenuInflater();
-        inflater.inflate(R.menu.menu_contextual_cultivos,menu);
+        inflater.inflate(R.menu.menu_contextual_recolectas,menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+
+            switch (item.getItemId()){
+                //EDITAR RECOLECTA
+                case R.id.ctxModRecolecta:
+                    Recolectas recolecta = listaRecolectas.get(adapter.getIndex());
+
+                    //Vamos a la actividad, pasando los datos
+                    Intent irAEditarRecolecta = new Intent(getActivity(), ActualizarRecolectaActivity.class);
+
+                    irAEditarRecolecta.putExtra("codigoRecolecta",recolecta.getCodigoRecolecta());
+                    irAEditarRecolecta.putExtra("cultivoRecolecta",recolecta.getCultivoRecolecta());
+                    irAEditarRecolecta.putExtra("fechaRecolecta",recolecta.getFechaRecolecta());
+                    irAEditarRecolecta.putExtra("kilosRecolecta",recolecta.getKilosRecolecta());
+
+                    startActivity(irAEditarRecolecta);
+
+            }
+        return super.onContextItemSelected(item);
     }
 }
