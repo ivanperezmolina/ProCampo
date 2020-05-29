@@ -1,5 +1,7 @@
 package com.ivan.procampo.fragmentsMenu;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -26,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.ivan.procampo.R;
 import com.ivan.procampo.adaptadores.RecolectaAdapter;
 import com.ivan.procampo.funcionalidades.ActualizarRecolectaActivity;
+import com.ivan.procampo.funcionalidades.AnnadirFotoValeRecolecta;
 import com.ivan.procampo.funcionalidades.AnnadirRecolectaActivity;
 import com.ivan.procampo.modelos.Cultivos;
 import com.ivan.procampo.modelos.Recolectas;
@@ -192,7 +195,7 @@ public class RecolectasFragment extends Fragment {
             switch (item.getItemId()){
                 //EDITAR RECOLECTA
                 case R.id.ctxModRecolecta:
-                    Recolectas recolecta = listaRecolectas.get(adapter.getIndex());
+                    final Recolectas recolecta = listaRecolectas.get(adapter.getIndex());
 
                     //Vamos a la actividad, pasando los datos
                     Intent irAEditarRecolecta = new Intent(getActivity(), ActualizarRecolectaActivity.class);
@@ -204,6 +207,63 @@ public class RecolectasFragment extends Fragment {
 
                     startActivity(irAEditarRecolecta);
 
+                    break;
+
+                    case R.id.ctxDelRecolecta:
+                    Recolectas recolectaAdios = listaRecolectas.get(adapter.getIndex());
+
+                    String cultivoRecolecta = recolectaAdios.getCultivoRecolecta();
+                    String fechaRecolecta = recolectaAdios.getFechaRecolecta();
+
+                    AlertDialog.Builder myBuild = new AlertDialog.Builder(getContext());
+
+                    myBuild.setTitle("CONFIRMACIÓN DE BORRADO");
+                    myBuild.setMessage("¿Quiere eliminar la recolecta en el cultivo "+cultivoRecolecta+" con fecha "+fechaRecolecta+" ?");
+                    //SI
+                    myBuild.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            Recolectas recolectas = listaRecolectas.get(adapter.getIndex());
+                            String codigo = recolectas.getCodigoRecolecta();
+
+                            mDatabase.child("RECOLECTAS").child(mAuth.getCurrentUser().getUid()).child(codigo).removeValue();
+
+                            listaRecolectas.notify();
+
+                            //listaCultivos.clear();
+
+                            //llenarLista();
+
+                        }
+                    });
+
+                    //NO
+                    myBuild.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    //Construir el alert
+                    AlertDialog dialog = myBuild.create();
+                    dialog.show();
+
+
+                    break;
+
+                case R.id.annadirFotoVale:
+                   //Vamos a la actividad
+                    final Recolectas recolectaPaFoto = listaRecolectas.get(adapter.getIndex());
+                    Intent irAFotoVale = new Intent(getActivity(), AnnadirFotoValeRecolecta.class);
+                    irAFotoVale.putExtra("codigoRecolecta",recolectaPaFoto.getCodigoRecolecta());
+                    irAFotoVale.putExtra("cultivoRecolecta",recolectaPaFoto.getCultivoRecolecta());
+                    irAFotoVale.putExtra("fechaRecolecta",recolectaPaFoto.getFechaRecolecta());
+                    irAFotoVale.putExtra("kilosRecolecta",recolectaPaFoto.getKilosRecolecta());
+                    startActivity(irAFotoVale);
+
+                    break;
             }
         return super.onContextItemSelected(item);
     }

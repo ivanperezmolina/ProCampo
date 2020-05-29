@@ -7,6 +7,9 @@ public class Recolectas {
         private String FechaRecolecta;
         private String KilosRecolecta;
         private String CultivoRecolecta;
+        private String urlFotoVale;
+
+
 
     //Métodos
 
@@ -30,7 +33,13 @@ public class Recolectas {
         CultivoRecolecta = cultivoRecolecta;
     }
 
-
+    public Recolectas(String codigoRecolecta, String fechaRecolecta, String kilosRecolecta, String cultivoRecolecta, String urlFotoVale) {
+        CodigoRecolecta = codigoRecolecta;
+        FechaRecolecta = fechaRecolecta;
+        KilosRecolecta = kilosRecolecta;
+        CultivoRecolecta = cultivoRecolecta;
+        urlFotoVale = urlFotoVale;
+    }
 
 
 
@@ -64,6 +73,14 @@ public class Recolectas {
 
     public void setCultivoRecolecta(String cultivoRecolecta) {
         CultivoRecolecta = cultivoRecolecta;
+    }
+
+    public String getUrlFotoVale() {
+        return urlFotoVale;
+    }
+
+    public void setUrlFotoVale(String urlFotoVale) {
+        this.urlFotoVale = urlFotoVale;
     }
 
     //to string

@@ -4,5 +4,5 @@
     <item android:id="@+id/ctxModRecolecta" android:title="Actualizar recolecta"/>
     <item android:id="@+id/ctxDelRecolecta" android:title="Eliminar recolecta"/>
     <item android:id="@+id/annadirFotoDat" android:title="Añadir foto registro del DAT"/>
-    <item android:id="@+id/annadirFotoVale" android:title="Añadir foto del vale"/>
+    <item android:id="@+id/annadirFotoVale" android:title="Foto del vale"/>
 </menu>

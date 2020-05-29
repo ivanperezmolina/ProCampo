@@ -152,7 +152,6 @@ public class ActualizarCultivoActivity extends AppCompatActivity {
     public void obtenerDatosTipoAceitunas(){
         final List<TiposAceitunas> tiposAceitunas = new ArrayList<>();
 
-
         tiposAceitunas.add(new TiposAceitunas("666",miTipo));
 
         databaseReference.child("tiposAceitunas").addListenerForSingleValueEvent(new ValueEventListener() {
