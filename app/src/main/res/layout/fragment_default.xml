@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DefaultFragment">
+    tools:context=".DefaultFragment"
+    android:layout_weight="1"
+    android:id="@+id/frame">
 
     <ImageView
         android:id="@+id/imageView10"
@@ -49,20 +51,19 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="400dp">
+        android:layout_marginTop="400dp"
+        android:layout_weight="0"
+        >
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:clipToPadding="false"
             android:foregroundGravity="center"
-            android:layout_centerInParent="true"
-            android:overScrollMode="never"
-            android:clipToPadding="false">
+            android:overScrollMode="never">
 
         </androidx.viewpager.widget.ViewPager>
-
-
 
 
     </RelativeLayout>

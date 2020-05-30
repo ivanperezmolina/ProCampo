@@ -4,4 +4,13 @@
     <color name="colorPrimaryDark">#8F6E44</color>
     <color name="colorAccent">#DBA46B</color>
     <color name="crema">#E1CFBC</color>
+    <color name="colorPrimaryTwo">#D7F832</color>
+    <color name="colorPrimaryThere">#63717E2F</color>
+    <color name="color1">#33454423</color>
+    <color name="color2">#33A7A84A</color>
+    <color name="color3">#3364622B</color>
+    <color name="color4">#338FE7FD</color>
+    <color name="color5">#3391AF53</color>
+    <color name="color6">#63717E2F</color>
+
 </resources>
