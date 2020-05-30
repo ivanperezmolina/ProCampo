@@ -31,17 +31,28 @@
             android:title="@string/sulfatos" />
             </menu>
         </item>
-        <item android:title="Tratamiento">
+        <item android:title="Información Tratamiento">
         <menu>
             <item
                 android:id="@+id/itFertilizantes"
                 android:icon="@drawable/ferti"
-                android:title="@string/fertilizantes" />
+                android:title="Fertilizantes" />
+
             <item
                 android:id="@+id/itFitosanitarios"
                 android:icon="@drawable/fitosanitarios"
-                android:title="@string/fitosanitarios" />
+                android:title="Fitosanitarios" />
+
         </menu>
+        </item>
+        <item android:title="Control diario">
+            <menu>
+                <item
+                    android:id="@+id/itTareas"
+                    android:icon="@drawable/lapiz"
+                    android:title="Jornales" />
+
+            </menu>
         </item>
         <item android:title="@string/opciones">
             <menu>

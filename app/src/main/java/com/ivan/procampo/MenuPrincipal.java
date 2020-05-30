@@ -46,7 +46,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ivan.procampo.fragmentsMenu.CultivosFragment;
+import com.ivan.procampo.fragmentsMenu.JornalesFragment;
 import com.ivan.procampo.fragmentsMenu.PerfilFragment;
+import com.ivan.procampo.fragmentsMenu.PodasFragment;
 import com.ivan.procampo.fragmentsMenu.RecolectasFragment;
 import com.ivan.procampo.funcionalidades.AnnadirRecolectaActivity;
 import com.ivan.procampo.modelos.Cultivos;
@@ -144,20 +146,31 @@ public class MenuPrincipal extends AppCompatActivity {
                         fragment = new DefaultFragment();
                         break;
                     case R.id.itCultivos:
+                        doChange=false;
                         doChange=true;
                         fragment = new CultivosFragment();
                         break;
                     case R.id.itRecolectas:
+                        doChange=false;
                         doChange = true;
                         fragment = new RecolectasFragment();
                         break;
                     case R.id.itPodas:
+                        doChange=false;
+                        doChange = true;
+                        fragment = new PodasFragment();
                         break;
                     case R.id.itSulfatos:
                         break;
                     case R.id.itFertilizantes:
                         break;
                     //
+
+                    case R.id.itTareas:
+                        doChange=false;
+                        doChange = true;
+                        fragment = new JornalesFragment();
+                        break;
                     case R.id.itPerfil:
                         doChange=false;
                         doChange = true;
