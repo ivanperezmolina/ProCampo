@@ -6,7 +6,10 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,8 +22,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import androidx.core.view.GravityCompat;
@@ -46,10 +52,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ivan.procampo.fragmentsMenu.CultivosFragment;
+import com.ivan.procampo.fragmentsMenu.FertilizantesFragment;
 import com.ivan.procampo.fragmentsMenu.JornalesFragment;
 import com.ivan.procampo.fragmentsMenu.PerfilFragment;
 import com.ivan.procampo.fragmentsMenu.PodasFragment;
 import com.ivan.procampo.fragmentsMenu.RecolectasFragment;
+import com.ivan.procampo.fragmentsMenu.SulfatosFragment;
+import com.ivan.procampo.funcionalidades.ActualizarSulfatoActivity;
+import com.ivan.procampo.funcionalidades.AnnadirNuevoSulfato;
 import com.ivan.procampo.funcionalidades.AnnadirRecolectaActivity;
 import com.ivan.procampo.modelos.Cultivos;
 
@@ -89,6 +99,11 @@ public class MenuPrincipal extends AppCompatActivity {
 
     LayoutInflater layoutInflater;
     ViewGroup container;
+    ConstraintLayout expandableView;
+    Button arrowBtn;
+    CardView cardView;
+
+
 
 
     @Override
@@ -96,7 +111,28 @@ public class MenuPrincipal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
 
+        expandableView = findViewById(R.id.expandableView);
+        arrowBtn = findViewById(R.id.arrowBtn);
+        cardView = findViewById(R.id.cardViewSulfatos);
 
+        /*arrowBtn.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            @Override
+            public void onClick(View v) {
+
+                if (expandableView.getVisibility()==View.GONE){
+                    TransitionManager.beginDelayedTransition(cardView,new AutoTransition());
+                    expandableView.setVisibility(View.VISIBLE);
+                    arrowBtn.setBackgroundResource(R.drawable.ic_keyboard_arrow_up_black_24dp);
+                }else {
+                    TransitionManager.beginDelayedTransition(cardView,new AutoTransition());
+                    expandableView.setVisibility(View.GONE);
+                    arrowBtn.setBackgroundResource(R.drawable.ic_keyboard_arrow_down_black_24dp);
+                }
+
+            }
+        });
+*/
 
 
 
@@ -161,8 +197,13 @@ public class MenuPrincipal extends AppCompatActivity {
                         fragment = new PodasFragment();
                         break;
                     case R.id.itSulfatos:
+                        doChange=false;
+                        doChange = true;
+                        fragment = new SulfatosFragment();
                         break;
                     case R.id.itFertilizantes:
+                        Intent intento = new Intent(MenuPrincipal.this,TiendaActivity.class);
+                        startActivity(intento);
                         break;
                     //
 

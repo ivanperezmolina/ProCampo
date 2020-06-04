@@ -16,10 +16,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center_vertical"
-            android:text="MIS RECOLECTAS"
-            android:textSize="45dp"
-            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:text="@string/MIS_RECOLECTAS"
+            android:textSize="40dp"
+           android:layout_marginTop="50dp"
             tools:ignore="RtlCompat" />
 
         <Button
@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
-            android:text="Añadir Recolecta"
+            android:text="@string/anadir_recol"
             android:textSize="20dp"/>
 
         <androidx.recyclerview.widget.RecyclerView

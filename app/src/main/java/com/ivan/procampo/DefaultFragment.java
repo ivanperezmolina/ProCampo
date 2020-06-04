@@ -67,14 +67,16 @@ public class DefaultFragment extends Fragment {
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_default, container, false);
 
+
+
         //Defino que voy a mostrar
         models = new ArrayList<>();
-        models.add(new ModelSlider(R.drawable.miscultivos,"Gestione sus cultivos","Con ProCampo podrá tener todos sus cultivos almacenados y accesibles "));
-        models.add(new ModelSlider(R.drawable.misrecolectas,"Control en sus recolectas", "Podrá saber los días que cogio aceitunas, además de tener accesible el DAT y vale de la cooperativa"));
-        models.add(new ModelSlider(R.drawable.mispodas,"Las podas, siempre agrupadas", "Esta función le permitirá recordar siempre cuando podo sus olivos y llevar un control total"));
-        models.add(new ModelSlider(R.drawable.missulfatos,"Sulfatos puntuales y bien", "Podrás saber que tratamientos aplicaste hace años y volver a aplicarlos o cambiar de tratamiento"));
-        models.add(new ModelSlider(R.drawable.fertii,"Conoce más los productos", "Con ProCampo obtendras toda la información relacionada con fitosanitarios y fertilizantes"));
-        models.add(new ModelSlider(R.drawable.jornales,"Adios al papeleo", "Te permitimos registrar los jornales diarios que des para así poder olvidarte de los papeles"));
+        models.add(new ModelSlider(R.drawable.miscultivos,R.string.gestione_cultivos,R.string.gestione_cultivos_des));
+        models.add(new ModelSlider(R.drawable.misrecolectas,R.string.gestione_recolecta, R.string.gestione_recolecta_des));
+        models.add(new ModelSlider(R.drawable.mispodas,R.string.gestione_poda, R.string.gestione_poda_des));
+        models.add(new ModelSlider(R.drawable.missulfatos,R.string.gestione_sulfatos, R.string.gestione_sulfatos_des));
+        models.add(new ModelSlider(R.drawable.fertii,R.string.gestione_ferti, R.string.gestione_ferti_des));
+        models.add(new ModelSlider(R.drawable.jornales,R.string.adios_papeleo, R.string.adios_papeleo_des));
 
         adapter = new SliderAdapter(models,getContext());
 

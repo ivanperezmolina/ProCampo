@@ -217,7 +217,7 @@ public class RecolectasFragment extends Fragment {
 
                     AlertDialog.Builder myBuild = new AlertDialog.Builder(getContext());
 
-                    myBuild.setTitle("CONFIRMACIÓN DE BORRADO");
+                    myBuild.setTitle(R.string.confi_borrar);
                     myBuild.setMessage("¿Quiere eliminar la recolecta en el cultivo "+cultivoRecolecta+" con fecha "+fechaRecolecta+" ?");
                     //SI
                     myBuild.setPositiveButton("Sí", new DialogInterface.OnClickListener() {

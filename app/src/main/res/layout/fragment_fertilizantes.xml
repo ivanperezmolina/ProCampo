@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragmentsMenu.FertilizantesFragment">
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".FertilizantesActivity"
+        android:orientation="vertical"
+        >
+
+    <!--Texto de bienvenida-->
+
+
+
+
+
+    <TextView
+        android:id="@+id/fertilizantes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="  Fertilizantes"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/descrip"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:gravity="center"
+        android:hint="Busque un fertilizante por su nombre y descubra cuanto dinero cuesta" />
+
+    <SearchView
+        android:id="@+id/buscamelo"
+        android:layout_width="361dp"
+        android:layout_height="43dp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:id="@+id/myRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="471dp"
+        android:layout_marginTop="20dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+
+</FrameLayout>

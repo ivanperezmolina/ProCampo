@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".funcionalidades.ActualizarRecolectaActivity">
+    tools:context=".funcionalidades.ActualizarSulfatoActivity">
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/act_recolecta"
+        android:text="@string/act_sul"
         android:textSize="25dp"
         android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,7 +23,7 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/des_act_recol"
+        android:text="@string/des_act_sul"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +34,7 @@
     <!--Campos formulario -->
 
     <TextView
-        android:id="@+id/codigoRegistroRecolecta"
+        android:id="@+id/codigoRegistroSulfato"
         android:layout_width="298dp"
         android:layout_height="35dp"
         android:layout_marginTop="12dp"
@@ -67,7 +67,7 @@
         android:id="@+id/catastro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/recolecta_reg"
+        android:text="@string/sulfato_reg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.155"
@@ -76,16 +76,16 @@
         app:layout_constraintVertical_bias="0.162" />
 
     <Button
-        android:id="@+id/bFechaAc"
+        android:id="@+id/bFechaSulfato"
         android:layout_width="75dp"
         android:layout_height="51dp"
         android:text="@string/DATE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintHorizontal_bias="0.059"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.314" />
+        app:layout_constraintVertical_bias="0.319" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/materialDesign1"
@@ -93,75 +93,76 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.838"
+        app:layout_constraintHorizontal_bias="0.888"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.309">
+        app:layout_constraintVertical_bias="0.321">
 
         <EditText
-            android:id="@+id/fechaRecolectaEditar"
+            android:id="@+id/efechaSulfatoEditar"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/fec_recol"
-            android:inputType="text" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/materialDesign12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.457">
-
-        <EditText
-            android:id="@+id/kilosRecolectaEditar"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/kilos_recol"
-            android:inputType="text" />
+            android:hint="@string/fec_sul"
+            android:inputType="date" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Spinner
-        android:id="@+id/cultivoRecolectaEditar"
+        android:id="@+id/cultivoSulfatoEditar"
         android:layout_width="245dp"
         android:layout_height="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.445"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.573" />
+        app:layout_constraintVertical_bias="0.456" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/materialDesign132"
+        android:layout_width="259dp"
+        android:layout_height="136dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.44"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.662">
+
+        <EditText
+            android:id="@+id/tratamientoSulfatoEditar"
+            android:layout_width="250dp"
+            android:layout_height="106dp"
+            android:ems="10"
+            android:hint="@string/trat_sul"
+            android:inputType="textMultiLine" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/botonEditarRecolecta"
+        android:id="@+id/botonEditarSulfato"
         android:layout_width="237dp"
         android:layout_height="51dp"
         android:background="@color/colorPrimary"
-        android:text="@string/act_recolecta"
+        android:text="@string/an_nu_su"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.779" />
+        app:layout_constraintVertical_bias="0.823" />
 
     <Button
-        android:id="@+id/botonCancelarEditarRecolecta"
+        android:id="@+id/botonCancelarEditarSulfato"
         android:layout_width="233dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="56dp"
         android:background="@color/colorAccent"
         android:text="@string/cancelar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
+
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/botonEditarCultivo"
-        app:layout_constraintVertical_bias="0.38" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.928" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

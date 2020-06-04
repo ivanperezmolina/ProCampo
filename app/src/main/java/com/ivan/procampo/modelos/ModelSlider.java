@@ -2,14 +2,16 @@ package com.ivan.procampo.modelos;
 
 public class ModelSlider {
     private int image;
-    private String title;
-    private String desc;
+    private int title;
+    private int desc;
 
-    public ModelSlider(int image, String title, String desc) {
+    public ModelSlider(int image, int title, int desc) {
         this.image = image;
         this.title = title;
         this.desc = desc;
     }
+
+
 
     public int getImage() {
         return image;
@@ -19,19 +21,19 @@ public class ModelSlider {
         this.image = image;
     }
 
-    public String getTitle() {
+    public int getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(int title) {
         this.title = title;
     }
 
-    public String getDesc() {
+    public int getDesc() {
         return desc;
     }
 
-    public void setDesc(String desc) {
+    public void setDesc(int desc) {
         this.desc = desc;
     }
 }

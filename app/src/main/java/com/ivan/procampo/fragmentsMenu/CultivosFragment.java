@@ -256,6 +256,8 @@ public class CultivosFragment extends Fragment {
                 //Toast.makeText(getActivity(),"Le mando: "+cultivo.getNombreCultivo(),Toast.LENGTH_LONG).show();
                 startActivity(irAEditarCultivo);
 
+                //
+
                 //listaCultivos.clear();
 
                 //llenarLista();
@@ -269,7 +271,7 @@ public class CultivosFragment extends Fragment {
 
                 AlertDialog.Builder myBuild = new AlertDialog.Builder(getContext());
 
-                myBuild.setTitle("CONFIRMACIÓN DE BORRADO");
+                myBuild.setTitle(R.string.confi_borrar);
                 myBuild.setMessage("¿Quiere eliminar el cultivo "+cultivoString+" ?");
                 //SI
                 myBuild.setPositiveButton("Sí", new DialogInterface.OnClickListener() {

@@ -329,7 +329,7 @@ public class LoginActivity extends AppCompatActivity  {
             if(personName!=null || personEmail!=null) {
                 Context context = getApplicationContext();
                 int duration = Toast.LENGTH_SHORT;
-                Toast toast = Toast.makeText(context, "Bienvenido a Procampo " + personName, duration);
+                Toast toast = Toast.makeText(context, R.string.texto_bienvenida+" " + personName, duration);
                 toast.show();
 
                 Intent menuppal = new Intent(LoginActivity.this, MenuPrincipal.class);

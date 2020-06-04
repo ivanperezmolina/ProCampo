@@ -11,42 +11,50 @@
     <ImageView
         android:id="@+id/imageView10"
         android:layout_width="match_parent"
-        android:layout_height="188dp"
-        android:src="@drawable/logolo"
-        android:layout_marginTop="30dp"/>
+        android:layout_height="182dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/logolo" />
 
+    <!--Texto de bienvenida-->
     <TextView
         android:id="@+id/texto_bienvenida"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="210dp"
         android:gravity="center"
         android:hint="@string/texto_bienvenida"
         android:textColor="#000000"
-        android:textStyle="bold"
         android:textSize="25dp"
-         />
+        android:textStyle="bold" />
 
-    <!--Texto de bienvenida-->
     <TextView
         android:id="@+id/descripcion_bienvenidad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:layout_marginTop="265dp"
-        android:hint="En ProCampo podrá despreocuparse de tener que apuntar todo en papel; le ayudamos a llevar más eficientemente su olivar. " />
+        android:layout_marginTop="255dp"
+        android:textStyle="bold"
+        android:hint="@string/wel_1" />
 
     <TextView
         android:id="@+id/bien"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="310dp"
+        android:gravity="center"
+        android:textStyle="normal"
+        android:hint="@string/wel_2"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="360dp"
         android:gravity="center"
         android:textStyle="italic"
-        android:hint="Explore por el menú lateral para descubrir todas las funciones de ProCampo"/>
-
+        android:hint="@string/wel_3"/>
 
     <RelativeLayout
         android:layout_width="match_parent"

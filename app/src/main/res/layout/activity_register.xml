@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="Registro en ProCampo"
+        android:text="@string/registro_en_procampo"
         android:textSize="25dp"
         android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -1,43 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:id="@+id/srlContainer"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragmentsMenu.CultivosFragment">
+    tools:context=".fragmentsMenu.SulfatosFragment">
 
     <LinearLayout
-        android:id="@+id/fragment_container_cultivos"
+        android:id="@+id/fragment_container_sulfatos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="@string/MIS_CULTIVOS"
+            android:text="@string/MIS_SULFATOS"
+            android:textSize="45dp"
             android:layout_marginTop="50dp"
-            android:textAlignment="center"
-            android:textSize="52dp"
             tools:ignore="RtlCompat" />
 
         <Button
-            android:id="@+id/botonAnnadirCultivo"
+            android:id="@+id/botonAnnadirSulfato"
             style="@style/Widget.MaterialComponents.Button.Icon"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
-            android:text="@string/anadir_cultivos"
-            android:textSize="20dp"
-            app:icon="@drawable/ic_add_black_24dp" />
+            android:text="@string/annadir_sulfato"
+            android:textSize="20dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewCultivos"
+            android:id="@+id/recyclerViewSulfatos"
             android:layout_marginVertical="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -47,4 +42,4 @@
 
     </LinearLayout>
 
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</FrameLayout>
