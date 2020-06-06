@@ -27,10 +27,17 @@ En aspectos técnicos contaria con partes como un login con todas las opciones d
 
 En este repositorio se irá actualizando la información de la APP ProCampo así como se irá subiendo código poco a poco
 
-Reciban un saludo de Iván Pérez Molina
-
-
 📹[Vídeo explicativo](https://youtu.be/ZRGfduFV4BE)
+
+
+# APLICACIÓN (ANDROID)
+
+# MÓDULO DE SISTEMAS DE GESTIÓN EMPRESARIAL
+
+# MÓDULO DE DESARROLLO DE INTERFACES
+
+
+
 
 # DIARIO SEMANAL DE LA EVOLUCIÓN DEL PROYECTO
 ## VIERNES 27 DE MARZO DEL 2020
@@ -88,3 +95,9 @@ La parte de cultivos está totalmente terminada, queda simplemente ver como pued
 
 #### Bibliografía
 Varios vídeos de YouTube y poco más
+
+## SEMANAS DEL 30 DE MAYO Y 5 DE JUNIO  
+Durante esta toda la parte de control ya esta finalizada y la parte de venta queda darle unos repasos; por lo general quedan arreglar problemas de compatibilidad, de actualizar fragments y poco más.
+
+#### Bibliografía
+Varios vídeos de YouTube y documentación de Firebase, para añadir fotos en storage y demás
