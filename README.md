@@ -95,3 +95,9 @@ La parte de cultivos está totalmente terminada, queda simplemente ver como pued
 
 #### Bibliografía
 Varios vídeos de YouTube y poco más
+
+## SEMANAS DEL 30 DE MAYO Y 5 DE JUNIO  
+Durante esta toda la parte de control ya esta finalizada y la parte de venta queda darle unos repasos; por lo general quedan arreglar problemas de compatibilidad, de actualizar fragments y poco más.
+
+#### Bibliografía
+Varios vídeos de YouTube y documentación de Firebase, para añadir fotos en storage y demás
