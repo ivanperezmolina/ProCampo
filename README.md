@@ -27,10 +27,17 @@ En aspectos técnicos contaria con partes como un login con todas las opciones d
 
 En este repositorio se irá actualizando la información de la APP ProCampo así como se irá subiendo código poco a poco
 
-Reciban un saludo de Iván Pérez Molina
-
-
 📹[Vídeo explicativo](https://youtu.be/ZRGfduFV4BE)
+
+
+# APLICACIÓN (ANDROID)
+
+# MÓDULO DE SISTEMAS DE GESTIÓN EMPRESARIAL
+
+# MÓDULO DE DESARROLLO DE INTERFACES
+
+
+
 
 # DIARIO SEMANAL DE LA EVOLUCIÓN DEL PROYECTO
 ## VIERNES 27 DE MARZO DEL 2020
