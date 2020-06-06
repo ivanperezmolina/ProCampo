@@ -1,6 +1,8 @@
 package com.ivan.procampo.modelos;
 
-public class Fertilizantes {
+import java.io.Serializable;
+
+public class Fertilizantes implements Serializable {
     //Atributos
     public  String nombre, image;
     Double precio;

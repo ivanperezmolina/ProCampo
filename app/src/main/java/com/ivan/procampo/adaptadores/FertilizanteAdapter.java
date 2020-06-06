@@ -71,7 +71,7 @@ public class FertilizanteAdapter extends RecyclerView.Adapter<FertilizanteAdapte
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, CarroCompra.class);
-                intent.putExtra("CarroCompras", carroCompra);
+                intent.putExtra("CarroCompras", (Serializable) carroCompra);
                 context.startActivity(intent);
             }
         });

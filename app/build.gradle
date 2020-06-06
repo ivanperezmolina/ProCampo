@@ -8,6 +8,7 @@ android {
     defaultConfig {
         applicationId "com.ivan.procampo"
         minSdkVersion 16
+        multiDexEnabled true
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -32,8 +33,10 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
 
     //Firebase
+    implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.google.firebase:firebase-auth:19.3.0'
     implementation 'com.google.firebase:firebase-database:19.2.1'
     implementation 'com.google.firebase:firebase-storage:19.1.1'
@@ -88,6 +91,9 @@ dependencies {
 
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.4.+'
     implementation 'com.squareup.picasso:picasso:2.5.0'
+
+    //Paypal
+    implementation 'com.paypal.sdk:paypal-android-sdk:2.16.0'
 
 
 }

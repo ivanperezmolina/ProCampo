@@ -114,4 +114,6 @@
     <string name="info_su">Sulfate Information</string>
     <string name="des_fer">Welcome to the ProCampo online store, add the products to the basket and buy</string>
     <string name="mi_cart">see my cart</string>
+    <string name="pago_aprobado">Payment approved</string>
+    <string name="info_pago">You will receive your products shortly. Thank you very much for trusting ProCampo</string>
 </resources>

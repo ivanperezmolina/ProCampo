@@ -121,6 +121,8 @@
     <string name="info_su">Info sobre los sulfatos</string>
     <string name="des_fer">Bienvenido a la tienda online de ProCampo, añada los productos a la cesta y compre</string>
     <string name="mi_cart">Ver mi carrito</string>
+    <string name="pago_aprobado">Pago aprobado</string>
+    <string name="info_pago">En breve recibira sus productos. Muchas gracias por confiar en ProCampo</string>
 
 
 </resources>

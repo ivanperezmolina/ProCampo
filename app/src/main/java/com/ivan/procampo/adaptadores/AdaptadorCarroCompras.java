@@ -19,15 +19,17 @@ import com.ivan.procampo.modelos.Fertilizantes;
 import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdaptadorCarroCompras extends RecyclerView.Adapter<AdaptadorCarroCompras.ViewHolder> {
     Context context;
-    List<Fertilizantes> carroCompra;
+    ArrayList<Fertilizantes> carroCompra;
     TextView tvTotal;
     double total = 0;
+    double IVA = 0;
 
-    public AdaptadorCarroCompras(Context context, List<Fertilizantes> carroCompra, TextView tvTotal) {
+    public AdaptadorCarroCompras(Context context, ArrayList<Fertilizantes> carroCompra, TextView tvTotal) {
         this.context = context;
         this.carroCompra = carroCompra;
         this.tvTotal = tvTotal;
@@ -36,7 +38,9 @@ public class AdaptadorCarroCompras extends RecyclerView.Adapter<AdaptadorCarroCo
             total = total + Double.parseDouble(""+carroCompra.get(i).getPrecio());
         }
 
-        tvTotal.setText(""+total);
+        //Aquí añadimos el 21% de IVA
+        IVA = total * 0.21;
+        tvTotal.setText(""+(total+IVA));
 
     }
 
@@ -70,8 +74,8 @@ public class AdaptadorCarroCompras extends RecyclerView.Adapter<AdaptadorCarroCo
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            nombre = itemView.findViewById(R.id.nombre_text);
-            precio = itemView.findViewById(R.id.precio_text);
+            nombre = itemView.findViewById(R.id.tvNomProducto);
+            precio = itemView.findViewById(R.id.tvPrecio);
             image = itemView.findViewById(R.id.fertilizantePic);
 
 

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DetallesPago">
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/pago_aprobado"
+        android:gravity="center"
+        android:textSize="40dp"/>
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="315dp"
+        android:layout_height="348dp"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/ic_pago_aprobado" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/info_pago"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="INFO"
+        android:gravity="center"/>
+
+    <TextView
+    android:id="@+id/txtId"
+        android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="id"/>
+
+    <TextView
+        android:id="@+id/txtEstatus"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="estatus"/>
+
+
+
+    <TextView
+        android:id="@+id/txtMonto"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="monto"/>
+
+</LinearLayout>

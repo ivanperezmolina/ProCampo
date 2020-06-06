@@ -75,7 +75,7 @@ public class DefaultFragment extends Fragment {
         models.add(new ModelSlider(R.drawable.misrecolectas,R.string.gestione_recolecta, R.string.gestione_recolecta_des));
         models.add(new ModelSlider(R.drawable.mispodas,R.string.gestione_poda, R.string.gestione_poda_des));
         models.add(new ModelSlider(R.drawable.missulfatos,R.string.gestione_sulfatos, R.string.gestione_sulfatos_des));
-        models.add(new ModelSlider(R.drawable.fertii,R.string.gestione_ferti, R.string.gestione_ferti_des));
+       models.add(new ModelSlider(R.drawable.fertii,R.string.gestione_ferti, R.string.gestione_ferti_des));
         models.add(new ModelSlider(R.drawable.jornales,R.string.adios_papeleo, R.string.adios_papeleo_des));
 
         adapter = new SliderAdapter(models,getContext());
