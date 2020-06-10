@@ -73,7 +73,7 @@ public class CultivosFragment extends Fragment {
 
     private CultivoAdapter adapter;
 
-    private SwipeRefreshLayout swipeContainer;
+    //private SwipeRefreshLayout swipeContainer;
 
     public CultivosFragment() {
         // Required empty public constructor
@@ -125,20 +125,29 @@ public class CultivosFragment extends Fragment {
         botonNuevoCultivo = vista.findViewById(R.id.botonAnnadirCultivo);
         recyclerViewCultivos = vista.findViewById(R.id.recyclerViewCultivos);
 
-        swipeContainer = vista.findViewById(R.id.srlContainer);
+        ///swipeContainer = vista.findViewById(R.id.srlContainer);
 
         //Lanzamos el LayoutManager
         recyclerViewCultivos.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         //Lanzamos el metodo para llenar la lista
 
-        llenarLista();
+
+        if (listaCultivos.isEmpty()) {
+            llenarLista();
+        }else {
+            listaCultivos.clear();
+            llenarLista();
+        }
+
+
+
 
         //Pasamos el parametro
         registerForContextMenu(recyclerViewCultivos);
 
 
-
+/*
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -151,7 +160,7 @@ public class CultivosFragment extends Fragment {
                 swipeContainer.setEnabled(false);
             }
         });
-
+*/
         //swipeContainer.setEnabled(true);
 
 
@@ -181,6 +190,7 @@ public class CultivosFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
     }
 
     /**
@@ -210,9 +220,6 @@ public class CultivosFragment extends Fragment {
                     adapter = new CultivoAdapter(listaCultivos,R.layout.cultivo_view);
                     recyclerViewCultivos.setAdapter(adapter);
 
-                    swipeContainer.setRefreshing(true);
-
-                    swipeContainer.setEnabled(true);
 
 
                 }
@@ -252,9 +259,16 @@ public class CultivosFragment extends Fragment {
                 irAEditarCultivo.putExtra("hectareasCultivos",cultivo.getHectareasCultivo());
                 irAEditarCultivo.putExtra("tipoDeAceituna",cultivo.getTipoDeAceituna());
                 irAEditarCultivo.putExtra("localizacionCultivo",cultivo.getLocalizacionCultivo());
+                irAEditarCultivo.putExtra("lista",listaCultivos);
 
+                listaCultivos.clear();
                 //Toast.makeText(getActivity(),"Le mando: "+cultivo.getNombreCultivo(),Toast.LENGTH_LONG).show();
                 startActivity(irAEditarCultivo);
+
+
+
+
+
 
                 //
 
@@ -280,10 +294,11 @@ public class CultivosFragment extends Fragment {
 
                         Cultivos cultivos = listaCultivos.get(adapter.getIndex());
                         String codigo = cultivos.getCodigoCultivo();
-
+                        listaCultivos.clear();
                         mDatabase.child("CULTIVOS").child(mAuth.getCurrentUser().getUid()).child(codigo).removeValue();
-
-                        listaCultivos.notify();
+                        listaCultivos.clear();
+                        listaCultivos.remove(true);
+                        //listaCultivos.notify();
 
                         //listaCultivos.clear();
 
@@ -310,7 +325,8 @@ public class CultivosFragment extends Fragment {
 
         }
 
-
         return super.onContextItemSelected(item);
+
+
     }
 }

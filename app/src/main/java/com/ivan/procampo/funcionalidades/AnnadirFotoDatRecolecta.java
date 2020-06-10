@@ -3,11 +3,10 @@ package com.ivan.procampo.funcionalidades;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -31,18 +29,14 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.ivan.procampo.R;
-import com.ivan.procampo.adaptadores.RecolectaAdapter;
-import com.ivan.procampo.modelos.Recolectas;
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AnnadirFotoValeRecolecta extends AppCompatActivity {
+public class AnnadirFotoDatRecolecta extends AppCompatActivity {
 
     private Button mUploadBtn;
+
     private StorageReference mStorage;
     private static final int GALLERY_INTENT = 1;
     private ImageView mImageView;
@@ -55,10 +49,12 @@ public class AnnadirFotoValeRecolecta extends AppCompatActivity {
 
     private boolean subida = false;
 
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_annadir_foto_vale_recolecta);
+        setContentView(R.layout.activity_annadir_foto_dat_recolecta);
 
         mStorage = FirebaseStorage.getInstance().getReference();
         //Inicializar firebase
@@ -66,9 +62,13 @@ public class AnnadirFotoValeRecolecta extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
         mAuth = FirebaseAuth.getInstance();
-        mUploadBtn = findViewById(R.id.btnSubir);
-        mImageView = findViewById(R.id.SubirImagen);
+        mUploadBtn = findViewById(R.id.btnSubirDat);
+        mImageView = findViewById(R.id.SubirImagenDat);
         mProgressDialog = new ProgressDialog(this);
+
+
+
+
 
         mUploadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +83,6 @@ public class AnnadirFotoValeRecolecta extends AppCompatActivity {
         final String elCodigoRecolecta = extrasDeLaRecolecta.getString("codigoRecolecta");
 
         llenar();
-
     }
 
     @Override
@@ -100,7 +99,7 @@ public class AnnadirFotoValeRecolecta extends AppCompatActivity {
             Uri uri = data.getData();
 
             //Creamos la carpeta y subimos la foto que hay en el uri
-            final StorageReference filePath = mStorage.child("VALES").child(uri.getLastPathSegment());
+            final StorageReference filePath = mStorage.child("DAT").child(uri.getLastPathSegment());
 
 
             filePath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -119,20 +118,20 @@ public class AnnadirFotoValeRecolecta extends AppCompatActivity {
 
                             Map<String,Object> recolectaMap = new HashMap<>();
 
-                            recolectaMap.put("fotoValeRecolecta",url);
+                            recolectaMap.put("fotoDATRecolecta",url);
 
                             //Subida
                             databaseReference.child("RECOLECTAS").child(mAuth.getCurrentUser().getUid()).child(elCodigo).updateChildren(recolectaMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Toast.makeText(AnnadirFotoValeRecolecta.this,"Guardada en su ficha",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(AnnadirFotoDatRecolecta.this,"Guardada en su ficha",Toast.LENGTH_SHORT).show();
                                     subida = true;
 
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(AnnadirFotoValeRecolecta.this, "Hubo un error al añadir en su ficha", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(AnnadirFotoDatRecolecta.this, "Hubo un error al añadir en su ficha", Toast.LENGTH_SHORT).show();
                                 }
                             });
 
@@ -145,14 +144,16 @@ public class AnnadirFotoValeRecolecta extends AppCompatActivity {
             });
 
             if (subida=true){
-            llenar();
+                llenar();
             }
+
 
 
         }
     }
 
-    private void llenar(){
+    private void llenar() {
+
         //Una vez tengo la url ya en el firebase; para mas seguridad la cogere de alli
 
         Bundle extrasDeLaRecolecta = getIntent().getExtras();
@@ -162,11 +163,12 @@ public class AnnadirFotoValeRecolecta extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
-                        String codigoRecolecta = dataSnapshot.child("codigoRecolecta").getValue().toString();
-                        String urlDelValeDelUsuarioConComillas = dataSnapshot.child("fotoValeRecolecta").getValue().toString();
-                        String urlDelValeDelUsuarioSinComillas = urlDelValeDelUsuarioConComillas.replace("\"","");
+                    String codigoRecolecta = dataSnapshot.child("codigoRecolecta").getValue().toString();
+                    String urlDelDATDelUsuarioConComillas = dataSnapshot.child("fotoDATRecolecta").getValue().toString();
+                    String urlDelDATDelUsuarioSinComillas = urlDelDATDelUsuarioConComillas.replace("\"","");
 
-                        Glide.with(getApplicationContext()).load(urlDelValeDelUsuarioSinComillas).fitCenter().centerCrop().into(mImageView);
+                    //Y la mostrare con Glide
+                    Glide.with(getApplicationContext()).load(urlDelDATDelUsuarioSinComillas).fitCenter().centerCrop().into(mImageView);
 
 
 
@@ -182,9 +184,6 @@ public class AnnadirFotoValeRecolecta extends AppCompatActivity {
 
             }
         });
-        //Y la mostrare con Glide
-
 
     }
-
 }

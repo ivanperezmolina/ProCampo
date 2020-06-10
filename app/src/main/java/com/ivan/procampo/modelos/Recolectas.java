@@ -7,7 +7,8 @@ public class Recolectas {
         private String FechaRecolecta;
         private String KilosRecolecta;
         private String CultivoRecolecta;
-        private String urlFotoVale;
+        private String fotoValeRecolecta;
+        private String fotoDATRecolecta;
 
 
 
@@ -33,15 +34,22 @@ public class Recolectas {
         CultivoRecolecta = cultivoRecolecta;
     }
 
-    public Recolectas(String codigoRecolecta, String fechaRecolecta, String kilosRecolecta, String cultivoRecolecta, String urlFotoVale) {
+    public Recolectas(String codigoRecolecta, String fechaRecolecta, String kilosRecolecta, String cultivoRecolecta, String fotoValeRecolecta) {
         CodigoRecolecta = codigoRecolecta;
         FechaRecolecta = fechaRecolecta;
         KilosRecolecta = kilosRecolecta;
         CultivoRecolecta = cultivoRecolecta;
-        urlFotoVale = urlFotoVale;
+        fotoValeRecolecta = fotoValeRecolecta;
     }
 
-
+    public Recolectas(String codigoRecolecta, String fechaRecolecta, String kilosRecolecta, String cultivoRecolecta, String fotoValeRecolecta, String fotoDATRecolecta) {
+        CodigoRecolecta = codigoRecolecta;
+        FechaRecolecta = fechaRecolecta;
+        KilosRecolecta = kilosRecolecta;
+        CultivoRecolecta = cultivoRecolecta;
+        this.fotoValeRecolecta = fotoValeRecolecta;
+        this.fotoDATRecolecta = fotoDATRecolecta;
+    }
 
     public String getCodigoRecolecta() {
         return CodigoRecolecta;
@@ -75,12 +83,20 @@ public class Recolectas {
         CultivoRecolecta = cultivoRecolecta;
     }
 
-    public String getUrlFotoVale() {
-        return urlFotoVale;
+    public String getFotoValeRecolecta() {
+        return fotoValeRecolecta;
     }
 
-    public void setUrlFotoVale(String urlFotoVale) {
-        this.urlFotoVale = urlFotoVale;
+    public void setFotoValeRecolecta(String fotoValeRecolecta) {
+        this.fotoValeRecolecta = fotoValeRecolecta;
+    }
+
+    public String getFotoDATRecolecta() {
+        return fotoDATRecolecta;
+    }
+
+    public void setFotoDATRecolecta(String fotoDATRecolecta) {
+        this.fotoDATRecolecta = fotoDATRecolecta;
     }
 
     //to string

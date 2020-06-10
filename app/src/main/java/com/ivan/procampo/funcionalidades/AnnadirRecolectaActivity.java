@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.app.FragmentManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -97,7 +99,10 @@ public class AnnadirRecolectaActivity extends AppCompatActivity implements View.
         botonCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                terminar();
+
+
+
             }
         });
 
@@ -111,6 +116,18 @@ public class AnnadirRecolectaActivity extends AppCompatActivity implements View.
 
     }
 
+    private void terminar() {
+        Toast.makeText(this, "Adios", Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 
     /**
      * Método para traer los cultivos del usuario que quiere añadir una recolecta
@@ -189,6 +206,8 @@ public class AnnadirRecolectaActivity extends AppCompatActivity implements View.
         final String fecha = fechaRecolecta.getText().toString();
         final String kilos = kilosRecolecta.getText().toString();
         final String cultivo = cultivoRecolectaSeleccionado;
+        final String fotoValeRecolecta = "https://firebasestorage.googleapis.com/v0/b/procampo-ce4e3.appspot.com/o/nohayfoto.png?alt=media&token=42533563-5c60-46d1-8cae-a1db00228186";
+        final String fotoDATRecolecta = "https://firebasestorage.googleapis.com/v0/b/procampo-ce4e3.appspot.com/o/nohayfoto.png?alt=media&token=42533563-5c60-46d1-8cae-a1db00228186";
 
         Recolectas recolecta = new Recolectas();
         recolecta.setCodigoRecolecta(UUID.randomUUID().toString());
@@ -207,6 +226,8 @@ public class AnnadirRecolectaActivity extends AppCompatActivity implements View.
             recolecta.setFechaRecolecta(fecha);
             recolecta.setKilosRecolecta(kilos);
             recolecta.setCultivoRecolecta(cultivo);
+            recolecta.setFotoValeRecolecta(fotoValeRecolecta);
+            recolecta.setFotoDATRecolecta(fotoDATRecolecta);
 
             databaseReference.child("RECOLECTAS").child(mAuth.getCurrentUser().getUid()).child(recolecta.getCodigoRecolecta()).setValue(recolecta);
 

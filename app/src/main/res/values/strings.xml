@@ -123,6 +123,20 @@
     <string name="mi_cart">Ver mi carrito</string>
     <string name="pago_aprobado">Pago aprobado</string>
     <string name="info_pago">En breve recibira sus productos. Muchas gracias por confiar en ProCampo</string>
+    <string name="compartir">Te recomiendo ProCampo para organizar tu olivar mejor</string>
+    <string name="foto_dat">Foto del DAT</string>
+    <string name="foto_dat_des">Añada o visualice la fotografia del Documento de Acreditación al Transporte</string>
+    <string name="tienda_virtual">Tienda Virtual</string>
+    <string name="recordatorios">Recordatorios</string>
+
+    <string name="record_des">Despeje su mente y deje que ProCampo le ayude a recordar su proxima tarea</string>
+    <string name="select_day">Seleccione un día</string>
+    <string name="dia_Sele">Día Seleccionado</string>
+    <string name="select_hora">Seleccione una hora</string>
+    <string name="hour_selec">Hora seleccionada</string>
+    <string name="dato">Nombre del recordatorio</string>
+    <string name="guardar">Guardar Recordatorio</string>
+    <string name="eliminar_re">Eliminar recordatorio</string>
 
 
 </resources>

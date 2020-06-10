@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -28,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.ivan.procampo.R;
 import com.ivan.procampo.adaptadores.RecolectaAdapter;
 import com.ivan.procampo.funcionalidades.ActualizarRecolectaActivity;
+import com.ivan.procampo.funcionalidades.AnnadirFotoDatRecolecta;
 import com.ivan.procampo.funcionalidades.AnnadirFotoValeRecolecta;
 import com.ivan.procampo.funcionalidades.AnnadirRecolectaActivity;
 import com.ivan.procampo.modelos.Cultivos;
@@ -64,6 +66,8 @@ public class RecolectasFragment extends Fragment {
 
     private RecolectaAdapter adapter;
 
+    Boolean vengoDeFoto = false;
+
 
     //-------------------------------------------//
 
@@ -97,7 +101,11 @@ public class RecolectasFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+
+//Declaro las variables para autenticación y BBDD
+        mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        llenarLista();
 
     }
 
@@ -120,7 +128,9 @@ public class RecolectasFragment extends Fragment {
         recyclerViewRecolecta.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         //Lanzamos metodo para llenar la lista
-        llenarLista();
+
+
+
 
         //Pasamos el parametro
         registerForContextMenu(recyclerViewRecolecta);
@@ -195,6 +205,7 @@ public class RecolectasFragment extends Fragment {
             switch (item.getItemId()){
                 //EDITAR RECOLECTA
                 case R.id.ctxModRecolecta:
+                    vengoDeFoto = false;
                     final Recolectas recolecta = listaRecolectas.get(adapter.getIndex());
 
                     //Vamos a la actividad, pasando los datos
@@ -205,11 +216,14 @@ public class RecolectasFragment extends Fragment {
                     irAEditarRecolecta.putExtra("fechaRecolecta",recolecta.getFechaRecolecta());
                     irAEditarRecolecta.putExtra("kilosRecolecta",recolecta.getKilosRecolecta());
 
+                    listaRecolectas.clear();
+
                     startActivity(irAEditarRecolecta);
 
                     break;
 
                     case R.id.ctxDelRecolecta:
+                        vengoDeFoto = false;
                     Recolectas recolectaAdios = listaRecolectas.get(adapter.getIndex());
 
                     String cultivoRecolecta = recolectaAdios.getCultivoRecolecta();
@@ -226,10 +240,11 @@ public class RecolectasFragment extends Fragment {
 
                             Recolectas recolectas = listaRecolectas.get(adapter.getIndex());
                             String codigo = recolectas.getCodigoRecolecta();
-
+                            listaRecolectas.clear();
                             mDatabase.child("RECOLECTAS").child(mAuth.getCurrentUser().getUid()).child(codigo).removeValue();
-
-                            listaRecolectas.notify();
+                            listaRecolectas.clear();
+                            listaRecolectas.remove(true);
+                            //listaRecolectas.notify();
 
                             //listaCultivos.clear();
 
@@ -255,16 +270,34 @@ public class RecolectasFragment extends Fragment {
 
                 case R.id.annadirFotoVale:
                    //Vamos a la actividad
+                    vengoDeFoto = true;
                     final Recolectas recolectaPaFoto = listaRecolectas.get(adapter.getIndex());
                     Intent irAFotoVale = new Intent(getActivity(), AnnadirFotoValeRecolecta.class);
                     irAFotoVale.putExtra("codigoRecolecta",recolectaPaFoto.getCodigoRecolecta());
                     irAFotoVale.putExtra("cultivoRecolecta",recolectaPaFoto.getCultivoRecolecta());
                     irAFotoVale.putExtra("fechaRecolecta",recolectaPaFoto.getFechaRecolecta());
                     irAFotoVale.putExtra("kilosRecolecta",recolectaPaFoto.getKilosRecolecta());
+                   // listaRecolectas.clear();
                     startActivity(irAFotoVale);
 
                     break;
+
+                case R.id.annadirFotoDat:
+                    vengoDeFoto=true;
+                    final Recolectas recolectaPaFotoDAT = listaRecolectas.get(adapter.getIndex());
+                    Intent irAFotoValeDAT = new Intent(getActivity(), AnnadirFotoDatRecolecta.class);
+                    irAFotoValeDAT.putExtra("codigoRecolecta",recolectaPaFotoDAT.getCodigoRecolecta());
+                    irAFotoValeDAT.putExtra("cultivoRecolecta",recolectaPaFotoDAT.getCultivoRecolecta());
+                    irAFotoValeDAT.putExtra("fechaRecolecta",recolectaPaFotoDAT.getFechaRecolecta());
+                    irAFotoValeDAT.putExtra("kilosRecolecta",recolectaPaFotoDAT.getKilosRecolecta());
+                    //listaRecolectas.clear();
+                    startActivity(irAFotoValeDAT);
+
+                    break;
             }
+
+
+
         return super.onContextItemSelected(item);
     }
 }

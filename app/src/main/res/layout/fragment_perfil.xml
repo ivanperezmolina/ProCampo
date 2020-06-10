@@ -47,5 +47,14 @@
         android:textColor="#FFF"
         android:textStyle="italic" />
 
+    <Button
+        android:id="@+id/btnCompartir"
+        android:layout_width="161dp"
+        android:layout_height="68dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="200dp"
+        android:background="@color/colorPrimary"
+        android:text="COMPARTIR LA APLICACIÓN" />
+
 
 </FrameLayout>

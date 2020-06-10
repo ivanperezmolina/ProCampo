@@ -228,7 +228,7 @@ public class SulfatosFragment extends Fragment {
                 irAEditarSulfato.putExtra("cultivoSulfato",sulfato.getCultivoSulfato());
                 irAEditarSulfato.putExtra("fechaSulfato",sulfato.getFechaSulfato());
                 irAEditarSulfato.putExtra("tratamientoSulfato",sulfato.getTratamientoSulfato());
-
+                listaSulfatos.clear();
                 startActivity(irAEditarSulfato);
 
                 break;
@@ -252,9 +252,11 @@ public class SulfatosFragment extends Fragment {
                         Sulfatos sulfatos = listaSulfatos.get(adapter.getIndex());
                         String codigo = sulfatos.getCodigoSulfato();
 
+                        listaSulfatos.clear();
                         mDatabase.child("SULFATOS").child(mAuth.getCurrentUser().getUid()).child(codigo).removeValue();
-
-                        listaSulfatos.notify();
+                        listaSulfatos.clear();
+                        listaSulfatos.remove(true);
+                        //listaSulfatos.notify();
 
                         //listaCultivos.clear();
 

@@ -3,8 +3,10 @@
 
      android:layout_height="match_parent"
     android:layout_width="match_parent">
+    <item android:title="PROCAMPO">
 
     <group >
+
         <item
             android:id="@+id/itHome"
             android:icon="@drawable/ic_home"
@@ -36,12 +38,12 @@
             <item
                 android:id="@+id/itFertilizantes"
                 android:icon="@drawable/ferti"
-                android:title="@string/fertilizantesyFito" />
+                android:title="@string/tienda_virtual" />
 
             <item
-                android:id="@+id/infoSul"
-                android:icon="@drawable/ic_info_black_24dp"
-                android:title="@string/info_su" />
+                android:id="@+id/irRecordatorios"
+                android:icon="@drawable/ic_reloj"
+                android:title="@string/recordatorios" />
 
         </menu>
         </item>
@@ -69,7 +71,7 @@
             </menu>
         </item>
      </group>
-
+</item>
 
 
 

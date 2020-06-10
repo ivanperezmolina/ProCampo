@@ -116,4 +116,17 @@
     <string name="mi_cart">see my cart</string>
     <string name="pago_aprobado">Payment approved</string>
     <string name="info_pago">You will receive your products shortly. Thank you very much for trusting ProCampo</string>
+    <string name="compartir">I recommend ProCampo to organize your olive grove better</string>
+    <string name="foto_dat">DAT photo</string>
+    <string name="foto_dat_des">Add or view the photograph of the Transport Accreditation Document</string>
+    <string name="tienda_virtual">On-line shop</string>
+    <string name="recordatorios">Reminders</string>
+    <string name="record_des">Clear your mind and let ProCampo help you remember your next task</string>
+    <string name="select_day">Select a day</string>
+    <string name="dia_Sele">Selected day</string>
+    <string name="select_hora">Select a time</string>
+    <string name="hour_selec">Selected time</string>
+    <string name="dato">Reminder name</string>
+    <string name="guardar">Save Remider</string>
+    <string name="eliminar_re">Delete reminder</string>
 </resources>

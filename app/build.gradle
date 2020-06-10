@@ -95,5 +95,7 @@ dependencies {
     //Paypal
     implementation 'com.paypal.sdk:paypal-android-sdk:2.16.0'
 
+    //Recordatorios
+    implementation 'androidx.work:work-runtime:2.3.0-beta02'
 
 }

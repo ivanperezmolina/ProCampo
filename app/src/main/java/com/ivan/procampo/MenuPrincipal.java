@@ -61,6 +61,7 @@ import com.ivan.procampo.fragmentsMenu.SulfatosFragment;
 import com.ivan.procampo.funcionalidades.ActualizarSulfatoActivity;
 import com.ivan.procampo.funcionalidades.AnnadirNuevoSulfato;
 import com.ivan.procampo.funcionalidades.AnnadirRecolectaActivity;
+import com.ivan.procampo.funcionalidades.RecordatoriosActivity;
 import com.ivan.procampo.modelos.Cultivos;
 
 import java.util.ArrayList;
@@ -177,43 +178,58 @@ public class MenuPrincipal extends AppCompatActivity {
                 Fragment fragment = null;
                 switch (menuItem.getItemId()){
                     case R.id.itHome:
-                        doChange=false;
+
+
                         doChange = true;
+
+                        navigationView.getMenu().getItem(0).setChecked(true);
                         fragment = new DefaultFragment();
+
                         break;
                     case R.id.itCultivos:
-                        doChange=false;
+                        uncheckItems(navigationView);
                         doChange=true;
+                        navigationView.getMenu().getItem(1).setChecked(true);
                         fragment = new CultivosFragment();
+
                         break;
                     case R.id.itRecolectas:
-                        doChange=false;
+
                         doChange = true;
+                        navigationView.getMenu().getItem(2).setChecked(true);
                         fragment = new RecolectasFragment();
+
                         break;
                     case R.id.itPodas:
-                        doChange=false;
+
                         doChange = true;
+                        navigationView.getMenu().getItem(3).setChecked(true);
                         fragment = new PodasFragment();
+
                         break;
                     case R.id.itSulfatos:
-                        doChange=false;
+
                         doChange = true;
                         fragment = new SulfatosFragment();
+                        uncheckItems(navigationView);
                         break;
                     case R.id.itFertilizantes:
                         Intent intento = new Intent(MenuPrincipal.this,TiendaActivity.class);
                         startActivity(intento);
                         break;
                     //
+                    case R.id.irRecordatorios:
+                        Intent irARecordatorios = new Intent(MenuPrincipal.this, RecordatoriosActivity.class);
+                        startActivity(irARecordatorios);
+                        break;
 
                     case R.id.itTareas:
-                        doChange=false;
+
                         doChange = true;
                         fragment = new JornalesFragment();
                         break;
                     case R.id.itPerfil:
-                        doChange=false;
+
                         doChange = true;
                         fragment = new PerfilFragment();
                         break;
@@ -243,8 +259,9 @@ public class MenuPrincipal extends AppCompatActivity {
                         break;
                 }
                 if(doChange){
-                    uncheckItems(navigationView);
+
                     changeFragment(fragment,menuItem);
+
 
                 }
                 return true;
@@ -273,13 +290,18 @@ public class MenuPrincipal extends AppCompatActivity {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.content_frame,fragment)
+                .addToBackStack(null)
                 .commit();
 
         if (item!=null){
             item.setChecked(true);
             getSupportActionBar().setTitle("ProCampo - "+item.getTitle());
+            item.setChecked(false);
         }
+
+
         drawerLayout.closeDrawers();
+
     }
 
     private void setToolbar() {

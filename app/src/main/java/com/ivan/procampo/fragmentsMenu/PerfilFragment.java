@@ -1,5 +1,6 @@
 package com.ivan.procampo.fragmentsMenu;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -37,6 +39,8 @@ public class PerfilFragment extends Fragment {
 
     FirebaseAuth mAuth;
     DatabaseReference databaseReference;
+
+    private Button btnCompartir;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -93,6 +97,21 @@ public class PerfilFragment extends Fragment {
         textoNombre = vista.findViewById(R.id.textViewNombrePefil);
         textoCorreo = vista.findViewById(R.id.textViewCorreoPerfil);
         photoImageView = vista.findViewById(R.id.imagenDelPerfil);
+
+        btnCompartir = vista.findViewById(R.id.btnCompartir);
+
+        btnCompartir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent compartir = new Intent(android.content.Intent.ACTION_SEND);
+                compartir.setType("text/plain");
+                String mensaje = "Te recomiendo ProCampo para organizar tu olivar mejor\n";
+                mensaje = mensaje +"https://github.com/ivanperezmolina/ProCampo";
+                compartir.putExtra(android.content.Intent.EXTRA_SUBJECT, "ProCampo");
+                compartir.putExtra(android.content.Intent.EXTRA_TEXT, mensaje);
+                startActivity(Intent.createChooser(compartir, "Compartir vía"));
+            }
+        });
 
         mAuth=FirebaseAuth.getInstance();
 

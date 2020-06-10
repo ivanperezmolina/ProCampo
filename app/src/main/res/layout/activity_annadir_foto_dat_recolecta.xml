@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".funcionalidades.AnnadirFotoValeRecolecta"
-    android:orientation="vertical">
+    tools:context=".funcionalidades.AnnadirFotoDatRecolecta">
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/foto_vale"
+        android:text="@string/foto_dat"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,7 +23,7 @@
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/foto_vale_des"
+        android:text="@string/foto_dat_des"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +31,7 @@
         app:layout_constraintVertical_bias="0.11" />
 
     <ImageView
-        android:id="@+id/SubirImagen"
+        android:id="@+id/SubirImagenDat"
         android:layout_width="315dp"
         android:layout_height="264dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -43,16 +42,16 @@
         />
 
     <Button
-    android:id="@+id/btnSubir"
-    android:layout_width="395dp"
-    android:layout_height="52dp"
-    android:background="@color/colorPrimary"
-    android:text="@string/selec_img"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.498"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.859" />
+        android:id="@+id/btnSubirDat"
+        android:layout_width="395dp"
+        android:layout_height="52dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/selec_img"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.859" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

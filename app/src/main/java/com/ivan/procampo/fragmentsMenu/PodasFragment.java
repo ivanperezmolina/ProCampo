@@ -187,7 +187,7 @@ public class PodasFragment extends Fragment {
                 irAEditarPoda.putExtra("codigoPoda",poda.getCodigoPoda());
                 irAEditarPoda.putExtra("cultivoPoda",poda.getCultivoPoda());
                 irAEditarPoda.putExtra("fechaPoda",poda.getFechaPoda());
-
+                listaPodas.clear();
                 startActivity(irAEditarPoda);
 
                 break;
@@ -209,10 +209,11 @@ public class PodasFragment extends Fragment {
 
                         Podas podas = listaPodas.get(adapter.getIndex());
                         String codigo = podas.getCodigoPoda();
-
+                        listaPodas.clear();
                         mDatabase.child("PODAS").child(mAuth.getCurrentUser().getUid()).child(codigo).removeValue();
-
-                        listaPodas.notify();
+                        listaPodas.clear();
+                        listaPodas.remove(true);
+                        //listaPodas.notify();
 
                         //listaCultivos.clear();
 

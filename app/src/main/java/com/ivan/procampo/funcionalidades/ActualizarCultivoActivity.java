@@ -24,6 +24,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ivan.procampo.R;
+import com.ivan.procampo.adaptadores.CultivoAdapter;
+import com.ivan.procampo.modelos.Cultivos;
 import com.ivan.procampo.modelos.TiposAceitunas;
 
 import java.util.ArrayList;
@@ -52,6 +54,8 @@ public class ActualizarCultivoActivity extends AppCompatActivity {
     String miTipo = "";
 
     private String tipoAceitunaSeleccionado = "Sin especificar";
+
+    private CultivoAdapter adapter;
 
 
     @Override
@@ -82,10 +86,14 @@ public class ActualizarCultivoActivity extends AppCompatActivity {
         Bundle extrasDelCultivo = getIntent().getExtras();
 
         final String elCodigo = extrasDelCultivo.getString("codigoCultivo");
-        String elNombre = extrasDelCultivo.getString("nombreCultivo");
-        String laHectarea = extrasDelCultivo.getString("hectareasCultivos");
+        final String elNombre = extrasDelCultivo.getString("nombreCultivo");
+        final String laHectarea = extrasDelCultivo.getString("hectareasCultivos");
         String elTipo = extrasDelCultivo.getString("tipoDeAceituna");
-        String laLocalizacion = extrasDelCultivo.getString("localizacionCultivo");
+        final String laLocalizacion = extrasDelCultivo.getString("localizacionCultivo");
+
+        //final ArrayList<Cultivos> laListaCultivos = (ArrayList<Cultivos>) extrasDelCultivo.get("lista");
+
+
 
         miTipo =extrasDelCultivo.getString("tipoDeAceituna");
 
@@ -97,7 +105,7 @@ public class ActualizarCultivoActivity extends AppCompatActivity {
         //tipoAceituna.set
         localizacion.setText(laLocalizacion);
 
-        Toast.makeText(ActualizarCultivoActivity.this,"Llega :"+tipoAceitunaSeleccionado,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(ActualizarCultivoActivity.this,"Llega :"+tipoAceitunaSeleccionado,Toast.LENGTH_SHORT).show();
 
         obtenerDatosTipoAceitunas();
 
@@ -105,8 +113,9 @@ public class ActualizarCultivoActivity extends AppCompatActivity {
         botonCancelarActualizarCultivo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+           finish();
             }
+
         });
 
         botonActualizarCultivo.setOnClickListener(new View.OnClickListener() {
@@ -125,13 +134,18 @@ public class ActualizarCultivoActivity extends AppCompatActivity {
                 cultivoMap.put("tipoDeAceituna",actTipoCultivo);
                 cultivoMap.put("localizacionCultivo",actLocalizacionCultivo);
 
-                Toast.makeText(ActualizarCultivoActivity.this,elCodigo,Toast.LENGTH_SHORT).show();
+
+                //Toast.makeText(ActualizarCultivoActivity.this,elCodigo,Toast.LENGTH_SHORT).show();
+
+                //adapter = new CultivoAdapter(cultivoMap,R.layout.cultivo_view);
 
                 databaseReference.child("CULTIVOS").child(mAuth.getCurrentUser().getUid()).child(elCodigo).updateChildren(cultivoMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(ActualizarCultivoActivity.this,"Cultivo actualizado con exito",Toast.LENGTH_SHORT).show();
+
                         finish();
+
 
 
 
