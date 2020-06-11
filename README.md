@@ -35,7 +35,7 @@ En este repositorio se irá actualizando la información de la APP ProCampo así
 # APLICACIÓN (ANDROID)
 
 # MÓDULO DE SISTEMAS DE GESTIÓN EMPRESARIAL
-Se puede encontrar un documento PDF donde se explica todo lo relacionado con dicho módulo.
+Se puede encontrar un documento PDF donde se explica todo lo relacionado con dicho módulo.<br>
 📃[PDF MODULO SGE](https://github.com/ivanperezmolina/ProCampo/blob/master/Proyecto%20ProCampo%20Modulo%20SGE.pdf)
 
 # MÓDULO DE DESARROLLO DE INTERFACES
