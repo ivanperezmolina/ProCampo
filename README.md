@@ -30,7 +30,8 @@ En este repositorio se irá actualizando la información de la APP ProCampo así
 📹[Vídeo explicativo](https://youtu.be/ZRGfduFV4BE)
 
 # TUTORIAL DE USO DE LA APLICACION 
-
+Se puede encontrar un manual con el funcionamiento de ProCampo en el siguiente enlace <br>
+🛂[MANUAL DEL USUARIO](https://github.com/ivanperezmolina/ProCampo/blob/master/Proyecto%20ProCampo%20Tutorial.pdf)
 
 # APLICACIÓN (ANDROID)
 
