@@ -46,6 +46,7 @@ Se puede encontrar un documento PDF donde se explica todo lo relacionado con dic
 # DIARIO SEMANAL DE LA EVOLUCIÓN DEL PROYECTO
 En el siguiente PDF se puede ver a modo de diario semanal la evolución de la aplicación ProCampo <br>
 📰[DIARIO SEMANAL PROCAMPO](https://github.com/ivanperezmolina/ProCampo/blob/master/DIARIO%20SEMANAL%20DE%20LA%20EVOLUCI%C3%93N%20DEL%20PROYECTO.pdf)
+💼[ACCESO AL SISTEMA ERP DE ODOO](https://edu-procampo.odoo.com/web/login)
 
 <hr>
 
