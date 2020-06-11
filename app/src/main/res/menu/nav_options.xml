@@ -33,7 +33,7 @@
             android:title="@string/sulfatos" />
             </menu>
         </item>
-        <item android:title="@string/info_trat">
+        <item android:title="@string/funcionalidades">
         <menu>
             <item
                 android:id="@+id/itFertilizantes"
@@ -47,15 +47,7 @@
 
         </menu>
         </item>
-        <item android:title="@string/control_diario">
-            <menu>
-                <item
-                    android:id="@+id/itTareas"
-                    android:icon="@drawable/lapiz"
-                    android:title="@string/jornales" />
 
-            </menu>
-        </item>
         <item android:title="@string/opciones">
             <menu>
 

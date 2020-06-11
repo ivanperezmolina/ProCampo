@@ -2,7 +2,9 @@ package com.ivan.procampo.funcionalidades;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,8 +25,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.ivan.procampo.MainActivity;
+import com.ivan.procampo.MenuPrincipal;
 import com.ivan.procampo.R;
 import com.ivan.procampo.adaptadores.CultivoAdapter;
+import com.ivan.procampo.fragmentsMenu.CultivosFragment;
 import com.ivan.procampo.modelos.Cultivos;
 import com.ivan.procampo.modelos.TiposAceitunas;
 
@@ -56,6 +61,11 @@ public class ActualizarCultivoActivity extends AppCompatActivity {
     private String tipoAceitunaSeleccionado = "Sin especificar";
 
     private CultivoAdapter adapter;
+
+    int code = 0;
+
+
+
 
 
     @Override
@@ -91,7 +101,7 @@ public class ActualizarCultivoActivity extends AppCompatActivity {
         String elTipo = extrasDelCultivo.getString("tipoDeAceituna");
         final String laLocalizacion = extrasDelCultivo.getString("localizacionCultivo");
 
-        //final ArrayList<Cultivos> laListaCultivos = (ArrayList<Cultivos>) extrasDelCultivo.get("lista");
+       // final ArrayList<Cultivos> laListaCultivos = (ArrayList<Cultivos>) extrasDelCultivo.get("lista");
 
 
 
@@ -113,7 +123,9 @@ public class ActualizarCultivoActivity extends AppCompatActivity {
         botonCancelarActualizarCultivo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-           finish();
+                finish();
+
+
             }
 
         });
@@ -121,6 +133,7 @@ public class ActualizarCultivoActivity extends AppCompatActivity {
         botonActualizarCultivo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Map<String,Object> cultivoMap = new HashMap<>();
                 final String actCodigoCultivo = codigo.getText().toString().trim();
                 final String actNombreCultivo = nombre.getText().toString().trim();
@@ -149,6 +162,7 @@ public class ActualizarCultivoActivity extends AppCompatActivity {
 
 
 
+
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -159,9 +173,12 @@ public class ActualizarCultivoActivity extends AppCompatActivity {
                 });
 
 
+
             }
         });
     }
+
+
 
     public void obtenerDatosTipoAceitunas(){
         final List<TiposAceitunas> tiposAceitunas = new ArrayList<>();

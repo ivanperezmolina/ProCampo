@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,12 +20,16 @@ import com.bumptech.glide.request.RequestOptions;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ivan.procampo.R;
+
+import org.w3c.dom.Text;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -40,7 +45,12 @@ public class PerfilFragment extends Fragment {
     FirebaseAuth mAuth;
     DatabaseReference databaseReference;
 
-    private Button btnCompartir;
+    FloatingActionButton fab;
+
+    TextView contadorCultivos;
+    TextView contadorRecolectas;
+    TextView contadorPodas;
+    TextView contadorSulfatos;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -98,9 +108,14 @@ public class PerfilFragment extends Fragment {
         textoCorreo = vista.findViewById(R.id.textViewCorreoPerfil);
         photoImageView = vista.findViewById(R.id.imagenDelPerfil);
 
-        btnCompartir = vista.findViewById(R.id.btnCompartir);
+        contadorCultivos = vista.findViewById(R.id.contadorCultivos);
+        contadorRecolectas = vista.findViewById(R.id.contadorRecolectas);
+        contadorPodas= vista.findViewById(R.id.contadorPodas);
+        contadorSulfatos = vista.findViewById(R.id.contadorSulfatos);
 
-        btnCompartir.setOnClickListener(new View.OnClickListener() {
+        fab = vista.findViewById(R.id.btnCompartir);
+
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent compartir = new Intent(android.content.Intent.ACTION_SEND);
@@ -115,9 +130,94 @@ public class PerfilFragment extends Fragment {
 
         mAuth=FirebaseAuth.getInstance();
 
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+
         traerInfoDelUsuario();
 
+        contarElementos();
+
         return vista ;
+    }
+
+    private void contarElementos(){
+        /*Recolectas*/
+        databaseReference.child("RECOLECTAS").child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    long numeroRecolectas = dataSnapshot.getChildrenCount();
+
+                    Log.i("NUMERO DE RECOLECTAS", String.valueOf(numeroRecolectas));
+
+                    contadorRecolectas.setText(String.valueOf(numeroRecolectas));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+        /*Cultivos*/
+        databaseReference.child("CULTIVOS").child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    long numeroCultivos = dataSnapshot.getChildrenCount();
+
+                    Log.i("NUMERO DE CULTIVOS", String.valueOf(numeroCultivos));
+
+                    contadorCultivos.setText(String.valueOf(numeroCultivos));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+        /*Podas*/
+        databaseReference.child("PODAS").child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    long numeroPodas = dataSnapshot.getChildrenCount();
+
+                    Log.i("NUMERO DE PODAS", String.valueOf(numeroPodas));
+
+                    contadorPodas.setText(String.valueOf(numeroPodas));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+        /*Sulfatos*/
+        databaseReference.child("SULFATOS").child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    long numeroSulfatos = dataSnapshot.getChildrenCount();
+
+                    Log.i("NUMERO DE SULFATOS   ", String.valueOf(numeroSulfatos));
+
+                    contadorSulfatos.setText(String.valueOf(numeroSulfatos));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void traerInfoDelUsuario() {

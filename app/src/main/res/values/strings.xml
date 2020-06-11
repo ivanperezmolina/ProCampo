@@ -137,6 +137,11 @@
     <string name="dato">Nombre del recordatorio</string>
     <string name="guardar">Guardar Recordatorio</string>
     <string name="eliminar_re">Eliminar recordatorio</string>
+    <string name="p_cultivos">Cultivos</string>
+    <string name="p_recolectas">Recolectas</string>
+    <string name="p_podas">Podas</string>
+    <string name="p_sulfatos">Sulfatos</string>
+    <string name="funcionalidades">Funcionalidades</string>
 
 
 </resources>

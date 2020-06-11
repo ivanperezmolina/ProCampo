@@ -73,6 +73,8 @@ public class CultivosFragment extends Fragment {
 
     private CultivoAdapter adapter;
 
+    int code = 0;
+
     //private SwipeRefreshLayout swipeContainer;
 
     public CultivosFragment() {
@@ -109,6 +111,8 @@ public class CultivosFragment extends Fragment {
         }
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
+
     }
 
     @Override
@@ -133,9 +137,7 @@ public class CultivosFragment extends Fragment {
         //Lanzamos el metodo para llenar la lista
 
 
-        if (listaCultivos.isEmpty()) {
-            llenarLista();
-        }else {
+        if (listaCultivos.isEmpty()){
             listaCultivos.clear();
             llenarLista();
         }
@@ -172,7 +174,7 @@ public class CultivosFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //Vamos a la activity de añadir cultivo
-                listaCultivos.clear();
+                //listaCultivos.clear();
                 Intent nuevoCultivo = new Intent(getActivity(), AnnadirCultivoActivity.class);
                 startActivity(nuevoCultivo);
 
@@ -191,13 +193,22 @@ public class CultivosFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        if (code == 1){
+            listaCultivos.clear();
+
+        }
+/*
+        if (listaCultivos.isEmpty()){
+            listaCultivos.clear();
+            llenarLista();
+        }*/
     }
 
     /**
      * Metodo creado para coger los datos de Firebase
      *
      */
-    private void llenarLista() {
+    public  void llenarLista() {
         mDatabase.child("CULTIVOS").child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -232,16 +243,22 @@ public class CultivosFragment extends Fragment {
         });
     }
 
+
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
 
         MenuInflater inflater = getActivity().getMenuInflater();
         inflater.inflate(R.menu.menu_contextual_cultivos,menu);
+
+
+
     }
+
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
+        //listaCultivos.clear();
 
         switch (item.getItemId()){
 
@@ -259,11 +276,12 @@ public class CultivosFragment extends Fragment {
                 irAEditarCultivo.putExtra("hectareasCultivos",cultivo.getHectareasCultivo());
                 irAEditarCultivo.putExtra("tipoDeAceituna",cultivo.getTipoDeAceituna());
                 irAEditarCultivo.putExtra("localizacionCultivo",cultivo.getLocalizacionCultivo());
-                irAEditarCultivo.putExtra("lista",listaCultivos);
-
+                //irAEditarCultivo.putExtra("lista",listaCultivos);
+                code = 1;
                 listaCultivos.clear();
                 //Toast.makeText(getActivity(),"Le mando: "+cultivo.getNombreCultivo(),Toast.LENGTH_LONG).show();
                 startActivity(irAEditarCultivo);
+
 
 
 
@@ -329,4 +347,7 @@ public class CultivosFragment extends Fragment {
 
 
     }
+
+
+
 }

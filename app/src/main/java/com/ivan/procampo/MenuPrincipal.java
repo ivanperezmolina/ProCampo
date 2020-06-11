@@ -223,11 +223,7 @@ public class MenuPrincipal extends AppCompatActivity {
                         startActivity(irARecordatorios);
                         break;
 
-                    case R.id.itTareas:
 
-                        doChange = true;
-                        fragment = new JornalesFragment();
-                        break;
                     case R.id.itPerfil:
 
                         doChange = true;

@@ -20,23 +20,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.026"
+        app:srcCompat="@drawable/logotipo_procampo_2"
         />
+
 
     <TextView
         android:id="@+id/texto_bienvenida_login"
         android:layout_width="156dp"
         android:layout_height="28dp"
+        android:gravity="center"
         android:text="@string/login_email_pass"
         android:textSize="20dp"
         android:typeface="serif"
-        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.556"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.214" />
-
+        app:layout_constraintVertical_bias="0.224" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/mailLogin"
@@ -47,7 +48,7 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.275">
+        app:layout_constraintVertical_bias="0.32999998">
 
         <EditText
             android:id="@+id/correoLogin"
@@ -73,7 +74,7 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.376"
+        app:layout_constraintVertical_bias="0.43"
         app:passwordToggleEnabled="true">
 
         <EditText
@@ -106,7 +107,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contraseñaLogin"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.00999999" />
 
     <Button
         android:id="@+id/botonCancelarLogin"
@@ -120,7 +121,7 @@
         app:layout_constraintHorizontal_bias="0.056"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contraseñaLogin"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.01999998" />
 
     <Button
         android:id="@+id/botonReset"
@@ -135,8 +136,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contraseñaLogin"
-        app:layout_constraintVertical_bias="0.122" />
-
+        app:layout_constraintVertical_bias="0.19999999" />
 
 
     <ImageView
@@ -148,7 +148,7 @@
         app:layout_constraintHorizontal_bias="0.583"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.653"
+        app:layout_constraintVertical_bias="0.73"
         app:srcCompat="@drawable/barra" />
 
     <com.google.android.gms.common.SignInButton
@@ -160,7 +160,7 @@
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.815">
+        app:layout_constraintVertical_bias="0.88">
 
 
     </com.google.android.gms.common.SignInButton>
@@ -170,14 +170,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.882" />
-
-
+        app:layout_constraintVertical_bias="0.94" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

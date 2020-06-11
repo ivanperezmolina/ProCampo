@@ -129,4 +129,9 @@
     <string name="dato">Reminder name</string>
     <string name="guardar">Save Remider</string>
     <string name="eliminar_re">Delete reminder</string>
+    <string name="p_cultivos">Crops</string>
+    <string name="p_recolectas">Collections</string>
+    <string name="p_podas">Prunings</string>
+    <string name="p_sulfatos">Sulfates</string>
+    <string name="funcionalidades">Functionalities</string>
 </resources>

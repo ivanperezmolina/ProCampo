@@ -19,8 +19,9 @@
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:src="@drawable/fotopordefectoperfil"
-        android:layout_marginTop="105dp"
-        android:layout_marginLeft="110dp"/>
+        android:layout_gravity="center"
+        android:layout_marginTop="-165dp"
+        />
 
     //Nombre y correo electronico
 
@@ -28,33 +29,131 @@
         android:id="@+id/textViewNombrePefil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="-30dp"
         android:text="Iván Pérez Molina"
-        android:textStyle="bold"
-        android:textColor="#FFF"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:layout_marginTop="320dp"
-        android:layout_marginLeft="77dp"
-        />
+        android:textColor="#FFF"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textViewCorreoPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_marginLeft="77dp"
-        android:layout_marginTop="350dp"
+        android:layout_gravity="center"
         android:text="ivan.perez.8500@gmail.com"
         android:textColor="#FFF"
         android:textStyle="italic" />
 
-    <Button
-        android:id="@+id/btnCompartir"
-        android:layout_width="161dp"
-        android:layout_height="68dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="200dp"
-        android:background="@color/colorPrimary"
-        android:text="COMPARTIR LA APLICACIÓN" />
+
+
+  <com.google.android.material.floatingactionbutton.FloatingActionButton
+     android:id="@+id/btnCompartir"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="bottom|end"
+      android:layout_margin="15dp"
+      app:srcCompat="@drawable/ic_baseline_share_24"
+      />
+
+    <TextView
+        android:id="@+id/contadorCultivos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="30dp"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:layout_marginTop="450dp"
+        android:layout_marginLeft="80dp"
+        />
+
+    <TextView
+        android:id="@+id/contadorRecolectas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="30dp"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:layout_marginTop="450dp"
+        android:layout_marginLeft="280dp"
+        />
+
+    <TextView
+        android:id="@+id/contadorPodas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="30dp"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:layout_marginTop="550dp"
+        android:layout_marginLeft="80dp"
+        />
+
+    <TextView
+        android:id="@+id/contadorSulfatos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="30dp"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:layout_marginTop="550dp"
+        android:layout_marginLeft="280dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/p_cultivos"
+        android:textSize="18dp"
+        android:textStyle="bold|italic"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="490dp"
+        android:layout_marginLeft="60dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/p_recolectas"
+        android:textSize="18dp"
+        android:textStyle="bold|italic"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="490dp"
+        android:layout_marginLeft="250dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/p_podas"
+        android:textSize="18dp"
+        android:textStyle="bold|italic"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="590dp"
+        android:layout_marginLeft="65dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/p_sulfatos"
+        android:textSize="18dp"
+        android:textStyle="bold|italic"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="590dp"
+        android:layout_marginLeft="250dp"
+        />
+
+
+
+
+
+
+
 
 
 </FrameLayout>

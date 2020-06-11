@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -130,7 +131,7 @@ public class RecolectasFragment extends Fragment {
         //Lanzamos metodo para llenar la lista
 
 
-
+contarElementos();
 
         //Pasamos el parametro
         registerForContextMenu(recyclerViewRecolecta);
@@ -189,6 +190,24 @@ public class RecolectasFragment extends Fragment {
             }
         });
 
+    }
+
+    private void contarElementos(){
+        mDatabase.child("RECOLECTAS").child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    long numero = dataSnapshot.getChildrenCount();
+
+                    Log.i("NUMERO DE RECOLECTAS", String.valueOf(numero));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override

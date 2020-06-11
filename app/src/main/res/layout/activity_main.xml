@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+android:background="@drawable/difuminado"
     tools:context=".MainActivity">
 
     <!--IMAGEN-->
@@ -12,7 +12,7 @@
     <!--Bienvenido a GlobalCampo-->
 
     <ImageView
-        android:id="@+id/globalcampo_logo"
+        android:id="@+id/logotipo_procampo_2"
         android:layout_width="413dp"
         android:layout_height="208dp"
         app:layout_constraintBottom_toBottomOf="parent"
