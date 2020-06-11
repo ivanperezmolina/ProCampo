@@ -29,6 +29,8 @@ En este repositorio se irá actualizando la información de la APP ProCampo así
 
 📹[Vídeo explicativo](https://youtu.be/ZRGfduFV4BE)
 
+# TUTORIAL DE USO DE LA APLICACION 
+
 
 # APLICACIÓN (ANDROID)
 
