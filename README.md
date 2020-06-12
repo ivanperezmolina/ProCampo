@@ -56,7 +56,8 @@ Se puede encontrar un documento PDF donde se explica todo lo relacionado con dic
 
 # MÓDULO DE DESARROLLO DE INTERFACES
 Se puede visualizar los archivos brutos o desde el alojamiento web en 000webhost<br>
-✅     -[ARCHIVOS BRUTOS](https://github.com/ivanperezmolina/ProCampo/tree/master/disennointerfaz)
+📃     -[PDF MODULO DI](https://github.com/ivanperezmolina/ProCampo/blob/master/Procampo%20DI.pdf)<br>
+✅     -[ARCHIVOS BRUTOS](https://github.com/ivanperezmolina/ProCampo/tree/master/disennointerfaz)<br>
 🌍     -[PÁGINA WEB](https://procampoivan.000webhostapp.com/)
 
 
