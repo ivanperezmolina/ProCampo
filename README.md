@@ -37,11 +37,11 @@ En aspectos técnicos contaria con partes como un login con todas las opciones d
 
 En este repositorio se irá actualizando la información de la APP ProCampo así como se irá subiendo código poco a poco
 
-📹[Vídeo explicativo](https://youtu.be/ZRGfduFV4BE)
+📹   -[Vídeo explicativo](https://youtu.be/ZRGfduFV4BE)
 
 # TUTORIAL DE USO DE LA APLICACION 
 Se puede encontrar un manual con el funcionamiento de ProCampo en el siguiente enlace <br>
-🛂[MANUAL DEL USUARIO](https://github.com/ivanperezmolina/ProCampo/blob/master/Proyecto%20ProCampo%20Tutorial.pdf)
+🛂 [MANUAL DEL USUARIO](https://github.com/ivanperezmolina/ProCampo/blob/master/Proyecto%20ProCampo%20Tutorial.pdf)
 
 # Presentación de la aplicación (en PDF)
 A continuación se puede acceder a una presentación donde expongo brevemente de que va mi proyecto y todo lo utilizado <br>
