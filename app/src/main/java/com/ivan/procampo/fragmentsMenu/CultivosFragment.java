@@ -1,5 +1,6 @@
 package com.ivan.procampo.fragmentsMenu;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -37,6 +38,7 @@ import com.ivan.procampo.R;
 import com.ivan.procampo.adaptadores.CultivoAdapter;
 import com.ivan.procampo.funcionalidades.ActualizarCultivoActivity;
 import com.ivan.procampo.funcionalidades.AnnadirCultivoActivity;
+import com.ivan.procampo.funcionalidades.EliminarCultivo;
 import com.ivan.procampo.modelos.Cultivos;
 
 import java.util.ArrayList;
@@ -134,15 +136,6 @@ public class CultivosFragment extends Fragment {
         //Lanzamos el LayoutManager
         recyclerViewCultivos.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        //Lanzamos el metodo para llenar la lista
-
-
-        if (listaCultivos.isEmpty()){
-            listaCultivos.clear();
-            llenarLista();
-        }
-
-
 
 
         //Pasamos el parametro
@@ -174,7 +167,7 @@ public class CultivosFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //Vamos a la activity de añadir cultivo
-                //listaCultivos.clear();
+                listaCultivos.clear();
                 Intent nuevoCultivo = new Intent(getActivity(), AnnadirCultivoActivity.class);
                 startActivity(nuevoCultivo);
 
@@ -193,15 +186,19 @@ public class CultivosFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        if (code == 1){
-            listaCultivos.clear();
 
-        }
-/*
-        if (listaCultivos.isEmpty()){
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (listaCultivos.size()==0){
+            llenarLista();
+        }else if (listaCultivos.size()!=0){
             listaCultivos.clear();
             llenarLista();
-        }*/
+        }
+
     }
 
     /**
@@ -253,6 +250,7 @@ public class CultivosFragment extends Fragment {
 
 
 
+
     }
 
 
@@ -260,15 +258,21 @@ public class CultivosFragment extends Fragment {
     public boolean onContextItemSelected(MenuItem item) {
         //listaCultivos.clear();
 
+
         switch (item.getItemId()){
 
             //Editar cultivo
             case R.id.ctxModCultivo:
 
+
+
                 Cultivos cultivo = listaCultivos.get(adapter.getIndex());
 
 
                 //Vamos a la actividad, pasando los datos
+
+                listaCultivos.clear();
+
                 Intent irAEditarCultivo = new Intent(getActivity(), ActualizarCultivoActivity.class);
 
                 irAEditarCultivo.putExtra("codigoCultivo",cultivo.getCodigoCultivo());
@@ -277,65 +281,25 @@ public class CultivosFragment extends Fragment {
                 irAEditarCultivo.putExtra("tipoDeAceituna",cultivo.getTipoDeAceituna());
                 irAEditarCultivo.putExtra("localizacionCultivo",cultivo.getLocalizacionCultivo());
                 //irAEditarCultivo.putExtra("lista",listaCultivos);
-                code = 1;
-                listaCultivos.clear();
+
                 //Toast.makeText(getActivity(),"Le mando: "+cultivo.getNombreCultivo(),Toast.LENGTH_LONG).show();
                 startActivity(irAEditarCultivo);
 
 
-
-
-
-
-
-                //
-
-                //listaCultivos.clear();
-
-                //llenarLista();
 
                 break;
 
             case R.id.ctxDelCultivo:
                 Cultivos cultivoAdios = listaCultivos.get(adapter.getIndex());
 
-                String cultivoString = cultivoAdios.getNombreCultivo();
+                listaCultivos.clear();
 
-                AlertDialog.Builder myBuild = new AlertDialog.Builder(getContext());
+                Intent irABorrarCultivo = new Intent(getActivity(), EliminarCultivo.class);
 
-                myBuild.setTitle(R.string.confi_borrar);
-                myBuild.setMessage("¿Quiere eliminar el cultivo "+cultivoString+" ?");
-                //SI
-                myBuild.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                irABorrarCultivo.putExtra("codigoCultivo",cultivoAdios.getCodigoCultivo());
 
-                        Cultivos cultivos = listaCultivos.get(adapter.getIndex());
-                        String codigo = cultivos.getCodigoCultivo();
-                        listaCultivos.clear();
-                        mDatabase.child("CULTIVOS").child(mAuth.getCurrentUser().getUid()).child(codigo).removeValue();
-                        listaCultivos.clear();
-                        listaCultivos.remove(true);
-                        //listaCultivos.notify();
+                startActivity(irABorrarCultivo);
 
-                        //listaCultivos.clear();
-
-                        //llenarLista();
-
-                    }
-                });
-
-                //NO
-                myBuild.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-                //Construir el alert
-                AlertDialog dialog = myBuild.create();
-                dialog.show();
 
 
                 break;

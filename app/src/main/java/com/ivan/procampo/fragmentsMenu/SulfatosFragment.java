@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -37,6 +38,7 @@ import com.ivan.procampo.funcionalidades.ActualizarPodaActivity;
 import com.ivan.procampo.funcionalidades.ActualizarSulfatoActivity;
 import com.ivan.procampo.funcionalidades.AnnadirNuevoSulfato;
 import com.ivan.procampo.funcionalidades.AnnadirPodaActivity;
+import com.ivan.procampo.funcionalidades.EliminarSulfato;
 import com.ivan.procampo.modelos.Podas;
 import com.ivan.procampo.modelos.Sulfatos;
 
@@ -149,8 +151,6 @@ public class SulfatosFragment extends Fragment {
         //Lanzamos el Layout Manager
         recyclerViewSulfatos.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        //Lanzamos metodo para llenar la lista
-        llenarLista();
 
         //Pasamos el parametro
         registerForContextMenu(recyclerViewSulfatos);
@@ -168,6 +168,23 @@ public class SulfatosFragment extends Fragment {
 
         // Inflate the layout for this fragment
         return vista;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (listaSulfatos.size()==0){
+            llenarLista();
+        }else if (listaSulfatos.size()!=0){
+            listaSulfatos.clear();
+            llenarLista();
+        }
+
     }
 
     /**
@@ -220,7 +237,7 @@ public class SulfatosFragment extends Fragment {
         switch (item.getItemId()){
             case R.id.ctxModSulfato:
                 final Sulfatos sulfato = listaSulfatos.get(adapter.getIndex());
-
+                listaSulfatos.clear();
                 //Vamos a la actividad, pasando los datos
                 Intent irAEditarSulfato = new Intent(getActivity(), ActualizarSulfatoActivity.class);
 
@@ -228,7 +245,7 @@ public class SulfatosFragment extends Fragment {
                 irAEditarSulfato.putExtra("cultivoSulfato",sulfato.getCultivoSulfato());
                 irAEditarSulfato.putExtra("fechaSulfato",sulfato.getFechaSulfato());
                 irAEditarSulfato.putExtra("tratamientoSulfato",sulfato.getTratamientoSulfato());
-                listaSulfatos.clear();
+
                 startActivity(irAEditarSulfato);
 
                 break;
@@ -237,45 +254,18 @@ public class SulfatosFragment extends Fragment {
 
                 Sulfatos sulfatoAdios = listaSulfatos.get(adapter.getIndex());
 
-                String cultivoSulfato = sulfatoAdios.getCultivoSulfato();
-                String fechaSulfato = sulfatoAdios.getFechaSulfato();
+                listaSulfatos.clear();
 
-                AlertDialog.Builder myBuild = new AlertDialog.Builder(getContext());
+                Intent irABorrarSulfato = new Intent(getActivity(), EliminarSulfato.class);
 
-                myBuild.setTitle("CONFIRMACIÓN DE BORRADO");
-                myBuild.setMessage("¿Quiere eliminar el sulfato en el cultivo "+cultivoSulfato+" con fecha "+fechaSulfato+" ?");
-                //SI
-                myBuild.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                irABorrarSulfato.putExtra("codigoSulfato",sulfatoAdios.getCodigoSulfato());
 
-                        Sulfatos sulfatos = listaSulfatos.get(adapter.getIndex());
-                        String codigo = sulfatos.getCodigoSulfato();
+                startActivity(irABorrarSulfato);
 
-                        listaSulfatos.clear();
-                        mDatabase.child("SULFATOS").child(mAuth.getCurrentUser().getUid()).child(codigo).removeValue();
-                        listaSulfatos.clear();
-                        listaSulfatos.remove(true);
-                        //listaSulfatos.notify();
 
-                        //listaCultivos.clear();
 
-                        //llenarLista();
 
-                    }
-                });
 
-                //NO
-                myBuild.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-                //Construir el alert
-                AlertDialog dialog = myBuild.create();
-                dialog.show();
 
 
                 break;

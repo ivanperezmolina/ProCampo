@@ -33,6 +33,8 @@ import com.ivan.procampo.funcionalidades.ActualizarRecolectaActivity;
 import com.ivan.procampo.funcionalidades.AnnadirFotoDatRecolecta;
 import com.ivan.procampo.funcionalidades.AnnadirFotoValeRecolecta;
 import com.ivan.procampo.funcionalidades.AnnadirRecolectaActivity;
+import com.ivan.procampo.funcionalidades.EliminarCultivo;
+import com.ivan.procampo.funcionalidades.EliminarRecolecta;
 import com.ivan.procampo.modelos.Cultivos;
 import com.ivan.procampo.modelos.Recolectas;
 
@@ -106,7 +108,7 @@ public class RecolectasFragment extends Fragment {
 //Declaro las variables para autenticación y BBDD
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        llenarLista();
+       
 
     }
 
@@ -128,10 +130,7 @@ public class RecolectasFragment extends Fragment {
         //Lanzamos el Layout Manager
         recyclerViewRecolecta.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        //Lanzamos metodo para llenar la lista
 
-
-contarElementos();
 
         //Pasamos el parametro
         registerForContextMenu(recyclerViewRecolecta);
@@ -156,6 +155,21 @@ contarElementos();
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (listaRecolectas.size()==0){
+            llenarLista();
+        }else if (listaRecolectas.size()!=0){
+            listaRecolectas.clear();
+            llenarLista();
+        }
+
+    }
+
+
+
 
     /**
      * Método creado para coger los datos de Firebase
@@ -192,23 +206,6 @@ contarElementos();
 
     }
 
-    private void contarElementos(){
-        mDatabase.child("RECOLECTAS").child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()){
-                    long numero = dataSnapshot.getChildrenCount();
-
-                    Log.i("NUMERO DE RECOLECTAS", String.valueOf(numero));
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
@@ -224,9 +221,9 @@ contarElementos();
             switch (item.getItemId()){
                 //EDITAR RECOLECTA
                 case R.id.ctxModRecolecta:
-                    vengoDeFoto = false;
-                    final Recolectas recolecta = listaRecolectas.get(adapter.getIndex());
 
+                    final Recolectas recolecta = listaRecolectas.get(adapter.getIndex());
+                    listaRecolectas.clear();
                     //Vamos a la actividad, pasando los datos
                     Intent irAEditarRecolecta = new Intent(getActivity(), ActualizarRecolectaActivity.class);
 
@@ -235,54 +232,24 @@ contarElementos();
                     irAEditarRecolecta.putExtra("fechaRecolecta",recolecta.getFechaRecolecta());
                     irAEditarRecolecta.putExtra("kilosRecolecta",recolecta.getKilosRecolecta());
 
-                    listaRecolectas.clear();
+
 
                     startActivity(irAEditarRecolecta);
 
                     break;
 
                     case R.id.ctxDelRecolecta:
-                        vengoDeFoto = false;
+
                     Recolectas recolectaAdios = listaRecolectas.get(adapter.getIndex());
 
-                    String cultivoRecolecta = recolectaAdios.getCultivoRecolecta();
-                    String fechaRecolecta = recolectaAdios.getFechaRecolecta();
+                    listaRecolectas.clear();
 
-                    AlertDialog.Builder myBuild = new AlertDialog.Builder(getContext());
+                        Intent irABorrarRecolecta = new Intent(getActivity(), EliminarRecolecta.class);
 
-                    myBuild.setTitle(R.string.confi_borrar);
-                    myBuild.setMessage("¿Quiere eliminar la recolecta en el cultivo "+cultivoRecolecta+" con fecha "+fechaRecolecta+" ?");
-                    //SI
-                    myBuild.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
+                        irABorrarRecolecta.putExtra("codigoRecolecta",recolectaAdios.getCodigoRecolecta());
 
-                            Recolectas recolectas = listaRecolectas.get(adapter.getIndex());
-                            String codigo = recolectas.getCodigoRecolecta();
-                            listaRecolectas.clear();
-                            mDatabase.child("RECOLECTAS").child(mAuth.getCurrentUser().getUid()).child(codigo).removeValue();
-                            listaRecolectas.clear();
-                            listaRecolectas.remove(true);
-                            //listaRecolectas.notify();
+                        startActivity(irABorrarRecolecta);
 
-                            //listaCultivos.clear();
-
-                            //llenarLista();
-
-                        }
-                    });
-
-                    //NO
-                    myBuild.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                        }
-                    });
-
-                    //Construir el alert
-                    AlertDialog dialog = myBuild.create();
-                    dialog.show();
 
 
                     break;
@@ -296,7 +263,7 @@ contarElementos();
                     irAFotoVale.putExtra("cultivoRecolecta",recolectaPaFoto.getCultivoRecolecta());
                     irAFotoVale.putExtra("fechaRecolecta",recolectaPaFoto.getFechaRecolecta());
                     irAFotoVale.putExtra("kilosRecolecta",recolectaPaFoto.getKilosRecolecta());
-                   // listaRecolectas.clear();
+                    listaRecolectas.clear();
                     startActivity(irAFotoVale);
 
                     break;
@@ -309,7 +276,7 @@ contarElementos();
                     irAFotoValeDAT.putExtra("cultivoRecolecta",recolectaPaFotoDAT.getCultivoRecolecta());
                     irAFotoValeDAT.putExtra("fechaRecolecta",recolectaPaFotoDAT.getFechaRecolecta());
                     irAFotoValeDAT.putExtra("kilosRecolecta",recolectaPaFotoDAT.getKilosRecolecta());
-                    //listaRecolectas.clear();
+                    listaRecolectas.clear();
                     startActivity(irAFotoValeDAT);
 
                     break;

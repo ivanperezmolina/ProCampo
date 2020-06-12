@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,6 +33,8 @@ import com.ivan.procampo.funcionalidades.ActualizarRecolectaActivity;
 import com.ivan.procampo.funcionalidades.AnnadirFotoValeRecolecta;
 import com.ivan.procampo.funcionalidades.AnnadirPodaActivity;
 import com.ivan.procampo.funcionalidades.AnnadirRecolectaActivity;
+import com.ivan.procampo.funcionalidades.EliminarCultivo;
+import com.ivan.procampo.funcionalidades.EliminarPoda;
 import com.ivan.procampo.modelos.Podas;
 import com.ivan.procampo.modelos.Recolectas;
 
@@ -113,8 +116,6 @@ public class PodasFragment extends Fragment {
         //Lanzamos el Layout Manager
         recyclerViewPoda.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        //Lanzamos metodo para llenar la lista
-        llenarLista();
 
         //Pasamos el parametro
         registerForContextMenu(recyclerViewPoda);
@@ -132,6 +133,25 @@ public class PodasFragment extends Fragment {
 
         return vista;
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (listaPodas.size()==0){
+            llenarLista();
+        }else if (listaPodas.size()!=0){
+            listaPodas.clear();
+            llenarLista();
+        }
+
+    }
+
+
 
     /**
      * Mñetodo que me trae los datos de firebase
@@ -180,14 +200,14 @@ public class PodasFragment extends Fragment {
             //EDITAR RECOLECTA
             case R.id.ctxModPoda:
                 final Podas poda = listaPodas.get(adapter.getIndex());
-
+                listaPodas.clear();
                 //Vamos a la actividad, pasando los datos
                 Intent irAEditarPoda = new Intent(getActivity(), ActualizarPodaActivity.class);
 
                 irAEditarPoda.putExtra("codigoPoda",poda.getCodigoPoda());
                 irAEditarPoda.putExtra("cultivoPoda",poda.getCultivoPoda());
                 irAEditarPoda.putExtra("fechaPoda",poda.getFechaPoda());
-                listaPodas.clear();
+
                 startActivity(irAEditarPoda);
 
                 break;
@@ -195,44 +215,13 @@ public class PodasFragment extends Fragment {
             case R.id.ctxDelPoda:
                 Podas podaAdios = listaPodas.get(adapter.getIndex());
 
-                String cultivoPoda = podaAdios.getCultivoPoda();
-                String fechaPoda = podaAdios.getFechaPoda();
+                listaPodas.clear();
 
-                AlertDialog.Builder myBuild = new AlertDialog.Builder(getContext());
+                Intent irABorrarPoda = new Intent(getActivity(), EliminarPoda.class);
 
-                myBuild.setTitle("CONFIRMACIÓN DE BORRADO");
-                myBuild.setMessage("¿Quiere eliminar la poda en el cultivo "+cultivoPoda+" con fecha "+fechaPoda+" ?");
-                //SI
-                myBuild.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                irABorrarPoda.putExtra("codigoPoda",podaAdios.getCodigoPoda());
 
-                        Podas podas = listaPodas.get(adapter.getIndex());
-                        String codigo = podas.getCodigoPoda();
-                        listaPodas.clear();
-                        mDatabase.child("PODAS").child(mAuth.getCurrentUser().getUid()).child(codigo).removeValue();
-                        listaPodas.clear();
-                        listaPodas.remove(true);
-                        //listaPodas.notify();
-
-                        //listaCultivos.clear();
-
-                        //llenarLista();
-
-                    }
-                });
-
-                //NO
-                myBuild.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-                //Construir el alert
-                AlertDialog dialog = myBuild.create();
-                dialog.show();
+                startActivity(irABorrarPoda);
 
 
                 break;

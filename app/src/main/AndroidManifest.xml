@@ -28,7 +28,11 @@
         android:roundIcon="@mipmap/ic_index"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".funcionalidades.RecordatoriosActivity"></activity>
+        <activity android:name=".funcionalidades.EliminarSulfato"></activity>
+        <activity android:name=".funcionalidades.EliminarPoda" />
+        <activity android:name=".funcionalidades.EliminarRecolecta" />
+        <activity android:name=".funcionalidades.EliminarCultivo" />
+        <activity android:name=".funcionalidades.RecordatoriosActivity" />
         <activity android:name=".funcionalidades.AnnadirFotoDatRecolecta" />
         <activity android:name=".DetallesPago" />
         <activity android:name=".CarroCompra" />

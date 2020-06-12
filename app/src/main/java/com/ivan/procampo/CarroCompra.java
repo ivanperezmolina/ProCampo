@@ -84,7 +84,12 @@ public class CarroCompra extends AppCompatActivity {
 
     private void procesarPago() {
         String Total = tvTotal.getText().toString().trim();
-        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(Total),"EUR","Pagar a ProCampo",PayPalPayment.PAYMENT_INTENT_SALE);
+
+       Total.replace(",",".").trim();
+
+
+
+        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(Total.replace(",",".").trim()),"EUR","Pagar a ProCampo",PayPalPayment.PAYMENT_INTENT_SALE);
 
         //Enviar parametros con un Intent
         Intent intent = new Intent(this, PaymentActivity.class);

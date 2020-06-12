@@ -124,7 +124,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/kilos_recol"
-            android:inputType="text" />
+            android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Spinner

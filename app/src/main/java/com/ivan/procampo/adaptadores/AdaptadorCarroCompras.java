@@ -19,8 +19,11 @@ import com.ivan.procampo.modelos.Fertilizantes;
 import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class AdaptadorCarroCompras extends RecyclerView.Adapter<AdaptadorCarroCompras.ViewHolder> {
     Context context;
@@ -40,7 +43,13 @@ public class AdaptadorCarroCompras extends RecyclerView.Adapter<AdaptadorCarroCo
 
         //Aquí añadimos el 21% de IVA
         IVA = total * 0.21;
-        tvTotal.setText(""+(total+IVA));
+
+
+
+        double elTotal = (total+IVA);
+
+        NumberFormat df = NumberFormat.getNumberInstance(Locale.GERMAN);
+        tvTotal.setText(""+(df.format(elTotal)));
 
     }
 
