@@ -48,8 +48,8 @@ A continuación se puede acceder a una presentación donde expongo brevemente de
 💬     -[PRESENTACIÓN](https://github.com/ivanperezmolina/ProCampo/blob/master/Presentacion%20ProCampo.pdf)
 
 # APLICACIÓN (ANDROID)
-A continuación se puede ver un vídeo donde expongo mi proyecto final y la APK para poder descargarla en cualquier dispositivo.
-📹     -[ENLACE AL VÍDEO DESCRIPTIVO](https://www.youtube.com/watch?v=naKtDZXAVeY)
+A continuación se puede ver un vídeo donde expongo mi proyecto final y la APK para poder descargarla en cualquier dispositivo.<br>
+📹     -[ENLACE AL VÍDEO DESCRIPTIVO](https://www.youtube.com/watch?v=naKtDZXAVeY)<br>
 📱      -[APK]()
 
 # MÓDULO DE SISTEMAS DE GESTIÓN EMPRESARIAL
