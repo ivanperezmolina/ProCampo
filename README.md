@@ -33,6 +33,10 @@ En este repositorio se irá actualizando la información de la APP ProCampo así
 Se puede encontrar un manual con el funcionamiento de ProCampo en el siguiente enlace <br>
 🛂[MANUAL DEL USUARIO](https://github.com/ivanperezmolina/ProCampo/blob/master/Proyecto%20ProCampo%20Tutorial.pdf)
 
+# Presentación de la aplicación (en PDF)
+A continuación se puede acceder a una presentación donde expongo brevemente de que va mi proyecto y todo lo utilizado <br>
+💬[PRESENTACIÓN](https://github.com/ivanperezmolina/ProCampo/blob/master/Presentacion%20ProCampo.pdf)
+
 # APLICACIÓN (ANDROID)
 
 # MÓDULO DE SISTEMAS DE GESTIÓN EMPRESARIAL
