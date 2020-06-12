@@ -1,6 +1,16 @@
 # ProCampo
 Ayudamos al agricultor, todo en la palma de su mano.
 
+# Indice
+-[Presentación del proyecto](https://github.com/ivanperezmolina/ProCampo#presentaci%C3%B3n-del-proyecto)<br>
+-[Tutorial de uso de la aplicación](https://github.com/ivanperezmolina/ProCampo#tutorial-de-uso-de-la-aplicacion)<br>
+-[Presentación en formato PDF](https://github.com/ivanperezmolina/ProCampo#presentaci%C3%B3n-de-la-aplicaci%C3%B3n-en-pdf)<br>
+-[Aplicación Android - APK](https://github.com/ivanperezmolina/ProCampo#aplicaci%C3%B3n-android)<br>
+-[Módulo de Sistemas de Gestión Empresarial](https://github.com/ivanperezmolina/ProCampo#m%C3%B3dulo-de-sistemas-de-gesti%C3%B3n-empresarial)<br>
+-[Módulo de Desarrollo de Interfaces](https://github.com/ivanperezmolina/ProCampo#m%C3%B3dulo-de-desarrollo-de-interfaces)<br>
+-[Diario del proyecto](https://github.com/ivanperezmolina/ProCampo#diario-semanal-de-la-evoluci%C3%B3n-del-proyecto)<br>
+-[Versión preeliminar de Mayo](https://github.com/ivanperezmolina/ProCampo#versi%C3%B3n-preliminar-check-point)<br>
+
 # PRESENTACIÓN DEL PROYECTO
 
 ## Idea
@@ -27,52 +37,38 @@ En aspectos técnicos contaria con partes como un login con todas las opciones d
 
 En este repositorio se irá actualizando la información de la APP ProCampo así como se irá subiendo código poco a poco
 
-📹[Vídeo explicativo](https://youtu.be/ZRGfduFV4BE)
+📹     -[Vídeo explicativo](https://youtu.be/ZRGfduFV4BE)
 
+# TUTORIAL DE USO DE LA APLICACION 
+Se puede encontrar un manual con el funcionamiento de ProCampo en el siguiente enlace <br>
+🛂      -[MANUAL DEL USUARIO](https://github.com/ivanperezmolina/ProCampo/blob/master/Proyecto%20ProCampo%20Tutorial.pdf)
+
+# Presentación de la aplicación (en PDF)
+A continuación se puede acceder a una presentación donde expongo brevemente de que va mi proyecto y todo lo utilizado <br>
+💬     -[PRESENTACIÓN](https://github.com/ivanperezmolina/ProCampo/blob/master/Presentacion%20ProCampo.pdf)
 
 # APLICACIÓN (ANDROID)
+A continuación se puede ver un vídeo donde expongo mi proyecto final y la APK para poder descargarla en cualquier dispositivo.<br>
+📹     -[ENLACE AL VÍDEO DESCRIPTIVO](https://www.youtube.com/watch?v=naKtDZXAVeY)<br>
+📱      -[APK]()
 
 # MÓDULO DE SISTEMAS DE GESTIÓN EMPRESARIAL
+Se puede encontrar un documento PDF donde se explica todo lo relacionado con dicho módulo.<br>
+📃     -[PDF MODULO SGE](https://github.com/ivanperezmolina/ProCampo/blob/master/Proyecto%20ProCampo%20Modulo%20SGE.pdf)<br>
+💼     -[ACCESO AL SISTEMA ERP DE ODOO](https://edu-procampo.odoo.com/web/login)
 
 # MÓDULO DE DESARROLLO DE INTERFACES
-
+Se puede visualizar los archivos brutos o desde el alojamiento web en 000webhost<br>
+📃     -[PDF MODULO DI](https://github.com/ivanperezmolina/ProCampo/blob/master/Procampo%20DI.pdf)<br>
+✅     -[ARCHIVOS BRUTOS](https://github.com/ivanperezmolina/ProCampo/tree/master/disennointerfaz)<br>
+🌍     -[PÁGINA WEB](https://procampoivan.000webhostapp.com/)
 
 
 
 # DIARIO SEMANAL DE LA EVOLUCIÓN DEL PROYECTO
-## VIERNES 27 DE MARZO DEL 2020
-En esta primera semana he decidido crear un nuevo archivo de proyecto; para no liarme con el otro y demás. Esta semana ha estado dedicada al diseño y elaboración del login y registro; cogiendo el que ya tenía y servía y añadiendo nuevas funcionalidades tales como la autenticación con una cuenta de Google y con tu cuenta de Facebook; queda retocar algunos fallos que esta dando e implementar otra forma de inicio de sesión; que no se si será Twitter o por SMS. 
-#### Bibliografía de esta semana
-Me he basado para el inicio de sesión por Facebook en el vídeo "Login con Facebook" de Alvarez Tech [Vídeo aquí](https://www.youtube.com/watch?v=1HgM_vc-rSc&t=)
+En el siguiente PDF se puede ver a modo de diario semanal la evolución de la aplicación ProCampo <br>
+📰     -[DIARIO SEMANAL PROCAMPO](https://github.com/ivanperezmolina/ProCampo/blob/master/DIARIO%20SEMANAL%20DE%20LA%20EVOLUCI%C3%93N%20DEL%20PROYECTO.pdf)
 
-## VIERNES 3 DE ABRIL DEL 2020
-Menú principal de la aplicación con un menú lateral implementado. También he elaborado la parte de perfil; aunque ahora solo coja la información del usuario (tendría que ver desde donde inicia sesión; por ejemplo si es desde Facebook no va a poder cambiar sus datos)
-Una de las partes de la APP ; es decir "Cultivos" ya tiene creada su Adaptador y su Recycler View; solo quedan unos fallos que da al conectar a Firebase y esa parte ya estaría 
-
-#### Bibliografía de esta semana
-Ya que la herramienta de Android Studio para crear un NavigationDrawer mete código el cual veo que no sirve he seguido un tutorial de como crearlo desde 0. [Página web aquí](http://umhandroid.momrach.es/basicnavigationdrawer/)
-
-## VIERNES 10 DE ABRIL DEL 2020 (VIERNES SANTO)
-Durante esta semana me tomo un respiro
-
-## VIERNES 17 DE ABRIL DEL 2020
-En esta semana he estado pensando las diferentes partes de la aplicación y hablando con varios agricultores que conozco para que me puedan dar ideas y demás. Saco dos ideas claves; un foro y un diccionario de fitosanitarios. Buenas ideas!
-En cuanto a la aplicación he corregido un error que me daba con el inicio de sesión de Facebook; solucionado
-
-#### Bibliografía de esta semana
-Experiencias de futuros y experimentados agricultores y la página de facebook para "developers". 
-
-## VIERNES 24 DE ABRIL DEL 2020
-El diseño y funcinalidad de añadir y mostrar los cultivos ya esta implementada; he encontrado dificultades para implementar un RecyclerView en un fragmento; al final ha funcionado aunque hay veces que se queda pillado y no me muestra nada; tengo que estudiarlo.
-
-#### Bibliografía de esta semana 
-Varios vídeos de [Youtube](https://www.youtube.com)
-
-## VIERNES 1 DE MAYO DEL 2020
-Despues de estar toda la semana estudiando el adapter y cambiar cosas para intentar si funciona; no funciona. Durante la semana que viene seguire con este error. Esta semana tambien he tocado un poco la parte del perfil, sobre todo diseño
-
-#### Bibliografía de esta semana
-Ninguna en especial, simplemente he buscado algunos vídeos en [Youtube](https://www.youtube.com) para ver en que me podía estar equivocando; pero no he sacado nada revelante.
 
 <hr>
 
@@ -80,24 +76,7 @@ Ninguna en especial, simplemente he buscado algunos vídeos en [Youtube](https:/
 
 En este punto subo todo el código generado hasta ahora, un enlace a un vídeo explicativo donde digo que hay hecho y que falta y la .apk para que se pueda probar:
 
-📹 [Vídeo explicativo](https://youtu.be/oPF7jsJAuIk) <br>
-📳 [APK](https://github.com/ivanperezmolina/ProCampo/blob/master/app-release.apk)
+📹      -[Vídeo explicativo](https://youtu.be/oPF7jsJAuIk) <br>
+📳      -[APK](https://github.com/ivanperezmolina/ProCampo/blob/master/app-release.apk)
 
 
-## VIERNES 15 DE MAYO DEL 2020
-Solucionado el problema del Recycler View; he mejorado el diseño de este haciendolo mas sencillo y además estoy implementando el menú contextual de toque largo
-
-#### Bibliografía de esta semana
-Gracias a la ayuda de algunos profesores y de mi proyecto de la entrega anterior
-
-## VIERNES 22 DE MAYO DEL 2020
-La parte de cultivos está totalmente terminada, queda simplemente ver como puedo actualizar el fragments cuando edito o elimino un cultivo. Paso a implementar la parte de recolectas, que depende de los cultivos
-
-#### Bibliografía
-Varios vídeos de YouTube y poco más
-
-## SEMANAS DEL 30 DE MAYO Y 5 DE JUNIO  
-Durante esta toda la parte de control ya esta finalizada y la parte de venta queda darle unos repasos; por lo general quedan arreglar problemas de compatibilidad, de actualizar fragments y poco más.
-
-#### Bibliografía
-Varios vídeos de YouTube y documentación de Firebase, para añadir fotos en storage y demás

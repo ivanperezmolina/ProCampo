@@ -1,0 +1,534 @@
+/*Evitar separación de los marcos*/
+* {
+    margin: 0;  
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*Poner fuente Ubuntu*/
+body{
+    font-family: 'Ubuntu', sans-serif;
+    background: rgba(44, 99, 22, 0.178);
+}
+
+/*Clase para los contenedores, contenido principal*/
+.contenedor{
+    width: 90%;
+    padding: 60px 0;
+    margin: auto;
+    overflow: hidden;
+}
+
+.titulo{
+    color:#727e04;
+    font-size: 35px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/*Quitar decoración de los enlaces*/
+
+a:link {text-decoration: none }
+a:hover { color: black; font-family: arial; text-decoration: none }
+a:visited {color: black;  font-family: arial; text-decoration: none }
+	
+
+/*Parte de la cabecera*/
+header{
+    /*Con este tamaño, da sensación de movimiento*/
+    background-size: 200% 200%;
+    padding: 0;
+    margin: 0;
+    color: white;
+    animation: Gradiente 15s ease infinite;
+    font-size: 24px;
+}
+
+@keyframes Gradiente {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+.row{
+    display: flex;
+    height: 150px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 80px;
+}
+
+
+.degradado{
+    width: 100%;
+    height: 350px;
+	background: -webkit-linear-gradient(left,hsla(66, 94%, 25%, 0.507) 20%,hsla(66, 94%, 25%, 0.589) 70%,#b1c40788, #727e0483),url(../img/header.jpg);
+	min-height: 90px;
+	display:flex;
+    align-items: center;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+
+}
+
+
+
+.navbar{
+	display: flex;
+    width: 100,2%;
+    margin: 0;
+    padding: 0;
+	height: 50px;
+	text-align: center;
+    flex-direction: row;
+}
+
+
+.navbar1, .navbar2, .navbar3, .navbar4{
+    color: white;
+    width: 25%;
+    height: 50px;
+    background-color: rgb(143, 110, 68);
+    display: flex;
+    justify-content: center;
+    margin-right: 1px;
+    align-items: center;
+
+}
+#menu{
+    display: none;
+}
+
+.contenedorventajasprocampo{
+    display: flex;
+    /*Reparte el espacio*/
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.contenedor-sobre-nosotros{
+    display: flex;
+    /*Reparte el espacio*/
+    justify-content: space-evenly;
+}
+
+.imagenVentajas{
+    border: rgb(167, 192, 22) 1px solid;
+    border-radius: 20px;
+    text-align: justify;
+    width:48%
+}
+
+.contenedorTextoVentajas{
+    width: 48%;
+    margin-top: 80px;
+
+}
+
+.contenedorTextoVentajas h3{
+    margin-bottom: 15px;
+    
+}
+
+.contenedorTextoVentajas h3 span{
+    background: #374b02;
+    display: inline;
+    width: 30px;
+    text-align: center;
+    color: white;
+    border-radius: 50%;
+    margin-right: 5px;
+    height: 30px;
+    padding: 3px;
+}
+
+.contenedorTextoVentajas p{
+    padding: 0 0 10px 15px;
+    font-weight: 300;
+    text-align: justify;
+    
+}
+
+/*Galeria de imagenes*/
+.contenedordefotos{
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    justify-content: center;
+    text-align: center;
+}
+
+.afoto{
+    max-width: 100%;
+}
+
+.containergaleria{
+    position: relative;
+    max-width: 1000px;
+    width: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+
+}
+
+.slide{
+    display: flex;
+    transform: translate3d(0,0,0);
+    transition: all 600ms;
+    animation-name: autoplay;
+    animation-delay: 6.5s;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+
+}
+
+.item-slide{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    flex-grow: 0;
+    max-width: 100%;
+}
+
+/*Cuadritos que aparecen abajo*/
+.pagination{
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.pagination-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border:1px solid white;
+    width: 35px;
+    height: 35px;
+    border-radius: 4px;
+    overflow: hidden; /*Para que cada imagen se recorte*/
+    cursor: pointer;
+    background: rgba(44, 99, 22,0.5);
+    margin: 0 10px;
+    text-align: center;
+    transition: all 300ms;
+}
+
+.pagination-item:hover{
+    transform: scale(1.5);
+}
+
+.pagination-item img{
+    display: inline-block;
+    max-width: none;
+    height: 100%;
+    transform: scale(1);
+    opacity: 0;
+    transition: all 300ms;
+}
+
+.pagination-item:hover img{
+    opacity: 1;
+    transform: scale(1);
+}
+
+/*EVENTOS DE LA GALERIA*/
+input[id="1"]:checked ~ .slide{
+    animation: none;
+    transform: translate3d(0,0,0 );
+}
+
+input[id="1"]:checked ~ .pagination .pagination-item[for="1"]{
+    background: #fff;
+
+
+}
+
+input[id="2"]:checked ~ .slide{
+    animation: none;
+    transform: translate3d(calc(-100%*1),0,0 );
+}
+
+input[id="2"]:checked ~ .pagination .pagination-item[for="2"]{
+    background: #fff;
+
+
+}
+
+
+input[id="3"]:checked ~ .slide{
+    animation: none;
+    transform: translate3d(calc(-100%*2),0,0 );
+}
+
+input[id="3"]:checked ~ .pagination .pagination-item[for="3"]{
+    background: #fff;
+
+}
+
+/*Seccion del video*/
+.contenedordelvideo{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    justify-content: center;
+    text-align: center;
+    
+    position: relative;    
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+}
+.video{
+    width: 900px;
+    height: 600px;
+}
+
+/*Opiniones*/
+.cards{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.cards .card{
+    background: rgb(170, 89, 59);
+    display: flex;
+    width: 46%;
+    height: 200px;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 5px;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.6);
+}
+
+.cards .card img{
+    width: 80px;
+    height: 80 px;
+    object-fit: cover;
+    border: 3px solid #374b02;
+    border-radius: 50%;
+    display: block;
+
+}
+
+
+
+/*Footer*/
+footer{
+    width: 100%;
+    
+}
+
+.footer-container{
+    width: 100%;
+    background:#2c3d02 ;
+    color: white;
+}
+
+.footer-main{
+    width: 95%;
+    max-width: 1000px;
+    margin: auto;
+    padding: 50px 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer-main .footer-columna{
+    width: calc(100% / 3);/*Calculo para que me lo divida en 3º columnas*/
+    text-align: justify;
+}
+
+.footer-main .footer-columna:nth-child(2){
+    padding: 0 20px;
+}
+
+.footer-main .footer-columna h3{
+    font-size: 30px;
+    color: #00C6EE;
+    margin-bottom: 20px;
+}
+
+.footer-main .footer-columna span p {
+    display: inline-block;
+    margin-left: 5px;
+    margin-bottom: 15px;
+}
+
+.final{
+    text-align: center;
+}
+
+/*Botón de descraga*/
+button.boton1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #000000;
+	padding: 10px 50px;
+		
+	background: -webkit-linear-gradient(rgb(216, 255, 204), rgb(176, 255, 102) 30%, rgb(100, 153, 51) 40%, rgb(54, 102, 0) 51%);
+	-webkit-border-radius: 10px;
+	border: 1px solid #000000;
+	
+	-webkit-box-shadow: 0px 1px 3px rgb(000,000,000);
+		
+	text-shadow: 0px -1px 3px rgb(255,255,255), 0px 1px 0px rgb(255,255,255);
+}
+button:hover {
+	
+	background: -webkit-linear-gradient(#000, rgb(102, 255, 102) 60%, rgb(51, 153, 59) 70%, rgb(75, 102, 0) 80%);
+}
+button:active {
+	background: -webkit-linear-gradient(#aaa, rgb(102, 255, 102) 60%, rgb(51, 153, 59) 70%, rgb(75, 102, 0) 80%);
+	top:2px;
+	position:relative;
+}
+
+a{
+    text-decoration: none;
+}
+
+.imagenprincipal{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/*---------------------*/
+/*PARA QUE SEA RESPONSIVE*/
+
+@media screen and (max-width: 900px){
+    .video{
+        width: 700px;
+        height: 400px;
+    }
+}
+@media screen and (max-width: 700px){
+    .navbar{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        
+}
+
+.cards .card{
+    background: rgb(170, 89, 59);
+    display: flex;
+    width: 90%;
+    height: 200px;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 5px;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.6);
+}
+
+.logoprincipal{
+    width: 250px;
+    height: 250px;
+}
+.video{
+    width: 250px;
+    height: 180px;
+}
+
+.imagenVentajas{
+    visibility: hidden;
+}
+
+.contenedorTextoVentajas{
+    width: 100%;
+    display: inline;
+    margin-left: -200px;
+}
+
+
+
+
+#menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(143, 110, 68);
+    color: white;
+    height: 50px;
+    font-size: 24px;
+}
+
+    .navbar1, .navbar2, .navbar3, .navbar4{
+        color: white;
+        width: 100%;
+        /*Es el espacio en blanco que deja debajo de cada uno*/
+        margin-bottom: 2px;
+        background-color: rgb(44, 99, 22);;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /*Con esto nos servimos para la animación*/
+        opacity: 0;
+        transition: opacity 0.75s ease;
+}
+
+    /*Animación (transición)*/
+    .navbar:hover>.navbar1 {
+        opacity: 1;
+    }
+    .navbar:hover>.navbar2 {
+        opacity: 1;
+        transition-delay: 0.2s;
+    }
+    .navbar:hover>.navbar3 {
+        opacity: 1;
+        transition-delay: 0.5s;
+    }
+    .navbar:hover>.navbar4 {
+        opacity: 1;
+        transition-delay: 0.7s;
+    }
+
+    /*Ventajas*/
+    .contenedorTextoVentajas{
+         margin-top: 0px;
+    
+    }
+
+    /*Responsive del footer*/
+    .footer-main{
+        padding: 10px 0;
+    }
+
+    .footer-main .footer-columna{
+        width: 100%;
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .footer-main .footer-columna h3{
+        margin-bottom: 5px;
+    } 
+    .footer-main .footer-columna span{
+       display: block;
+    }
+}
+

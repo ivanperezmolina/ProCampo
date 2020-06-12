@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProCampo</title>
+    <!--Link para mi estilo-->
+    <link rel="stylesheet" href="estilo.css">
+    <!--Ponemos el favicon-->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <!--Font aweson-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!--Agrego la fuente ubuntu de Google Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    
+    
+	<header>
+		<div class="degradado">
+			<div class="imagenprincipal">
+                <img class="logoprincipal" src="img/logotipo.svg" alt="Logotipo">
+            </div>
+            <!--<p class="row">ProCampo</p>-->
+            
+		</div>
+		<div class="navbar">
+            <div id="menu">Menú</div>
+            <div class="navbar1"><a href="#">Inicio</a></div>
+            <div class="navbar2"><a href="#ventajas">Ventajas</a></div>
+            <div class="navbar3"><a href="#galeria">Galería</a></div>
+            <div class="navbar4"><a href="#opiniones">Opiniones</a></div>
+	    </div>
+	</header>
+
+    <!--Creamos el cuerpo del sitio web-->
+    <main>
+        <!--Seccion de ventajas-->
+        <section id="ventajas">
+        <section class="contenedor ventajas">
+            <h2 class="titulo">Ventajas de usar ProCampo</h2>
+            <div class="contenedorventajasprocampo">
+                <!--Imagen del lado-->
+                <img class="imagenVentajas" src="img/ventajaFoto.jpeg" alt="Foto del movil1">
+                <div class="contenedorTextoVentajas">
+                    <!--1º ventaja-->
+                   <h3><span>1</span>Podrás olvidarte del papel</h3> 
+                   <p>Con ProCampo no volverás al papel; podrás tener toda la información de tus cultivos, sulfatos, podas y recolectas en la palma de tu mano. ¡Adiós a tanto papel! Además, dispones de una tienda virtual de fitosanitarios, donde encontraras un amplio catalogo para asegurar un sulfato perfecto.</p>
+                    <!--2º ventaja-->
+                    <h3><span>2</span>Un diseño claro e intuitivo</h3>
+                    <p>En ProCampo encontraras una interfaz de usuario fácil de usar, para que no tengas que hacer mil maniobras cuando termine tu jornada agrícola. Simplemente con unos pocos toques de pantalla tendrás tu información guardada </p>
+                    <!--3º ventaja-->
+                    <h3><span>3</span>Toda tu información disponible</h3>
+                    <p>En cualquier momento, en cualquier lugar y en cualquier dispositivo; con ProCampo podrás conectarte con los dispositivos que quieras para siempre mantener tu información actualizada</p>
+
+                </div>
+            </div>
+        </section>
+    </section>
+
+
+<!--Música de fondo-->
+    <embed src="img/musica-de-viaje-1-volando-alto-no-copyright.mp3" width="0" height="0" ></embed>
+
+        <!--Seccion de galeria de fotos-->
+        <h2 class="titulo">Galería de Imagenes</h2>
+        <section id="galeria">
+        <section class="contenedordefotos">
+            
+                <div class="containergaleria">
+                    <input type="radio" id="1" name="image-slide" hidden/>
+                    <input type="radio" id="2" name="image-slide" hidden/>
+                    <input type="radio" id="3" name="image-slide" hidden/>
+
+                    <div class="slide">
+                        <div class="item-slide">
+                            <img class="afoto" src="img/1.jpg">
+                        </div>
+                        <div class="item-slide">
+                            <img class="afoto" src="img/2.jpg">
+                        </div>
+                        <div class="item-slide">
+                            <img class="afoto" src="img/3.jpg">
+                        </div>
+                    </div> 
+
+                    <div class="pagination">
+                        <label class="pagination-item" for="1">
+                            <img class="afoto" src="img/1.jpg">
+                        </label>
+                        <label class="pagination-item" for="2">
+                            <img class="afoto" src="img/2.jpg">
+                        </label>
+                        <label class="pagination-item" for="3">
+                            <img class="afoto" src="img/3.jpg">
+                        </label>
+                    </div>
+                </div>
+        </section>
+    </section>
+
+
+    <!--Sección con mi video-->
+    <h2 class="titulo">Vídeo explicativo</h2>
+    <section class="contenedordelvideo">
+        <video class="video" controls>
+            <source src="img/videos-divulgativos-dcoop-el-cultivo-del-olivo.mp4" type="video/mp4">
+        </video>
+    </section>
+
+
+        <!--Sección de opiniones-->
+        <section id="opiniones">
+        <section class="opiniones contenedor">
+            <h2 class="titulo">Opiniones</h2>
+            <div class="cards">
+                <div class="card">
+                    <img src="img/papa.jpg">
+                    <div class="contenido-card">
+                        <h4>Antonio Pérez</h4>
+                        <p>Con ProCampo puedo dejar mi vieja libreta y tener toda la información en mi móvil. Y todo muy fácil </p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="img/ceci.jpg">
+                    <div class="contenido-card">
+                        <h4>Cecilia Molina</h4>
+                        <p>Ya no tengo que preocuparme de tener todo listo; con ProCampo tengo mis papeles donde quiera y cuando quiera </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    </main>
+
+    <!--Pie de página-->
+    <!--Para los iconos utilizo font aweson-->
+    <footer>
+        <div class="footer-container">
+           
+                <div class="footer-main">
+                    <div class="footer-columna">
+                        <h3>Visita el código</h3>
+                        <button type="button"  name="css1" value="" class="boton1"> <a href="https://github.com/ivanperezmolina">Ver proyecto</a> </button>
+                    </div>
+
+                    <div class="footer-columna">
+                        <h3>Dirección</h3>
+                        <span class="fa fa-map-marker"><p>Calle Nueva Nº28 - Rute</p></span>
+                        <span class="fa fa-phone"><p>(+34) 609 66 33 23</p></span>
+                        <span class="fa fa-envelope"><p>ivan.perez.8500@gmail.com</p></span>
+                    </div>
+
+                    <div class="footer-columna">
+                        <h3>Sobre mí</h3>
+                        <p>Soy Iván Pérez y ya estaba harto de que todas las gestiones de la agricultura se hagan en papel; por eso he desarrollado este proyecto para hacer la vida más facil al agricultor.</p>
+
+                    </div>
+                </div>
+             <!--Copyright-->
+ <h2 class="final">&copy; Iván Pérez Molina</h2>
+        </div>
+
+       
+    </footer>
+
+    
+</body>
+</html>
